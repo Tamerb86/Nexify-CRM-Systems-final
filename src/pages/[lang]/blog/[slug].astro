@@ -1,0 +1,279 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { languagesList, type Language } from '../../../lib/i18n';
+
+// Define all articles
+const articles = [
+  {
+    slug: "web-design-trends-2025",
+    title: {
+      no: "Webtrender 2025: Hva du trenger å vite",
+      en: "Web Design Trends 2025: What You Need to Know",
+      ar: "اتجاهات تصميم الويب 2025: ما تحتاج معرفته"
+    },
+    content: {
+      no: `
+## Introduksjon
+
+Webdesign utvikler seg konstant, og 2025 bringer med seg spennende nye trender som vil forme hvordan vi opplever nettet. I denne artikkelen utforsker vi de viktigste trendene du bør kjenne til.
+
+## 1. AI-drevet Design
+
+Kunstig intelligens revolusjonerer måten vi designer nettsider på. Fra automatisk generering av layouts til personalisert innhold basert på brukeratferd, AI blir en uunnværlig del av designprosessen.
+
+### Fordeler med AI i design:
+- Raskere prototyping
+- Personaliserte brukeropplevelser
+- Automatisk A/B-testing
+
+## 2. Immersive 3D-opplevelser
+
+Med forbedret nettleserytelse og WebGL-teknologi ser vi stadig flere nettsider som inkorporerer 3D-elementer. Dette skaper mer engasjerende og minneverdige opplevelser.
+
+## 3. Bærekraftig Webdesign
+
+Miljøbevissthet påvirker også webdesign. Optimaliserte nettsider som bruker mindre energi og har lavere karbonavtrykk blir stadig viktigere.
+
+## 4. Mikro-interaksjoner
+
+Små, subtile animasjoner som gir tilbakemelding til brukeren forbedrer brukeropplevelsen betydelig. Disse mikro-interaksjonene gjør grensesnitt mer intuitive og engasjerende.
+
+## 5. Variable Fonts
+
+Variable fonts gir designere mer fleksibilitet og bedre ytelse. En enkelt fontfil kan inneholde mange variasjoner av vekt, bredde og stil.
+
+## Konklusjon
+
+2025 blir et spennende år for webdesign. Ved å holde seg oppdatert på disse trendene kan du sikre at dine digitale prosjekter forblir relevante og engasjerende.
+      `,
+      en: `
+## Introduction
+
+Web design is constantly evolving, and 2025 brings exciting new trends that will shape how we experience the web. In this article, we explore the key trends you need to know.
+
+## 1. AI-Driven Design
+
+Artificial intelligence is revolutionizing how we design websites. From automatic layout generation to personalized content based on user behavior, AI is becoming an indispensable part of the design process.
+
+### Benefits of AI in design:
+- Faster prototyping
+- Personalized user experiences
+- Automatic A/B testing
+
+## 2. Immersive 3D Experiences
+
+With improved browser performance and WebGL technology, we're seeing more websites incorporating 3D elements. This creates more engaging and memorable experiences.
+
+## 3. Sustainable Web Design
+
+Environmental awareness is also affecting web design. Optimized websites that use less energy and have lower carbon footprints are becoming increasingly important.
+
+## 4. Micro-interactions
+
+Small, subtle animations that provide feedback to users significantly improve the user experience. These micro-interactions make interfaces more intuitive and engaging.
+
+## 5. Variable Fonts
+
+Variable fonts give designers more flexibility and better performance. A single font file can contain many variations of weight, width, and style.
+
+## Conclusion
+
+2025 is going to be an exciting year for web design. By staying updated on these trends, you can ensure your digital projects remain relevant and engaging.
+      `,
+      ar: `
+## مقدمة
+
+يتطور تصميم الويب باستمرار، ويجلب عام 2025 اتجاهات جديدة مثيرة ستشكل كيفية تجربتنا للويب. في هذه المقالة، نستكشف الاتجاهات الرئيسية التي تحتاج إلى معرفتها.
+
+## 1. التصميم المدعوم بالذكاء الاصطناعي
+
+يُحدث الذكاء الاصطناعي ثورة في طريقة تصميم المواقع. من إنشاء التخطيطات تلقائياً إلى المحتوى المخصص بناءً على سلوك المستخدم، أصبح الذكاء الاصطناعي جزءاً لا غنى عنه من عملية التصميم.
+
+### فوائد الذكاء الاصطناعي في التصميم:
+- نماذج أولية أسرع
+- تجارب مستخدم مخصصة
+- اختبار A/B تلقائي
+
+## 2. تجارب ثلاثية الأبعاد غامرة
+
+مع تحسن أداء المتصفح وتقنية WebGL، نرى المزيد من المواقع التي تدمج عناصر ثلاثية الأبعاد. هذا يخلق تجارب أكثر جاذبية ولا تُنسى.
+
+## 3. تصميم الويب المستدام
+
+يؤثر الوعي البيئي أيضاً على تصميم الويب. المواقع المحسنة التي تستخدم طاقة أقل ولها بصمة كربونية أقل أصبحت مهمة بشكل متزايد.
+
+## 4. التفاعلات الدقيقة
+
+الرسوم المتحركة الصغيرة والدقيقة التي توفر ردود فعل للمستخدمين تحسن تجربة المستخدم بشكل كبير. هذه التفاعلات الدقيقة تجعل الواجهات أكثر بديهية وجاذبية.
+
+## 5. الخطوط المتغيرة
+
+تمنح الخطوط المتغيرة المصممين مزيداً من المرونة وأداءً أفضل. يمكن لملف خط واحد أن يحتوي على العديد من الاختلافات في الوزن والعرض والنمط.
+
+## الخلاصة
+
+سيكون عام 2025 عاماً مثيراً لتصميم الويب. من خلال البقاء على اطلاع بهذه الاتجاهات، يمكنك ضمان بقاء مشاريعك الرقمية ذات صلة وجذابة.
+      `
+    },
+    category: "design",
+    author: "Sara Johansen",
+    date: "2025-01-15",
+    readTime: 8
+  }
+];
+
+export function getStaticPaths() {
+  const allArticles = [
+    {
+      slug: "web-design-trends-2025",
+      title: {
+        no: "Webtrender 2025: Hva du trenger å vite",
+        en: "Web Design Trends 2025: What You Need to Know",
+        ar: "اتجاهات تصميم الويب 2025: ما تحتاج معرفته"
+      },
+      category: "design",
+      author: "Sara Johansen",
+      date: "2025-01-15",
+      readTime: 8
+    }
+  ];
+  
+  const paths: { params: { lang: string; slug: string }; props: { lang: string; article: any } }[] = [];
+  
+  languagesList.forEach(lang => {
+    allArticles.forEach(article => {
+      paths.push({
+        params: { lang, slug: article.slug },
+        props: { lang, article }
+      });
+    });
+  });
+  
+  return paths;
+}
+
+const { lang, article } = Astro.props as { lang: Language; article: any };
+
+const pageContent = {
+  no: {
+    back: "Tilbake til blogg",
+    share: "Del artikkel",
+    related: "Relaterte artikler",
+    min_read: "min lesing"
+  },
+  en: {
+    back: "Back to blog",
+    share: "Share article",
+    related: "Related articles",
+    min_read: "min read"
+  },
+  ar: {
+    back: "العودة للمدونة",
+    share: "شارك المقال",
+    related: "مقالات ذات صلة",
+    min_read: "دقيقة قراءة"
+  }
+};
+
+const content = pageContent[lang as keyof typeof pageContent] || pageContent.no;
+
+const title = article.title[lang as keyof typeof article.title] || article.title.no;
+
+// Get full article content from the articles array
+const fullArticle = articles.find(a => a.slug === article.slug);
+const articleContent = fullArticle?.content[lang as keyof typeof fullArticle.content] || fullArticle?.content.no || '';
+
+const breadcrumbItems = [
+  { label: lang === 'ar' ? 'الرئيسية' : lang === 'en' ? 'Home' : 'Hjem', href: `/${lang}` },
+  { label: lang === 'ar' ? 'المدونة' : lang === 'en' ? 'Blog' : 'Blogg', href: `/${lang}/blog` },
+  { label: title }
+];
+
+function formatDate(dateStr: string, locale: string) {
+  const date = new Date(dateStr);
+  const localeMap: Record<string, string> = { no: 'nb-NO', en: 'en-US', ar: 'ar-SA' };
+  return date.toLocaleDateString(localeMap[locale] || 'nb-NO', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+---
+
+<BaseLayout lang={lang} page="blog" title={`${title} | Nexify`} description={title}>
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <Breadcrumbs lang={lang} items={breadcrumbItems} />
+      
+      <div class="max-w-4xl mx-auto mt-8">
+        <div class="flex items-center gap-4 text-white/80 mb-6">
+          <span class="px-3 py-1 bg-white/20 rounded-full text-sm">{article.category}</span>
+          <span>{formatDate(article.date, lang)}</span>
+          <span>•</span>
+          <span>{article.readTime} {content.min_read}</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          {title}
+        </h1>
+        
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold">{article.author.split(' ').map(n => n[0]).join('')}</span>
+          </div>
+          <div>
+            <div class="text-white font-medium">{article.author}</div>
+            <div class="text-white/70 text-sm">Nexify Team</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white" class="dark:fill-gray-900"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <div class="prose prose-lg dark:prose-invert max-w-none" set:html={articleContent.replace(/\n/g, '<br>').replace(/## /g, '<h2 class="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">').replace(/### /g, '<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-800 dark:text-gray-100">').replace(/- /g, '<li class="ml-4">')} />
+        
+        <!-- Share -->
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{content.share}</h3>
+          <div class="flex gap-4">
+            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://nexifyhub.no/${lang}/blog/${article.slug}`)}`} target="_blank" rel="noopener" class="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">
+              <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://nexifyhub.no/${lang}/blog/${article.slug}`)}&title=${encodeURIComponent(title)}`} target="_blank" rel="noopener" class="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">
+              <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://nexifyhub.no/${lang}/blog/${article.slug}`)}`} target="_blank" rel="noopener" class="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-colors">
+              <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Back to Blog -->
+        <div class="mt-8">
+          <a href={`/${lang}/blog`} class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium">
+            <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            {content.back}
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

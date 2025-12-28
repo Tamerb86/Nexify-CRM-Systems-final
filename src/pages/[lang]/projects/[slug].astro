@@ -1,0 +1,445 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { languagesList, type Language } from '../../../lib/i18n';
+
+// Define all projects with detailed case study info
+const projects = [
+  {
+    slug: "aura-analytics",
+    title: "Aura Analytics",
+    category: { no: "SaaS Platform", en: "SaaS Platform", ar: "منصة SaaS" },
+    client: "Aura Tech AS",
+    duration: { no: "3 måneder", en: "3 months", ar: "3 أشهر" },
+    year: "2024",
+    image: "/images/project-1.png",
+    tech: ["React", "Node.js", "PostgreSQL", "AWS", "Tailwind CSS"],
+    services: {
+      no: ["UI/UX Design", "Frontend Utvikling", "Backend Utvikling", "Database Design"],
+      en: ["UI/UX Design", "Frontend Development", "Backend Development", "Database Design"],
+      ar: ["تصميم UI/UX", "تطوير الواجهة الأمامية", "تطوير الخلفية", "تصميم قاعدة البيانات"]
+    },
+    challenge: {
+      no: "Aura Tech trengte en moderne analyseplattform som kunne håndtere store datamengder i sanntid. Den eksisterende løsningen var treg og vanskelig å bruke.",
+      en: "Aura Tech needed a modern analytics platform that could handle large amounts of data in real-time. The existing solution was slow and difficult to use.",
+      ar: "احتاجت Aura Tech إلى منصة تحليلات حديثة يمكنها التعامل مع كميات كبيرة من البيانات في الوقت الفعلي. كان الحل الحالي بطيئاً وصعب الاستخدام."
+    },
+    solution: {
+      no: "Vi utviklet en skalerbar SaaS-plattform med intuitivt brukergrensesnitt, sanntids datavisualisering og avanserte rapporteringsverktøy. Løsningen ble bygget med moderne teknologier for optimal ytelse.",
+      en: "We developed a scalable SaaS platform with an intuitive user interface, real-time data visualization, and advanced reporting tools. The solution was built with modern technologies for optimal performance.",
+      ar: "طورنا منصة SaaS قابلة للتطوير مع واجهة مستخدم بديهية وتصور البيانات في الوقت الفعلي وأدوات تقارير متقدمة. تم بناء الحل بتقنيات حديثة للأداء الأمثل."
+    },
+    results: {
+      no: [
+        { metric: "50%", label: "Raskere databehandling" },
+        { metric: "200%", label: "Økning i brukerengasjement" },
+        { metric: "35%", label: "Reduksjon i support-henvendelser" },
+        { metric: "4.8/5", label: "Kundetilfredshet" }
+      ],
+      en: [
+        { metric: "50%", label: "Faster data processing" },
+        { metric: "200%", label: "Increase in user engagement" },
+        { metric: "35%", label: "Reduction in support tickets" },
+        { metric: "4.8/5", label: "Customer satisfaction" }
+      ],
+      ar: [
+        { metric: "50%", label: "معالجة بيانات أسرع" },
+        { metric: "200%", label: "زيادة في تفاعل المستخدمين" },
+        { metric: "35%", label: "انخفاض في طلبات الدعم" },
+        { metric: "4.8/5", label: "رضا العملاء" }
+      ]
+    },
+    testimonial: {
+      quote: {
+        no: "Nexify leverte langt over forventningene. Plattformen har transformert måten vi jobber med data på.",
+        en: "Nexify delivered far beyond expectations. The platform has transformed how we work with data.",
+        ar: "قدمت Nexify أكثر بكثير من التوقعات. لقد غيرت المنصة طريقة عملنا مع البيانات."
+      },
+      author: "Anders Berg",
+      role: { no: "CEO, Aura Tech AS", en: "CEO, Aura Tech AS", ar: "الرئيس التنفيذي، Aura Tech AS" }
+    }
+  },
+  {
+    slug: "nordic-home-store",
+    title: "Nordic Home Store",
+    category: { no: "E-handel", en: "E-commerce", ar: "تجارة إلكترونية" },
+    client: "Nordic Home AS",
+    duration: { no: "2 måneder", en: "2 months", ar: "شهرين" },
+    year: "2024",
+    image: "/images/project-2.png",
+    tech: ["Shopify", "Liquid", "JavaScript", "Klaviyo", "Google Analytics"],
+    services: {
+      no: ["Shopify Utvikling", "Tema Tilpasning", "SEO Optimalisering", "E-post Markedsføring"],
+      en: ["Shopify Development", "Theme Customization", "SEO Optimization", "Email Marketing"],
+      ar: ["تطوير Shopify", "تخصيص القالب", "تحسين SEO", "التسويق عبر البريد الإلكتروني"]
+    },
+    challenge: {
+      no: "Nordic Home trengte en moderne nettbutikk som kunne konkurrere med store aktører. Den gamle butikken hadde lav konvertering og dårlig mobilopplevelse.",
+      en: "Nordic Home needed a modern online store that could compete with major players. The old store had low conversion and poor mobile experience.",
+      ar: "احتاج Nordic Home إلى متجر إلكتروني حديث يمكنه المنافسة مع اللاعبين الكبار. كان المتجر القديم يعاني من معدل تحويل منخفض وتجربة جوال سيئة."
+    },
+    solution: {
+      no: "Vi bygget en premium Shopify-butikk med fokus på brukeropplevelse, rask lasting og mobil-først design. Integrerte avanserte markedsføringsverktøy for økt salg.",
+      en: "We built a premium Shopify store focusing on user experience, fast loading, and mobile-first design. Integrated advanced marketing tools for increased sales.",
+      ar: "بنينا متجر Shopify متميز يركز على تجربة المستخدم والتحميل السريع والتصميم للجوال أولاً. دمجنا أدوات تسويق متقدمة لزيادة المبيعات."
+    },
+    results: {
+      no: [
+        { metric: "180%", label: "Økning i salg" },
+        { metric: "45%", label: "Høyere konvertering" },
+        { metric: "60%", label: "Mer mobil trafikk" },
+        { metric: "2.1s", label: "Lastetid" }
+      ],
+      en: [
+        { metric: "180%", label: "Increase in sales" },
+        { metric: "45%", label: "Higher conversion" },
+        { metric: "60%", label: "More mobile traffic" },
+        { metric: "2.1s", label: "Load time" }
+      ],
+      ar: [
+        { metric: "180%", label: "زيادة في المبيعات" },
+        { metric: "45%", label: "معدل تحويل أعلى" },
+        { metric: "60%", label: "زيادة في حركة الجوال" },
+        { metric: "2.1s", label: "وقت التحميل" }
+      ]
+    },
+    testimonial: {
+      quote: {
+        no: "Den nye butikken har virkelig løftet merkevaren vår. Salget har eksplodert siden lanseringen!",
+        en: "The new store has really elevated our brand. Sales have exploded since launch!",
+        ar: "رفع المتجر الجديد علامتنا التجارية حقاً. انفجرت المبيعات منذ الإطلاق!"
+      },
+      author: "Maria Olsen",
+      role: { no: "Markedssjef, Nordic Home AS", en: "Marketing Manager, Nordic Home AS", ar: "مدير التسويق، Nordic Home AS" }
+    }
+  },
+  {
+    slug: "global-business-solutions",
+    title: "Global Business Solutions",
+    category: { no: "Bedriftsnettside", en: "Corporate Website", ar: "موقع شركة" },
+    client: "GBS Consulting",
+    duration: { no: "6 uker", en: "6 weeks", ar: "6 أسابيع" },
+    year: "2024",
+    image: "/images/project-3.png",
+    tech: ["Next.js", "Tailwind CSS", "Vercel", "Sanity CMS", "Framer Motion"],
+    services: {
+      no: ["Webdesign", "Frontend Utvikling", "CMS Integrasjon", "Hosting & Vedlikehold"],
+      en: ["Web Design", "Frontend Development", "CMS Integration", "Hosting & Maintenance"],
+      ar: ["تصميم الويب", "تطوير الواجهة الأمامية", "تكامل CMS", "الاستضافة والصيانة"]
+    },
+    challenge: {
+      no: "GBS Consulting trengte en profesjonell nettside som reflekterte deres posisjon som ledende konsulentselskap. Den gamle siden var utdatert og ga ikke riktig førsteinntrykk.",
+      en: "GBS Consulting needed a professional website that reflected their position as a leading consulting firm. The old site was outdated and didn't give the right first impression.",
+      ar: "احتاجت GBS Consulting إلى موقع ويب احترافي يعكس موقعها كشركة استشارات رائدة. كان الموقع القديم قديماً ولم يعط الانطباع الأول الصحيح."
+    },
+    solution: {
+      no: "Vi designet og utviklet en moderne, elegant nettside med fokus på storytelling og brukerreise. Implementerte et brukervennlig CMS for enkel innholdsoppdatering.",
+      en: "We designed and developed a modern, elegant website focusing on storytelling and user journey. Implemented a user-friendly CMS for easy content updates.",
+      ar: "صممنا وطورنا موقعاً إلكترونياً حديثاً وأنيقاً يركز على سرد القصص ورحلة المستخدم. نفذنا نظام إدارة محتوى سهل الاستخدام لتحديثات المحتوى السهلة."
+    },
+    results: {
+      no: [
+        { metric: "300%", label: "Flere henvendelser" },
+        { metric: "85%", label: "Lavere bounce rate" },
+        { metric: "4x", label: "Lengre besøkstid" },
+        { metric: "100", label: "PageSpeed score" }
+      ],
+      en: [
+        { metric: "300%", label: "More inquiries" },
+        { metric: "85%", label: "Lower bounce rate" },
+        { metric: "4x", label: "Longer visit duration" },
+        { metric: "100", label: "PageSpeed score" }
+      ],
+      ar: [
+        { metric: "300%", label: "المزيد من الاستفسارات" },
+        { metric: "85%", label: "معدل ارتداد أقل" },
+        { metric: "4x", label: "مدة زيارة أطول" },
+        { metric: "100", label: "نقاط PageSpeed" }
+      ]
+    },
+    testimonial: {
+      quote: {
+        no: "Nexify forsto virkelig hva vi trengte. Nettsiden har blitt vårt beste salgsverktøy.",
+        en: "Nexify truly understood what we needed. The website has become our best sales tool.",
+        ar: "فهمت Nexify حقاً ما نحتاجه. أصبح الموقع أفضل أداة مبيعات لدينا."
+      },
+      author: "Thomas Eriksen",
+      role: { no: "Partner, GBS Consulting", en: "Partner, GBS Consulting", ar: "شريك، GBS Consulting" }
+    }
+  }
+];
+
+export function getStaticPaths() {
+  const projectSlugs = [
+    { slug: "aura-analytics", title: "Aura Analytics" },
+    { slug: "nordic-retail", title: "Nordic Retail" },
+    { slug: "startup-hub", title: "StartupHub" }
+  ];
+  
+  const paths: { params: { lang: string; slug: string }; props: { lang: string; projectSlug: string } }[] = [];
+  
+  languagesList.forEach(lang => {
+    projectSlugs.forEach(p => {
+      paths.push({
+        params: { lang, slug: p.slug },
+        props: { lang, projectSlug: p.slug }
+      });
+    });
+  });
+  
+  return paths;
+}
+
+const { lang, projectSlug } = Astro.props as { lang: Language; projectSlug: string };
+const project = projects.find(p => p.slug === projectSlug) || projects[0];
+
+const pageContent = {
+  no: {
+    challenge: "Utfordringen",
+    solution: "Løsningen",
+    results: "Resultater",
+    tech: "Teknologier",
+    services: "Tjenester",
+    testimonial: "Kundens ord",
+    back: "Se alle prosjekter",
+    next: "Neste prosjekt",
+    cta_title: "Klar for ditt prosjekt?",
+    cta_text: "La oss diskutere hvordan vi kan hjelpe deg med å oppnå lignende resultater.",
+    cta_button: "Start samtalen"
+  },
+  en: {
+    challenge: "The Challenge",
+    solution: "The Solution",
+    results: "Results",
+    tech: "Technologies",
+    services: "Services",
+    testimonial: "Client Testimonial",
+    back: "View all projects",
+    next: "Next project",
+    cta_title: "Ready for your project?",
+    cta_text: "Let's discuss how we can help you achieve similar results.",
+    cta_button: "Start the conversation"
+  },
+  ar: {
+    challenge: "التحدي",
+    solution: "الحل",
+    results: "النتائج",
+    tech: "التقنيات",
+    services: "الخدمات",
+    testimonial: "شهادة العميل",
+    back: "عرض جميع المشاريع",
+    next: "المشروع التالي",
+    cta_title: "جاهز لمشروعك؟",
+    cta_text: "دعنا نناقش كيف يمكننا مساعدتك في تحقيق نتائج مماثلة.",
+    cta_button: "ابدأ المحادثة"
+  }
+};
+
+const content = pageContent[lang as keyof typeof pageContent] || pageContent.no;
+
+const breadcrumbItems = [
+  { label: lang === 'ar' ? 'الرئيسية' : lang === 'en' ? 'Home' : 'Hjem', href: `/${lang}` },
+  { label: lang === 'ar' ? 'المشاريع' : lang === 'en' ? 'Projects' : 'Prosjekter', href: `/${lang}/projects` },
+  { label: project.title }
+];
+
+const category = project.category[lang as keyof typeof project.category] || project.category.no;
+const duration = project.duration[lang as keyof typeof project.duration] || project.duration.no;
+const services = project.services[lang as keyof typeof project.services] || project.services.no;
+const challenge = project.challenge[lang as keyof typeof project.challenge] || project.challenge.no;
+const solution = project.solution[lang as keyof typeof project.solution] || project.solution.no;
+const results = project.results[lang as keyof typeof project.results] || project.results.no;
+const testimonialQuote = project.testimonial.quote[lang as keyof typeof project.testimonial.quote] || project.testimonial.quote.no;
+const testimonialRole = project.testimonial.role[lang as keyof typeof project.testimonial.role] || project.testimonial.role.no;
+---
+
+<BaseLayout lang={lang} page="projects" title={`${project.title} | Nexify`} description={challenge}>
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 bg-gradient-to-br from-gray-900 via-primary-900 to-gray-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-primary-500 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-secondary-500 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <Breadcrumbs lang={lang} items={breadcrumbItems} />
+      
+      <div class="max-w-4xl mt-8">
+        <span class="inline-block px-4 py-2 bg-primary-500/20 text-primary-300 rounded-full text-sm font-medium mb-6">
+          {category}
+        </span>
+        
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+          {project.title}
+        </h1>
+        
+        <div class="flex flex-wrap gap-6 text-white/80">
+          <div>
+            <span class="block text-white/50 text-sm">Client</span>
+            <span class="font-medium">{project.client}</span>
+          </div>
+          <div>
+            <span class="block text-white/50 text-sm">Duration</span>
+            <span class="font-medium">{duration}</span>
+          </div>
+          <div>
+            <span class="block text-white/50 text-sm">Year</span>
+            <span class="font-medium">{project.year}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Image -->
+  <section class="relative -mt-10 mb-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <div class="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-3xl overflow-hidden shadow-2xl aspect-video flex items-center justify-center">
+          <svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge & Solution -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Challenge -->
+          <div class="scroll-animate" data-animation="fade-up">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center">
+                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{content.challenge}</h2>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+              {challenge}
+            </p>
+          </div>
+          
+          <!-- Solution -->
+          <div class="scroll-animate" data-animation="fade-up" style="--delay: 0.1s">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{content.solution}</h2>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+              {solution}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="py-20 bg-gradient-to-br from-primary-600 to-secondary-600">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-white text-center mb-12">{content.results}</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {results.map((result, index) => (
+            <div 
+              class="text-center scroll-animate" 
+              data-animation="scale-in" 
+              style={`--delay: ${index * 0.1}s`}
+            >
+              <div class="text-4xl md:text-5xl font-bold text-white mb-2">{result.metric}</div>
+              <div class="text-white/80">{result.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services & Tech -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Services -->
+          <div class="scroll-animate" data-animation="fade-up">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{content.services}</h3>
+            <div class="flex flex-wrap gap-3">
+              {services.map(service => (
+                <span class="px-4 py-2 bg-white dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 shadow-sm">
+                  {service}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          <!-- Technologies -->
+          <div class="scroll-animate" data-animation="fade-up" style="--delay: 0.1s">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{content.tech}</h3>
+            <div class="flex flex-wrap gap-3">
+              {project.tech.map(tech => (
+                <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center scroll-animate" data-animation="fade-up">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-8">{content.testimonial}</h3>
+        
+        <svg class="w-12 h-12 text-primary-300 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+        
+        <blockquote class="text-2xl md:text-3xl text-gray-700 dark:text-gray-200 font-medium mb-8 italic">
+          "{testimonialQuote}"
+        </blockquote>
+        
+        <div>
+          <div class="font-bold text-gray-900 dark:text-white">{project.testimonial.author}</div>
+          <div class="text-gray-500">{testimonialRole}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gray-900">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{content.cta_title}</h2>
+      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{content.cta_text}</p>
+      <a 
+        href={`/${lang}/contact`}
+        class="inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-primary-700 transition-all hover:scale-105"
+      >
+        {content.cta_button}
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+      
+      <div class="mt-12">
+        <a href={`/${lang}/projects`} class="text-gray-400 hover:text-white transition-colors">
+          ← {content.back}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

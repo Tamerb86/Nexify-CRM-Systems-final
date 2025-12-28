@@ -1,0 +1,187 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  no: {
+    badge: "Ofte stilte spørsmål",
+    title: "Har du spørsmål?",
+    subtitle: "Her finner du svar på de vanligste spørsmålene våre kunder stiller.",
+    contact_text: "Finner du ikke svaret du leter etter?",
+    contact_cta: "Kontakt oss",
+    faqs: [
+      {
+        question: "Hvor lang tid tar det å utvikle en nettside?",
+        answer: "Utviklingstiden varierer basert på prosjektets kompleksitet. En enkel nettside kan ta 2-4 uker, mens mer komplekse løsninger som e-handel eller SaaS-plattformer kan ta 2-3 måneder. Vi gir alltid et detaljert tidsestimat etter den første konsultasjonen."
+      },
+      {
+        question: "Hva koster det å lage en nettside?",
+        answer: "Prisene våre starter fra 15 000 kr for enkle nettsider. E-handelsløsninger starter fra 35 000 kr, og skreddersydde løsninger fra 50 000 kr. Vi tilbyr også månedlige vedlikeholdsplaner. Kontakt oss for et gratis tilbud tilpasset dine behov."
+      },
+      {
+        question: "Tilbyr dere vedlikehold og support?",
+        answer: "Ja! Vi tilbyr omfattende vedlikeholds- og supportpakker som inkluderer sikkerhetsoppdateringer, backup, ytelsesovervåking og teknisk support. Våre kunder får prioritert support og rask responstid."
+      },
+      {
+        question: "Kan dere hjelpe med SEO og digital markedsføring?",
+        answer: "Absolutt! Alle våre nettsider er bygget med SEO-beste praksis. Vi tilbyr også SEO-optimalisering, Google Ads-kampanjer, sosiale medier-markedsføring og innholdsstrategi som tilleggstjenester."
+      },
+      {
+        question: "Jobber dere med kunder utenfor Norge?",
+        answer: "Ja, vi jobber med kunder over hele verden. Med erfaring fra internasjonale prosjekter og flerspråklig støtte (norsk, engelsk, arabisk), kan vi hjelpe bedrifter uansett hvor de befinner seg."
+      },
+      {
+        question: "Hva slags teknologier bruker dere?",
+        answer: "Vi bruker moderne teknologier som React, Next.js, Astro, Node.js, og Tailwind CSS. For e-handel jobber vi med Shopify, WooCommerce og skreddersydde løsninger. Vi velger alltid teknologien som passer best for ditt prosjekt."
+      }
+    ]
+  },
+  en: {
+    badge: "Frequently Asked Questions",
+    title: "Have Questions?",
+    subtitle: "Find answers to the most common questions our clients ask.",
+    contact_text: "Can't find the answer you're looking for?",
+    contact_cta: "Contact us",
+    faqs: [
+      {
+        question: "How long does it take to develop a website?",
+        answer: "Development time varies based on project complexity. A simple website can take 2-4 weeks, while more complex solutions like e-commerce or SaaS platforms can take 2-3 months. We always provide a detailed time estimate after the initial consultation."
+      },
+      {
+        question: "How much does it cost to create a website?",
+        answer: "Our prices start from 15,000 NOK for simple websites. E-commerce solutions start from 35,000 NOK, and custom solutions from 50,000 NOK. We also offer monthly maintenance plans. Contact us for a free quote tailored to your needs."
+      },
+      {
+        question: "Do you offer maintenance and support?",
+        answer: "Yes! We offer comprehensive maintenance and support packages that include security updates, backups, performance monitoring, and technical support. Our clients receive priority support and fast response times."
+      },
+      {
+        question: "Can you help with SEO and digital marketing?",
+        answer: "Absolutely! All our websites are built with SEO best practices. We also offer SEO optimization, Google Ads campaigns, social media marketing, and content strategy as additional services."
+      },
+      {
+        question: "Do you work with clients outside Norway?",
+        answer: "Yes, we work with clients worldwide. With experience from international projects and multilingual support (Norwegian, English, Arabic), we can help businesses regardless of their location."
+      },
+      {
+        question: "What technologies do you use?",
+        answer: "We use modern technologies like React, Next.js, Astro, Node.js, and Tailwind CSS. For e-commerce, we work with Shopify, WooCommerce, and custom solutions. We always choose the technology that best fits your project."
+      }
+    ]
+  },
+  ar: {
+    badge: "الأسئلة الشائعة",
+    title: "هل لديك أسئلة؟",
+    subtitle: "اعثر على إجابات للأسئلة الأكثر شيوعاً التي يطرحها عملاؤنا.",
+    contact_text: "لم تجد الإجابة التي تبحث عنها؟",
+    contact_cta: "تواصل معنا",
+    faqs: [
+      {
+        question: "كم من الوقت يستغرق تطوير موقع ويب؟",
+        answer: "يختلف وقت التطوير بناءً على تعقيد المشروع. يمكن أن يستغرق الموقع البسيط 2-4 أسابيع، بينما الحلول الأكثر تعقيداً مثل التجارة الإلكترونية أو منصات SaaS قد تستغرق 2-3 أشهر. نقدم دائماً تقديراً زمنياً مفصلاً بعد الاستشارة الأولية."
+      },
+      {
+        question: "كم تكلفة إنشاء موقع ويب؟",
+        answer: "تبدأ أسعارنا من 15,000 كرونة نرويجية للمواقع البسيطة. حلول التجارة الإلكترونية تبدأ من 35,000 كرونة، والحلول المخصصة من 50,000 كرونة. نقدم أيضاً خطط صيانة شهرية. تواصل معنا للحصول على عرض مجاني مخصص لاحتياجاتك."
+      },
+      {
+        question: "هل تقدمون الصيانة والدعم؟",
+        answer: "نعم! نقدم حزم صيانة ودعم شاملة تتضمن تحديثات الأمان والنسخ الاحتياطي ومراقبة الأداء والدعم الفني. يحصل عملاؤنا على دعم ذي أولوية وأوقات استجابة سريعة."
+      },
+      {
+        question: "هل يمكنكم المساعدة في SEO والتسويق الرقمي؟",
+        answer: "بالتأكيد! جميع مواقعنا مبنية وفق أفضل ممارسات SEO. نقدم أيضاً تحسين SEO وحملات Google Ads والتسويق عبر وسائل التواصل الاجتماعي واستراتيجية المحتوى كخدمات إضافية."
+      },
+      {
+        question: "هل تعملون مع عملاء خارج النرويج؟",
+        answer: "نعم، نعمل مع عملاء في جميع أنحاء العالم. مع خبرة من المشاريع الدولية ودعم متعدد اللغات (النرويجية والإنجليزية والعربية)، يمكننا مساعدة الشركات بغض النظر عن موقعها."
+      },
+      {
+        question: "ما التقنيات التي تستخدمونها؟",
+        answer: "نستخدم تقنيات حديثة مثل React و Next.js و Astro و Node.js و Tailwind CSS. للتجارة الإلكترونية، نعمل مع Shopify و WooCommerce والحلول المخصصة. نختار دائماً التقنية الأنسب لمشروعك."
+      }
+    ]
+  }
+};
+
+const t = content[lang as keyof typeof content] || content.no;
+---
+
+<section class="py-20 bg-gray-50 dark:bg-gray-800">
+  <div class="container mx-auto px-4">
+    <!-- Header -->
+    <div class="text-center mb-16 scroll-animate" data-animation="fade-up">
+      <span class="inline-block px-4 py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium mb-4">
+        {t.badge}
+      </span>
+      <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        {t.title}
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        {t.subtitle}
+      </p>
+    </div>
+
+    <!-- FAQ Grid -->
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-4">
+        {t.faqs.map((faq, index) => (
+          <div 
+            class="faq-item scroll-animate" 
+            data-animation="fade-up" 
+            style={`--delay: ${index * 0.1}s`}
+          >
+            <details class="group bg-white dark:bg-gray-900 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white pr-8">
+                  {faq.question}
+                </h3>
+                <span class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                  <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="mt-12 text-center scroll-animate" data-animation="fade-up">
+        <p class="text-gray-600 dark:text-gray-300 mb-4">{t.contact_text}</p>
+        <a 
+          href={`/${lang}/contact`}
+          class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-medium rounded-full hover:bg-primary-700 transition-colors"
+        >
+          {t.contact_cta}
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  details[open] summary {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark details[open] summary {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+  }
+</style>

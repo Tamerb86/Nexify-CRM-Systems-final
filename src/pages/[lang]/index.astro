@@ -7,6 +7,8 @@ import ProjectsSection from '../../components/sections/ProjectsSection.astro';
 import PricingSection from '../../components/sections/PricingSection.astro';
 import TestimonialsSection from '../../components/sections/TestimonialsSection.astro';
 import CTASection from '../../components/sections/CTASection.astro';
+import ClientLogos from '../../components/sections/ClientLogos.astro';
+import FAQSection from '../../components/sections/FAQSection.astro';
 import { languagesList, getTranslations, type Language } from '../../lib/i18n';
 
 export function getStaticPaths() {
@@ -56,6 +58,9 @@ const trustBadges = [
     trustBadges={trustBadges}
   />
 
+  <!-- Client Logos -->
+  <ClientLogos lang={lang} />
+
   <!-- Why Choose Us -->
   <WhyUsSection 
     badge={t.home.why_us.badge}
@@ -101,6 +106,9 @@ const trustBadges = [
     subtitle={t.home.testimonials.subtitle}
     testimonials={t.home.testimonials.items}
   />
+
+  <!-- FAQ -->
+  <FAQSection lang={lang} />
 
   <!-- CTA -->
   <CTASection 

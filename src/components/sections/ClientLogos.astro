@@ -1,0 +1,191 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const titles = {
+  no: {
+    title: "Stolte samarbeidspartnere",
+    subtitle: "Vi har hjulpet bedrifter i alle størrelser med å oppnå sine digitale mål"
+  },
+  en: {
+    title: "Trusted by Leading Brands",
+    subtitle: "We've helped businesses of all sizes achieve their digital goals"
+  },
+  ar: {
+    title: "شركاؤنا الموثوقون",
+    subtitle: "ساعدنا الشركات من جميع الأحجام على تحقيق أهدافها الرقمية"
+  }
+};
+
+const t = titles[lang as keyof typeof titles] || titles.no;
+
+// Client logos - using placeholder company names
+const clients = [
+  { name: "TechNova", industry: "Technology" },
+  { name: "FinanceHub", industry: "Finance" },
+  { name: "HealthPlus", industry: "Healthcare" },
+  { name: "EduLearn", industry: "Education" },
+  { name: "RetailMax", industry: "Retail" },
+  { name: "BuildPro", industry: "Construction" },
+  { name: "FoodChain", industry: "Restaurant" },
+  { name: "TravelGo", industry: "Travel" },
+  { name: "MediaWave", industry: "Media" },
+  { name: "GreenEnergy", industry: "Energy" },
+];
+---
+
+<section class="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+  <div class="container mx-auto px-4">
+    <!-- Header -->
+    <div class="text-center mb-12 scroll-animate" data-animation="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        {t.title}
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        {t.subtitle}
+      </p>
+    </div>
+
+    <!-- Logos Carousel -->
+    <div class="relative">
+      <!-- Gradient Overlays -->
+      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
+      
+      <!-- Scrolling Container -->
+      <div class="logos-scroll flex gap-12 py-8">
+        <!-- First set of logos -->
+        {clients.map((client) => (
+          <div class="flex-shrink-0 group">
+            <div class="w-40 h-20 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center px-6 group-hover:scale-105 group-hover:-translate-y-1">
+              <div class="text-center">
+                <span class="text-xl font-bold text-gray-700 dark:text-gray-200 group-hover:text-primary-600 transition-colors">
+                  {client.name}
+                </span>
+                <span class="block text-xs text-gray-400 mt-1">{client.industry}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+        <!-- Duplicate for seamless loop -->
+        {clients.map((client) => (
+          <div class="flex-shrink-0 group">
+            <div class="w-40 h-20 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center px-6 group-hover:scale-105 group-hover:-translate-y-1">
+              <div class="text-center">
+                <span class="text-xl font-bold text-gray-700 dark:text-gray-200 group-hover:text-primary-600 transition-colors">
+                  {client.name}
+                </span>
+                <span class="block text-xs text-gray-400 mt-1">{client.industry}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+      <div class="text-center scroll-animate" data-animation="fade-up" style="--delay: 0.1s">
+        <div class="text-4xl md:text-5xl font-bold text-primary-600 mb-2 counter" data-target="50">0</div>
+        <div class="text-gray-600 dark:text-gray-300">
+          {lang === 'ar' ? 'عميل سعيد' : lang === 'en' ? 'Happy Clients' : 'Fornøyde kunder'}
+        </div>
+      </div>
+      <div class="text-center scroll-animate" data-animation="fade-up" style="--delay: 0.2s">
+        <div class="text-4xl md:text-5xl font-bold text-primary-600 mb-2 counter" data-target="100">0</div>
+        <div class="text-gray-600 dark:text-gray-300">
+          {lang === 'ar' ? 'مشروع مكتمل' : lang === 'en' ? 'Projects Completed' : 'Fullførte prosjekter'}
+        </div>
+      </div>
+      <div class="text-center scroll-animate" data-animation="fade-up" style="--delay: 0.3s">
+        <div class="text-4xl md:text-5xl font-bold text-primary-600 mb-2 counter" data-target="5">0</div>
+        <div class="text-gray-600 dark:text-gray-300">
+          {lang === 'ar' ? 'سنوات خبرة' : lang === 'en' ? 'Years Experience' : 'Års erfaring'}
+        </div>
+      </div>
+      <div class="text-center scroll-animate" data-animation="fade-up" style="--delay: 0.4s">
+        <div class="text-4xl md:text-5xl font-bold text-primary-600 mb-2">98%</div>
+        <div class="text-gray-600 dark:text-gray-300">
+          {lang === 'ar' ? 'رضا العملاء' : lang === 'en' ? 'Client Satisfaction' : 'Kundetilfredshet'}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logos-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .logos-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* RTL support */
+  [dir="rtl"] .logos-scroll {
+    animation: scroll-rtl 30s linear infinite;
+  }
+
+  @keyframes scroll-rtl {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(50%);
+    }
+  }
+
+  /* Counter animation */
+  .counter {
+    transition: all 0.3s ease;
+  }
+</style>
+
+<script>
+  // Counter animation
+  const counters = document.querySelectorAll('.counter');
+  
+  const animateCounter = (counter: Element) => {
+    const target = parseInt(counter.getAttribute('data-target') || '0');
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    
+    const updateCounter = () => {
+      current += step;
+      if (current < target) {
+        counter.textContent = Math.floor(current).toString() + '+';
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = target.toString() + '+';
+      }
+    };
+    
+    updateCounter();
+  };
+
+  // Intersection Observer for counters
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(counter => counterObserver.observe(counter));
+</script>
