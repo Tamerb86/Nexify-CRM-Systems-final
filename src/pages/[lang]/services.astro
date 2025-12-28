@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import Hero from '../../components/sections/Hero.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import SectionTitle from '../../components/ui/SectionTitle.astro';
+import { languagesList, getTranslations, urlStructure, type Language } from '../../lib/i18n';
+import { Globe, ShoppingCart, Cpu, Zap, Headphones, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-astro';
+
+export function getStaticPaths() {
+  return languagesList.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props as { lang: Language };
+const t = getTranslations(lang);
+const isRTL = lang === 'ar';
+const Arrow = isRTL ? ArrowLeft : ArrowRight;
+
+const services = t.services.list.items;
+const serviceIcons = [Globe, ShoppingCart, Cpu, Zap, Headphones];
+const serviceImages = ['/images/service-web-dev.png', '/images/service-shopify.png', '/images/service-saas.png', '/images/service-api.png', '/images/services-hero.png'];
+const workflow = t.services.workflow.steps;
+---
+
+<BaseLayout lang={lang} page="services" title={`${t.nav.services} | Nexify CRM Systems`} description={t.services.hero.subtitle}>
+  <!-- Hero -->
+  <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-teal-50/30">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class={isRTL ? 'text-right lg:order-2' : 'text-left lg:order-1'}>
+          <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">{t.services.hero.badge}</span>
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t.services.hero.title}</h1>
+          <p class="text-xl text-gray-600 mb-8">{t.services.hero.subtitle}</p>
+          <div class={`flex flex-wrap gap-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
+            <a href={urlStructure[lang].contact} class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-teal-500 text-white font-medium rounded-xl hover:opacity-90 transition-opacity">{t.services.hero.cta_primary} <Arrow class={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} /></a>
+            <a href={urlStructure[lang].pricing} class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary font-medium rounded-xl border-2 border-primary hover:bg-primary hover:text-white transition-colors">{t.services.hero.cta_secondary}</a>
+          </div>
+        </div>
+        <div class={isRTL ? 'lg:order-1' : 'lg:order-2'}>
+          <img src="/images/services-hero.png" alt="Services" class="w-full rounded-2xl shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services List -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <SectionTitle badge={t.services.list.badge} badgeColor="teal" title={t.services.list.title} subtitle={t.services.list.subtitle} />
+      
+      <div class="space-y-16">
+        {services.map((service, index) => {
+          const Icon = serviceIcons[index % serviceIcons.length];
+          const isEven = index % 2 === 0;
+          return (
+            <div class={`grid lg:grid-cols-2 gap-12 items-center`}>
+              <div class={isEven ? 'lg:order-1' : 'lg:order-2'}>
+                <img src={serviceImages[index % serviceImages.length]} alt={service.title} class="w-full rounded-2xl shadow-xl" loading="lazy" />
+              </div>
+              <div class={`${isRTL ? 'text-right' : 'text-left'} ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div class={`flex items-center gap-4 mb-6 ${isRTL ? 'justify-end flex-row-reverse' : 'justify-start'}`}>
+                  <span class="text-5xl font-bold text-gray-200">{service.number}</span>
+                  <h3 class="text-2xl font-bold text-gray-900">{service.title}</h3>
+                </div>
+                <p class="text-gray-600 mb-6">{service.description}</p>
+                <ul class="space-y-3 mb-8">
+                  {service.features.map((feature) => (
+                    <li class={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <CheckCircle class="w-5 h-5 text-teal-500 flex-shrink-0" />
+                      <span class="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href={urlStructure[lang].contact} class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-teal-500 text-white font-medium rounded-xl hover:opacity-90 transition-opacity">{service.cta} <Arrow class={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} /></a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <SectionTitle badge={t.services.workflow.badge} title={t.services.workflow.title} subtitle={t.services.workflow.subtitle} />
+      
+      <div class="grid md:grid-cols-5 gap-4">
+        {workflow.map((step, index) => (
+          <div class="relative text-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-primary to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">{step.number}</div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+            <p class="text-sm text-gray-600">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection 
+    lang={lang}
+    title={t.services.cta_section.title}
+    subtitle={t.services.cta_section.subtitle}
+    ctaPrimary={t.services.cta_section.cta_primary}
+    ctaSecondary={t.services.cta_section.cta_secondary}
+  />
+</BaseLayout>
+
+

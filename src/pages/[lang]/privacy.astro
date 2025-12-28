@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import { languagesList, getTranslations, type Language } from '../../lib/i18n';
+
+export function getStaticPaths() {
+  return languagesList.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props as { lang: Language };
+const t = getTranslations(lang);
+const isRTL = lang === 'ar';
+
+const privacyData = t.privacy || {};
+const sections = privacyData.sections || [
+  { title: 'Privacy Policy', content: 'Our privacy policy details coming soon...' }
+];
+---
+
+<BaseLayout lang={lang} page="privacy" title={`${t.footer?.legal?.privacy || 'Privacy Policy'} | Nexify CRM Systems`} description={privacyData.intro || 'Privacy Policy'}>
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class={`max-w-3xl mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
+        <h1 class="text-4xl font-bold text-gray-900 mb-6">{t.footer?.legal?.privacy || 'Privacy Policy'}</h1>
+        <p class="text-gray-600 mb-4">{privacyData.last_updated || ''}</p>
+        <p class="text-gray-600 mb-12">{privacyData.intro || ''}</p>
+        
+        <div class="space-y-8">
+          {sections.map((section) => (
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">{section.title}</h2>
+              <p class="text-gray-600 whitespace-pre-line">{section.content}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

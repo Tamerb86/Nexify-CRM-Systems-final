@@ -1,0 +1,53 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import { urlStructure, type Language } from '../../lib/i18n';
+import { Globe, ShoppingCart, Cpu, Zap, Headphones } from 'lucide-astro';
+
+interface ServiceItem {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  lang: Language;
+  badge: string;
+  title: string;
+  subtitle: string;
+  services: ServiceItem[];
+  cta?: string;
+  showCta?: boolean;
+}
+
+const { lang, badge, title, subtitle, services, cta, showCta = true } = Astro.props;
+
+const serviceIcons = [Globe, ShoppingCart, Cpu, Zap, Headphones];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <SectionTitle badge={badge} title={title} subtitle={subtitle} />
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => {
+        const Icon = serviceIcons[index % serviceIcons.length];
+        return (
+          <div class="bg-white rounded-2xl p-8 hover:shadow-xl transition-all hover:-translate-y-1">
+            <div class="w-14 h-14 bg-gradient-to-br from-primary to-teal-500 rounded-xl flex items-center justify-center mb-6">
+              <Icon class="w-7 h-7 text-white" />
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+            <p class="text-gray-600">{service.description}</p>
+          </div>
+        );
+      })}
+    </div>
+    
+    {showCta && cta && (
+      <div class="text-center mt-12">
+        <a href={urlStructure[lang].services} class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary font-medium rounded-xl border-2 border-primary hover:bg-primary hover:text-white transition-colors">
+          {cta}
+        </a>
+      </div>
+    )}
+  </div>
+</section>

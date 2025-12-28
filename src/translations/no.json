@@ -1,0 +1,182 @@
+{
+  "meta": {
+    "lang": "no",
+    "dir": "ltr",
+    "locale": "nb-NO",
+    "title": "Nexify CRM Systems | Profesjonell Webutvikling i Norge",
+    "description": "Vi bygger moderne nettsider, nettbutikker og SaaS-løsninger for skandinaviske bedrifter. Kontakt oss for et gratis tilbud."
+  },
+  "header": {
+    "logo": "Nexify CRM Systems",
+    "cta": "Kom i gang",
+    "language_switcher": {
+      "label": "Språk",
+      "ar": "Arabisk",
+      "no": "Norsk",
+      "en": "Engelsk"
+    }
+  },
+  "nav": {
+    "home": "Hjem",
+    "services": "Tjenester",
+    "projects": "Prosjekter",
+    "pricing": "Priser",
+    "about": "Om oss",
+    "contact": "Kontakt",
+    "blog": "Blogg"
+  },
+  "home": {
+    "hero": {
+      "badge": "Profesjonell Webutvikling",
+      "title": "Vi bygger digitale løsninger",
+      "titleHighlight": "som driver vekst",
+      "subtitle": "Fra moderne nettsider til komplette SaaS-plattformer. Vi hjelper skandinaviske bedrifter med å lykkes digitalt.",
+      "cta_primary": "Start prosjektet ditt",
+      "cta_secondary": "Se våre prosjekter",
+      "trust_badges": {
+        "projects": "100+ Prosjekter",
+        "support": "Norsk Support",
+        "delivery": "Rask Levering"
+      }
+    },
+    "why_us": {
+      "badge": "Hvorfor Velge Oss",
+      "title": "Fordelene med å jobbe med Nexify",
+      "subtitle": "Vi kombinerer teknisk ekspertise med forretningsforståelse for å levere resultater.",
+      "cards": [
+        { "title": "Rask Levering", "description": "Vi leverer prosjekter til avtalt tid, hver gang." },
+        { "title": "Moderne Design", "description": "Stilrent og profesjonelt design som skiller deg ut." },
+        { "title": "SEO Optimalisert", "description": "Alle nettsider bygges med fokus på SEO fra dag én." },
+        { "title": "Kontinuerlig Support", "description": "Vi er her for å hjelpe deg etter lansering." }
+      ]
+    },
+    "services": {
+      "badge": "Våre Tjenester",
+      "title": "Komplett Digital Utvikling",
+      "subtitle": "Fra idé til lansering – vi leverer alt du trenger for digital suksess.",
+      "cards": [
+        { "title": "Nettside Utvikling", "description": "Moderne, responsive nettsider som konverterer besøkende til kunder." },
+        { "title": "Shopify Nettbutikk", "description": "Profesjonelle nettbutikker med Shopify som driver salg." },
+        { "title": "SaaS / CRM Løsninger", "description": "Skreddersydde forretningssystemer og kundebehandling." },
+        { "title": "Integrasjoner", "description": "Sømløs integrasjon med tredjepartstjenester og APIer." },
+        { "title": "AI Automatisering", "description": "Smarte løsninger som automatiserer arbeidsflyten din." }
+      ],
+      "cta": "Se alle tjenester"
+    },
+    "projects": {
+      "badge": "Våre Prosjekter",
+      "title": "Utvalgte Arbeider",
+      "subtitle": "Se hva vi har bygget for våre kunder.",
+      "cta": "Se alle prosjekter"
+    },
+    "pricing": {
+      "badge": "Priser",
+      "title": "Transparente Priser",
+      "subtitle": "Ingen skjulte kostnader. Velg pakken som passer din bedrift.",
+      "popular": "Mest Populær",
+      "plans": {
+        "starter": { "name": "Starter", "description": "Perfekt for små bedrifter.", "price": "9 900", "currency": "NOK", "features": ["Responsiv nettside (5 sider)", "Grunnleggende SEO", "Kontaktskjema", "SSL-sertifikat", "30 dager support"], "cta": "Få tilbud" },
+        "business": { "name": "Business", "popular": true, "description": "For bedrifter som ønsker mer.", "price": "24 900", "currency": "NOK", "features": ["Responsiv nettside (10 sider)", "Avansert SEO", "CMS-integrasjon", "E-post integrasjon", "Analytics dashboard", "90 dager support"], "cta": "Få tilbud" },
+        "premium": { "name": "Premium", "description": "Komplett løsning.", "price": "49 900", "currency": "NOK", "features": ["Ubegrenset antall sider", "Komplett SEO-pakke", "Skreddersydd design", "E-handel funksjonalitet", "API-integrasjoner", "Prioritert support", "12 måneder vedlikehold"], "cta": "Få tilbud" }
+      },
+      "cta": "Se detaljert prisliste"
+    },
+    "testimonials": {
+      "badge": "Kundeomtaler",
+      "title": "Hva Kundene Sier",
+      "subtitle": "Vi er stolte av våre kunders suksess.",
+      "items": [
+        { "text": "Nexify leverte en fantastisk nettside som økte konverteringsraten vår med 40%.", "author": "Erik Hansen", "role": "CEO, TechStart AS" },
+        { "text": "Vi er svært fornøyde med vår nye Shopify-butikk. Salget har økt betydelig.", "author": "Maria Olsen", "role": "Markedssjef, Nordic Retail" },
+        { "text": "Nexify forsto våre behov og leverte en SaaS-plattform som overgikk forventningene.", "author": "Anders Berg", "role": "Grunnlegger, StartupHub" }
+      ]
+    },
+    "cta_section": {
+      "title": "Klar for å ta bedriften din til neste nivå?",
+      "subtitle": "La oss bygge noe fantastisk sammen. Kontakt oss i dag.",
+      "cta_primary": "Kontakt oss nå",
+      "cta_secondary": "Ring: +47 921 46 050"
+    }
+  },
+  "services": {
+    "hero": { "badge": "Våre Tjenester", "title": "Profesjonelle digitale løsninger for din bedrift", "subtitle": "Fra moderne nettsider til komplekse SaaS-plattformer.", "cta_primary": "Få en gratis konsultasjon", "cta_secondary": "Se priser" },
+    "list": {
+      "badge": "Hva Vi Tilbyr",
+      "title": "Komplette Digitale Tjenester",
+      "subtitle": "Vi dekker alle dine digitale behov.",
+      "items": [
+        { "number": "01", "title": "Nettside Utvikling", "description": "Vi bygger moderne, responsive nettsider.", "features": ["Responsivt design", "SEO-optimalisert", "Rask lastetid", "CMS", "SSL og sikkerhet"], "cta": "Start prosjektet" },
+        { "number": "02", "title": "Shopify Nettbutikk", "description": "Profesjonelle Shopify-butikker som selger.", "features": ["Skreddersydd tema", "Betalingsløsninger", "Produktoppsett", "Fraktintegrasjoner", "Konverteringsoptimalisering"], "cta": "Bygg din butikk" },
+        { "number": "03", "title": "SaaS / CRM Løsninger", "description": "Skreddersydde SaaS-plattformer og CRM-systemer.", "features": ["Tilpasset dashboard", "Brukeradministrasjon", "Automatiserte arbeidsflyter", "API-integrasjoner", "Skalerbar arkitektur"], "cta": "Diskuter løsningen" },
+        { "number": "04", "title": "Integrasjoner", "description": "Koble sammen systemene dine.", "features": ["Betalingsintegrasjoner", "Bookingsystemer", "E-post og markedsføring", "Regnskapssystemer", "Tilpasset API"], "cta": "Se mulighetene" },
+        { "number": "05", "title": "AI Automatisering", "description": "Utnytt kraften i kunstig intelligens.", "features": ["AI-chatboter", "Innholdsgenerering", "Prediktiv analyse", "Prosessautomatisering", "Personalisering"], "cta": "Utforsk AI" }
+      ]
+    },
+    "workflow": {
+      "badge": "Vår Prosess",
+      "title": "Hvordan Vi Jobber",
+      "subtitle": "En strukturert tilnærming som sikrer kvalitet.",
+      "steps": [
+        { "number": "1", "title": "Strategi", "description": "Vi analyserer behov og definerer mål" },
+        { "number": "2", "title": "Design", "description": "Skreddersydd design" },
+        { "number": "3", "title": "Utvikling", "description": "Programmering med moderne teknologier" },
+        { "number": "4", "title": "Lansering", "description": "Testing og publisering" },
+        { "number": "5", "title": "Support", "description": "Kontinuerlig støtte og vedlikehold" }
+      ]
+    },
+    "cta_section": { "title": "Klar for å starte prosjektet ditt?", "subtitle": "Book en gratis konsultasjon.", "cta_primary": "Kontakt oss nå", "cta_secondary": "Ring: +47 921 46 050" }
+  },
+  "projects": {
+    "hero": { "badge": "Portefølje", "title": "Utvalgte Prosjekter", "subtitle": "Se hva vi har bygget for våre kunder." },
+    "featured": { "badge": "Fremhevet Prosjekt", "cta": "Book et lignende prosjekt" },
+    "filters": { "all": "Alle", "web": "Web", "shopify": "Shopify", "saas": "SaaS", "branding": "Branding" },
+    "view_project": "Se prosjekt",
+    "technologies": "Teknologier",
+    "stats": { "projects": { "value": "50+", "label": "Fullførte prosjekter" }, "clients": { "value": "40+", "label": "Fornøyde kunder" }, "experience": { "value": "5+", "label": "År erfaring" }, "satisfaction": { "value": "98%", "label": "Kundetilfredshet" } },
+    "cta_section": { "title": "Klar for ditt neste prosjekt?", "subtitle": "La oss diskutere.", "cta_primary": "Book en demo", "cta_secondary": "Se priser" }
+  },
+  "pricing": {
+    "hero": { "badge": "Priser", "title": "Transparente Priser", "subtitle": "Velg pakken som passer din bedrift.", "note": "Alle priser er eks. mva." },
+    "popular": "Mest Populær",
+    "plans": {
+      "starter": { "name": "Starter", "description": "Perfekt for små bedrifter", "price": "9 900", "currency": "NOK", "features": { "included": ["Én landingsside", "Responsivt design", "Kontaktskjema", "Grunnleggende SEO", "SSL-sertifikat", "1 måned support"], "excluded": ["CMS", "Flerspråklig", "Integrasjoner", "Månedlig vedlikehold"] }, "cta": "Kom i gang" },
+      "business": { "name": "Business", "popular": true, "description": "Komplett løsning for voksende bedrifter", "price": "24 900", "currency": "NOK", "features": { "included": ["Opptil 10 sider", "Responsivt design", "CMS", "SEO-optimalisering", "SSL-sertifikat", "Kontaktskjema", "Google Analytics", "3 måneder support", "Grunnleggende integrasjoner"], "excluded": ["Nettbutikk", "Avanserte integrasjoner"] }, "cta": "Velg Business" },
+      "premium": { "name": "Premium", "description": "For bedrifter som trenger alt", "price": "49 900", "currency": "NOK", "features": { "included": ["Ubegrenset antall sider", "Skreddersydd design", "CMS", "Komplett SEO-pakke", "SSL-sertifikat", "Avanserte skjemaer", "Analytics + Tag Manager", "12 måneder support", "Alle integrasjoner", "Nettbutikk / Booking", "Prioritert support"], "excluded": [] }, "cta": "Kontakt oss" }
+    },
+    "comparison": { "title": "Sammenlign Pakker", "subtitle": "Se hva hver pakke inkluderer.", "features": [{ "name": "Antall sider", "starter": "1", "business": "10", "premium": "Ubegrenset" }, { "name": "Responsivt design", "starter": true, "business": true, "premium": true }, { "name": "SSL-sertifikat", "starter": true, "business": true, "premium": true }, { "name": "SEO-optimalisering", "starter": "Grunnleggende", "business": "Avansert", "premium": "Komplett" }, { "name": "CMS", "starter": false, "business": true, "premium": true }, { "name": "Kontaktskjema", "starter": true, "business": true, "premium": true }, { "name": "Analytics", "starter": false, "business": true, "premium": true }, { "name": "Integrasjoner", "starter": false, "business": "Grunnleggende", "premium": "Alle" }, { "name": "Nettbutikk", "starter": false, "business": false, "premium": true }, { "name": "Support", "starter": "1 mnd", "business": "3 mnd", "premium": "12 mnd" }] },
+    "faq": { "badge": "FAQ", "title": "Ofte Stilte Spørsmål", "subtitle": "Svar på vanlige spørsmål.", "items": [{ "question": "Hva er inkludert i prisen?", "answer": "Design, utvikling, testing og lansering. Hosting og domene kommer i tillegg." }, { "question": "Kan jeg oppgradere senere?", "answer": "Ja! Du kan oppgradere når som helst." }, { "question": "Hva skjer etter supportperioden?", "answer": "Vi tilbyr vedlikeholdsavtaler fra 990 NOK/mnd." }, { "question": "Tilbyr dere betalingsplaner?", "answer": "Ja, vi tilbyr delbetaling for større prosjekter." }, { "question": "Hva om jeg trenger noe skreddersydd?", "answer": "Vi tilbyr skreddersydde løsninger. Kontakt oss for et tilbud." }] },
+    "cta_section": { "title": "Start prosjektet ditt i dag", "subtitle": "Book en gratis konsultasjon.", "cta_primary": "Få et gratis tilbud", "cta_secondary": "Ring: +47 921 46 050" }
+  },
+  "about": {
+    "hero": { "badge": "Om Oss", "title": "Vi bygger digitale løsninger som driver vekst", "subtitle": "Nexify CRM Systems AS er et norsk webutviklingsbyrå.", "cta_primary": "Ta kontakt", "cta_secondary": "Se våre prosjekter" },
+    "stats": { "projects": { "value": "50+", "label": "Fullførte prosjekter" }, "clients": { "value": "40+", "label": "Fornøyde kunder" }, "experience": { "value": "5+", "label": "År erfaring" }, "satisfaction": { "value": "98%", "label": "Kundetilfredshet" } },
+    "values": { "badge": "Våre Verdier", "title": "Det vi står for", "subtitle": "Våre kjerneverdier guider alt vi gjør.", "items": [{ "title": "Kvalitet", "description": "Vi leverer kun arbeid vi er stolte av." }, { "title": "Innovasjon", "description": "Vi holder oss oppdatert på de nyeste teknologiene." }, { "title": "Tillit", "description": "Ærlighet og transparens er grunnlaget." }] },
+    "story": { "badge": "Vår Historie", "title": "Fra idé til virkelighet", "content": "Nexify CRM Systems AS ble grunnlagt med en enkel visjon.", "mission": { "title": "Vår Misjon", "content": "Å hjelpe bedrifter med å lykkes digitalt." }, "vision": { "title": "Vår Visjon", "content": "Å være den mest pålitelige partneren." }, "approach": { "title": "Vår Tilnærming", "content": "Partnerskap fremfor leverandørforhold." } },
+    "team": { "badge": "Vårt Team", "title": "Møt folkene bak Nexify", "subtitle": "Et dedikert team med lidenskap.", "members": [{ "name": "Erik Nordmann", "role": "CEO & Grunnlegger", "bio": "10+ års erfaring." }, { "name": "Ingrid Solberg", "role": "CTO", "bio": "Ekspert på webteknologier." }, { "name": "Ahmed Hassan", "role": "Lead Developer", "bio": "Full-stack utvikler." }, { "name": "Maria Olsen", "role": "UX Designer", "bio": "Skaper engasjerende opplevelser." }] },
+    "cta_section": { "title": "Klar for å jobbe sammen?", "subtitle": "Book et uforpliktende møte.", "cta_primary": "Book et møte", "cta_secondary": "Ring: +47 921 46 050" }
+  },
+  "contact": {
+    "hero": { "badge": "Kontakt", "title": "La oss snakke sammen", "subtitle": "Har du et prosjekt i tankene?" },
+    "form": { "title": "Send oss en melding", "name": { "label": "Navn", "placeholder": "Ditt navn" }, "email": { "label": "E-post", "placeholder": "din@epost.no" }, "phone": { "label": "Telefon", "placeholder": "+47 XXX XX XXX" }, "company": { "label": "Bedrift", "placeholder": "Din bedrift" }, "service": { "label": "Hva trenger du hjelp med?", "options": ["Velg en tjeneste", "Nettside", "Shopify nettbutikk", "SaaS / CRM løsning", "Integrasjoner", "Annet"] }, "budget": { "label": "Budsjett", "options": ["Velg budsjettramme", "Under 10 000 NOK", "10 000 - 25 000 NOK", "25 000 - 50 000 NOK", "50 000 - 100 000 NOK", "Over 100 000 NOK"] }, "message": { "label": "Melding", "placeholder": "Fortell oss om prosjektet ditt..." }, "submit": "Send melding", "success": "Takk for henvendelsen! Vi svarer innen 24 timer." },
+    "info": { "title": "Kontaktinformasjon", "email": { "label": "E-post", "value": "kontakt@nexify.no" }, "phone": { "label": "Telefon", "value": "+47 921 46 050" }, "address": { "label": "Adresse", "value": "Oslo, Norge" }, "hours": { "label": "Åpningstider", "value": "Man-Fre: 09:00-17:00" }, "whatsapp": { "title": "Chat på WhatsApp", "subtitle": "Rask respons" }, "response": { "title": "Rask respons garantert", "content": "Vi svarer innen 24 timer." } },
+    "faq": { "badge": "FAQ", "title": "Vanlige spørsmål", "items": [{ "question": "Hvor lang tid tar det?", "answer": "1-2 uker for enkel side, 4-8 uker for større prosjekter." }, { "question": "Tilbyr dere vedlikehold?", "answer": "Ja, fra 990 NOK/mnd." }, { "question": "Kan jeg oppdatere innholdet selv?", "answer": "Absolutt! Vi bruker brukervennlige CMS-løsninger." }] },
+    "cta_section": { "title": "Klar for å starte?", "subtitle": "Book et gratis møte.", "cta_primary": "Ring: +47 921 46 050", "cta_secondary": "Send e-post" }
+  },
+  "blog": {
+    "hero": { "badge": "Blogg", "title": "Siste Nyheter og Artikler", "subtitle": "Tips og innsikt innen webutvikling." },
+    "categories": { "all": "Alle", "web_development": "Webutvikling", "seo": "SEO", "design": "Design", "marketing": "Markedsføring" },
+    "read_more": "Les mer",
+    "coming_soon": "Artikler kommer snart...",
+    "cta_section": { "title": "Vil du holde deg oppdatert?", "subtitle": "Abonner på vårt nyhetsbrev.", "cta_primary": "Abonner nå" }
+  },
+  "footer": {
+    "description": "Vi bygger digitale løsninger som driver vekst.",
+    "company": { "title": "Selskap", "home": "Hjem", "services": "Tjenester", "projects": "Prosjekter", "pricing": "Priser", "about": "Om oss" },
+    "services_links": { "title": "Tjenester", "web_development": "Nettside Utvikling", "ecommerce": "Nettbutikk", "saas": "SaaS / CRM", "hosting": "Hosting & Support" },
+    "contact": { "title": "Kontakt Oss", "phone": "+47 921 46 050", "email": "info@nexifyhub.no" },
+    "legal": { "privacy": "Personvern", "terms": "Vilkår" },
+    "copyright": "© 2024 Nexify CRM Systems AS. Alle rettigheter reservert."
+  },
+  "common": { "loading": "Laster...", "error": "En feil oppstod", "success": "Suksess", "back": "Tilbake", "next": "Neste", "close": "Lukk", "see_more": "Se mer", "view_details": "Se detaljer", "get_started": "Kom i gang", "learn_more": "Lær mer", "contact_us": "Kontakt oss", "book_meeting": "Book et møte", "get_quote": "Få tilbud" },
+  "urls": { "home": "/no/", "services": "/no/tjenester", "projects": "/no/prosjekter", "pricing": "/no/priser", "about": "/no/om-oss", "contact": "/no/kontakt", "blog": "/no/blogg", "privacy": "/no/personvern", "terms": "/no/vilkar" }
+}

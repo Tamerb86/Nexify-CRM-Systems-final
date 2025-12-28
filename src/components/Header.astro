@@ -1,0 +1,181 @@
+---
+import { t, type Language, languages } from '../lib/i18n';
+import { Menu, X, Globe, ChevronDown } from 'lucide-astro';
+
+interface Props {
+  lang?: Language;
+  currentPath?: string;
+}
+
+const { lang = 'no', currentPath = '/' } = Astro.props;
+
+const navLinks = [
+  { name: t(lang, 'nav.home'), href: '/' },
+  { name: t(lang, 'nav.services'), href: '/services' },
+  { name: t(lang, 'nav.projects'), href: '/projects' },
+  { name: t(lang, 'nav.pricing'), href: '/pricing' },
+  { name: t(lang, 'nav.about'), href: '/about' },
+  { name: t(lang, 'nav.contact'), href: '/contact' },
+  { name: t(lang, 'nav.blog'), href: '/blog' },
+];
+
+const isActive = (path: string) => currentPath === path;
+
+// Get language prefix for URLs
+const getLangUrl = (targetLang: Language, path: string) => {
+  if (targetLang === 'no') return path;
+  return `/${targetLang}${path}`;
+};
+---
+
+<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-border">
+  <div class="container flex h-16 items-center justify-between">
+    <!-- Logo -->
+    <a href={getLangUrl(lang, '/')} class="flex items-center" aria-label="Nexify CRM Systems - Home">
+      <img 
+        src="/images/nexify-logo.png" 
+        alt="Nexify CRM Systems" 
+        width="160"
+        height="40"
+        class="h-10 w-auto object-contain"
+      />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6">
+      {navLinks.map((link) => (
+        <a 
+          href={getLangUrl(lang, link.href)}
+          class={`text-sm font-medium transition-colors hover:text-secondary ${
+            isActive(link.href)
+              ? 'text-primary font-semibold'
+              : 'text-gray-600'
+          }`}
+        >
+          {link.name}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right Side: Language Switcher + CTA -->
+    <div class="hidden lg:flex items-center gap-4">
+      <!-- Language Switcher -->
+      <div class="relative" id="lang-switcher">
+        <button 
+          type="button"
+          class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary rounded-md hover:bg-gray-100 transition-colors"
+          aria-label="Change language"
+          id="lang-btn"
+        >
+          <Globe class="w-4 h-4" />
+          <span>{languages[lang].flag} {languages[lang].name}</span>
+          <ChevronDown class="w-4 h-4" />
+        </button>
+        <div id="lang-menu" class="hidden absolute right-0 mt-2 w-44 rounded-lg shadow-lg bg-white border border-border z-50 overflow-hidden">
+          {Object.entries(languages).map(([code, { name, flag }]) => (
+            <a 
+              href={getLangUrl(code as Language, currentPath)}
+              class={`flex items-center gap-3 px-4 py-3 text-sm hover:bg-gray-50 transition-colors ${
+                code === lang ? 'bg-gray-50 text-primary font-medium' : 'text-gray-700'
+              }`}
+            >
+              <span class="text-lg">{flag}</span>
+              <span>{name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      <!-- CTA Button -->
+      <a href={getLangUrl(lang, '/contact')}>
+        <button class="btn btn-primary">
+          {t(lang, 'nav.getStarted')}
+        </button>
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="flex items-center gap-2 lg:hidden">
+      <button 
+        type="button"
+        id="mobile-menu-btn"
+        class="inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-100 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <Menu class="w-6 h-6 block" id="menu-icon" />
+        <X class="w-6 h-6 hidden" id="close-icon" />
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t bg-white">
+    <div class="container py-4 flex flex-col gap-2">
+      {navLinks.map((link) => (
+        <a 
+          href={getLangUrl(lang, link.href)}
+          class={`text-base font-medium transition-colors hover:text-secondary py-3 px-4 rounded-lg hover:bg-gray-50 ${
+            isActive(link.href) ? 'text-primary bg-gray-50' : 'text-gray-700'
+          }`}
+        >
+          {link.name}
+        </a>
+      ))}
+      
+      <!-- Mobile CTA -->
+      <a href={getLangUrl(lang, '/contact')} class="mt-4">
+        <button class="btn btn-primary w-full">
+          {t(lang, 'nav.getStarted')}
+        </button>
+      </a>
+      
+      <!-- Mobile Language Switcher -->
+      <div class="flex gap-2 mt-4 pt-4 border-t border-border">
+        {Object.entries(languages).map(([code, { name, flag }]) => (
+          <a 
+            href={getLangUrl(code as Language, currentPath)}
+            class={`flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-lg border transition-colors ${
+              code === lang 
+                ? 'bg-primary text-white border-primary' 
+                : 'bg-white text-gray-700 border-border hover:border-primary'
+            }`}
+          >
+            <span>{flag}</span>
+            <span>{code.toUpperCase()}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Language dropdown toggle
+  const langBtn = document.getElementById('lang-btn');
+  const langMenu = document.getElementById('lang-menu');
+  
+  langBtn?.addEventListener('click', () => {
+    langMenu?.classList.toggle('hidden');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!langBtn?.contains(e.target as Node) && !langMenu?.contains(e.target as Node)) {
+      langMenu?.classList.add('hidden');
+    }
+  });
+  
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('block');
+    closeIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('block');
+  });
+</script>

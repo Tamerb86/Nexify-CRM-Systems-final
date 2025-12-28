@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import Hero from '../../components/sections/Hero.astro';
+import WhyUsSection from '../../components/sections/WhyUsSection.astro';
+import ServicesSection from '../../components/sections/ServicesSection.astro';
+import ProjectsSection from '../../components/sections/ProjectsSection.astro';
+import PricingSection from '../../components/sections/PricingSection.astro';
+import TestimonialsSection from '../../components/sections/TestimonialsSection.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import { languagesList, getTranslations, type Language } from '../../lib/i18n';
+
+export function getStaticPaths() {
+  return languagesList.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props as { lang: Language };
+const t = getTranslations(lang);
+
+// Projects data
+const projects = [
+  { title: 'Aura Analytics', category: 'SaaS', image: '/images/project-1.png', tech: ['React', 'Node.js', 'PostgreSQL'] },
+  { title: 'Nordic Home Store', category: 'Shopify', image: '/images/project-2.png', tech: ['Shopify', 'Liquid', 'JavaScript'] },
+  { title: 'Global Business Solutions', category: 'Web', image: '/images/project-3.png', tech: ['Next.js', 'Tailwind', 'Vercel'] }
+];
+
+// Pricing plans
+const plans = [
+  { ...t.home.pricing.plans.starter, popular: false },
+  { ...t.home.pricing.plans.business, popular: true },
+  { ...t.home.pricing.plans.premium, popular: false }
+];
+
+// Trust badges
+const trustBadges = [
+  { icon: 'rocket', text: t.home.hero.trust_badges.projects },
+  { icon: 'shield', text: t.home.hero.trust_badges.support },
+  { icon: 'clock', text: t.home.hero.trust_badges.delivery }
+];
+---
+
+<BaseLayout lang={lang} page="home" title={t.meta.title} description={t.meta.description}>
+  <!-- Hero Section -->
+  <Hero 
+    lang={lang}
+    badge={t.home.hero.badge}
+    title={t.home.hero.title}
+    titleHighlight={t.home.hero.titleHighlight}
+    subtitle={t.home.hero.subtitle}
+    ctaPrimary={t.home.hero.cta_primary}
+    ctaSecondary={t.home.hero.cta_secondary}
+    image="/images/hero-mockup-2.png"
+    imageAlt="Nexify Dashboard Preview"
+    trustBadges={trustBadges}
+  />
+
+  <!-- Why Choose Us -->
+  <WhyUsSection 
+    badge={t.home.why_us.badge}
+    title={t.home.why_us.title}
+    subtitle={t.home.why_us.subtitle}
+    cards={t.home.why_us.cards}
+  />
+
+  <!-- Services -->
+  <ServicesSection 
+    lang={lang}
+    badge={t.home.services.badge}
+    title={t.home.services.title}
+    subtitle={t.home.services.subtitle}
+    services={t.home.services.cards}
+    cta={t.home.services.cta}
+  />
+
+  <!-- Projects -->
+  <ProjectsSection 
+    lang={lang}
+    badge={t.home.projects.badge}
+    title={t.home.projects.title}
+    subtitle={t.home.projects.subtitle}
+    projects={projects}
+    cta={t.home.projects.cta}
+  />
+
+  <!-- Pricing -->
+  <PricingSection 
+    lang={lang}
+    badge={t.home.pricing.badge}
+    title={t.home.pricing.title}
+    subtitle={t.home.pricing.subtitle}
+    plans={plans}
+    popularLabel={t.home.pricing.popular}
+  />
+
+  <!-- Testimonials -->
+  <TestimonialsSection 
+    badge={t.home.testimonials.badge}
+    title={t.home.testimonials.title}
+    subtitle={t.home.testimonials.subtitle}
+    testimonials={t.home.testimonials.items}
+  />
+
+  <!-- CTA -->
+  <CTASection 
+    lang={lang}
+    title={t.home.cta_section.title}
+    subtitle={t.home.cta_section.subtitle}
+    ctaPrimary={t.home.cta_section.cta_primary}
+    ctaSecondary={t.home.cta_section.cta_secondary}
+  />
+</BaseLayout>

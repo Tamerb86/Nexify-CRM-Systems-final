@@ -1,0 +1,65 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import { urlStructure, type Language } from '../../lib/i18n';
+
+interface Project {
+  title: string;
+  category: string;
+  image: string;
+  tech: string[];
+}
+
+interface Props {
+  lang: Language;
+  badge: string;
+  title: string;
+  subtitle: string;
+  projects: Project[];
+  cta?: string;
+  showCta?: boolean;
+}
+
+const { lang, badge, title, subtitle, projects, cta, showCta = true } = Astro.props;
+---
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <SectionTitle badge={badge} badgeColor="teal" title={title} subtitle={subtitle} />
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+          <div class="relative overflow-hidden">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute top-4 right-4">
+              <span class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-primary">
+                {project.category}
+              </span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
+            <div class="flex flex-wrap gap-2">
+              {project.tech.map((tech) => (
+                <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    {showCta && cta && (
+      <div class="text-center mt-12">
+        <a href={urlStructure[lang].projects} class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-teal-500 text-white font-medium rounded-xl hover:opacity-90 transition-opacity">
+          {cta}
+        </a>
+      </div>
+    )}
+  </div>
+</section>

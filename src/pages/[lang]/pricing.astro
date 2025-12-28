@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import PricingSection from '../../components/sections/PricingSection.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import SectionTitle from '../../components/ui/SectionTitle.astro';
+import { languagesList, getTranslations, urlStructure, type Language } from '../../lib/i18n';
+import { CheckCircle, X, ChevronDown, ChevronUp } from 'lucide-astro';
+
+export function getStaticPaths() {
+  return languagesList.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props as { lang: Language };
+const t = getTranslations(lang);
+const isRTL = lang === 'ar';
+
+// Pricing plans - extract features.included array
+const starterPlan = t.pricing.plans.starter;
+const businessPlan = t.pricing.plans.business;
+const premiumPlan = t.pricing.plans.premium;
+
+const plans = [
+  { ...starterPlan, features: starterPlan.features?.included || [], popular: false },
+  { ...businessPlan, features: businessPlan.features?.included || [], popular: true },
+  { ...premiumPlan, features: premiumPlan.features?.included || [], popular: false }
+];
+
+// Comparison table features
+const comparisonFeatures = t.pricing.comparison.features;
+
+// FAQ
+const faqItems = t.pricing.faq.items;
+---
+
+<BaseLayout lang={lang} page="pricing" title={`${t.nav.pricing} | Nexify CRM Systems`} description={t.pricing.hero.subtitle}>
+  <!-- Hero -->
+  <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-teal-50/30">
+    <div class="container mx-auto px-4 text-center">
+      <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">{t.pricing.hero.badge}</span>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t.pricing.hero.title}</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">{t.pricing.hero.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <PricingSection 
+    lang={lang}
+    badge=""
+    title=""
+    subtitle=""
+    plans={plans}
+    popularLabel={t.pricing.popular}
+  />
+
+  <!-- Comparison Table -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <SectionTitle badge={t.pricing.comparison.badge} badgeColor="teal" title={t.pricing.comparison.title} subtitle={t.pricing.comparison.subtitle} />
+      
+      <div class="overflow-x-auto">
+        <table class="w-full max-w-4xl mx-auto">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class={`py-4 ${isRTL ? 'text-right' : 'text-left'} text-gray-600 font-medium`}>{t.pricing.comparison.feature_label}</th>
+              <th class="py-4 text-center text-gray-900 font-bold">Starter</th>
+              <th class="py-4 text-center text-primary font-bold">Business</th>
+              <th class="py-4 text-center text-gray-900 font-bold">Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonFeatures.map((feature) => (
+              <tr class="border-b border-gray-100 hover:bg-gray-50">
+                <td class={`py-4 ${isRTL ? 'text-right' : 'text-left'} text-gray-700`}>{feature.name}</td>
+                <td class="py-4 text-center">
+                  {feature.starter === true ? (
+                    <CheckCircle class="w-5 h-5 text-teal-500 mx-auto" />
+                  ) : feature.starter === false ? (
+                    <X class="w-5 h-5 text-gray-300 mx-auto" />
+                  ) : (
+                    <span class="text-gray-600">{feature.starter}</span>
+                  )}
+                </td>
+                <td class="py-4 text-center bg-primary/5">
+                  {feature.business === true ? (
+                    <CheckCircle class="w-5 h-5 text-teal-500 mx-auto" />
+                  ) : feature.business === false ? (
+                    <X class="w-5 h-5 text-gray-300 mx-auto" />
+                  ) : (
+                    <span class="text-gray-600">{feature.business}</span>
+                  )}
+                </td>
+                <td class="py-4 text-center">
+                  {feature.premium === true ? (
+                    <CheckCircle class="w-5 h-5 text-teal-500 mx-auto" />
+                  ) : feature.premium === false ? (
+                    <X class="w-5 h-5 text-gray-300 mx-auto" />
+                  ) : (
+                    <span class="text-gray-600">{feature.premium}</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <SectionTitle badge={t.pricing.faq.badge} title={t.pricing.faq.title} subtitle={t.pricing.faq.subtitle} />
+      
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqItems.map((item, index) => (
+          <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <button 
+              class={`w-full px-6 py-4 flex items-center justify-between ${isRTL ? 'text-right flex-row-reverse' : 'text-left'} hover:bg-gray-50 transition-colors`}
+              data-faq-toggle={index}
+            >
+              <span class="font-medium text-gray-900">{item.question}</span>
+              <ChevronDown class="w-5 h-5 text-gray-400 transition-transform" data-faq-icon={index} />
+            </button>
+            <div class="hidden px-6 pb-4" data-faq-content={index}>
+              <p class="text-gray-600">{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection 
+    lang={lang}
+    title={t.pricing.cta_section.title}
+    subtitle={t.pricing.cta_section.subtitle}
+    ctaPrimary={t.pricing.cta_section.cta_primary}
+    ctaSecondary={t.pricing.cta_section.cta_secondary}
+  />
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('[data-faq-toggle]').forEach(button => {
+    button.addEventListener('click', () => {
+      const index = button.getAttribute('data-faq-toggle');
+      const content = document.querySelector(`[data-faq-content="${index}"]`);
+      const icon = document.querySelector(`[data-faq-icon="${index}"]`);
+      
+      content?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

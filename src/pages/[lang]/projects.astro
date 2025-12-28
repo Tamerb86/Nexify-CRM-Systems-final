@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import SectionTitle from '../../components/ui/SectionTitle.astro';
+import { languagesList, getTranslations, urlStructure, type Language } from '../../lib/i18n';
+import { ExternalLink, ArrowRight, ArrowLeft } from 'lucide-astro';
+
+export function getStaticPaths() {
+  return languagesList.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props as { lang: Language };
+const t = getTranslations(lang);
+const isRTL = lang === 'ar';
+const Arrow = isRTL ? ArrowLeft : ArrowRight;
+
+// Projects data
+const projects = [
+  { id: 1, title: 'Aura Analytics', category: 'SaaS', image: '/images/project-1.png', tech: ['React', 'Node.js', 'PostgreSQL'], description: t.projects.items?.[0]?.description || 'Advanced analytics dashboard for enterprise clients' },
+  { id: 2, title: 'Nordic Home Store', category: 'Shopify', image: '/images/project-2.png', tech: ['Shopify', 'Liquid', 'JavaScript'], description: t.projects.items?.[1]?.description || 'E-commerce platform for Scandinavian furniture' },
+  { id: 3, title: 'Global Business Solutions', category: 'Web', image: '/images/project-3.png', tech: ['Next.js', 'Tailwind', 'Vercel'], description: t.projects.items?.[2]?.description || 'Corporate website with CMS integration' },
+  { id: 4, title: 'HealthCare Portal', category: 'SaaS', image: '/images/project-4.png', tech: ['Vue.js', 'Laravel', 'MySQL'], description: t.projects.items?.[3]?.description || 'Patient management system for clinics' },
+  { id: 5, title: 'TechStart Hub', category: 'Web', image: '/images/project-5.png', tech: ['Astro', 'React', 'Tailwind'], description: t.projects.items?.[4]?.description || 'Startup landing page with animations' },
+  { id: 6, title: 'Fashion Boutique', category: 'Shopify', image: '/images/project-6.png', tech: ['Shopify', 'Liquid', 'SCSS'], description: t.projects.items?.[5]?.description || 'Luxury fashion e-commerce store' }
+];
+
+const categories = ['All', 'Web', 'Shopify', 'SaaS'];
+const statsObj = t.projects.stats || {};
+const stats = Object.values(statsObj);
+---
+
+<BaseLayout lang={lang} page="projects" title={`${t.nav.projects} | Nexify CRM Systems`} description={t.projects.hero.subtitle}>
+  <!-- Hero -->
+  <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-teal-50/30">
+    <div class="container mx-auto px-4 text-center">
+      <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">{t.projects.hero.badge}</span>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t.projects.hero.title}</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8">{t.projects.hero.subtitle}</p>
+      
+      <!-- Stats -->
+      <div class="flex flex-wrap justify-center gap-8 mt-12">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <p class="text-4xl font-bold text-primary">{stat.value}</p>
+            <p class="text-gray-600">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Project -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <SectionTitle badge={t.projects.featured?.badge || 'Featured'} badgeColor="teal" title={t.projects.featured?.title || 'Featured Project'} subtitle={t.projects.featured?.subtitle || ''} />
+      
+      <div class="grid lg:grid-cols-2 gap-12 items-center bg-gray-50 rounded-3xl p-8 lg:p-12">
+        <div>
+          <img src="/images/project-1.png" alt="Featured Project" class="w-full rounded-2xl shadow-xl" />
+        </div>
+        <div class={isRTL ? 'text-right' : 'text-left'}>
+          <span class="inline-block px-3 py-1 bg-teal-500/10 text-teal-600 rounded-full text-sm font-medium mb-4">SaaS</span>
+          <h3 class="text-3xl font-bold text-gray-900 mb-4">Aura Analytics</h3>
+          <p class="text-gray-600 mb-6">{t.projects.featured?.description || 'A showcase of our best work.'}</p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            {['React', 'Node.js', 'PostgreSQL', 'AWS'].map((tech) => (
+              <span class="px-3 py-1 bg-white rounded-lg text-sm text-gray-600 shadow-sm">{tech}</span>
+            ))}
+          </div>
+          <a href={urlStructure[lang].contact} class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-teal-500 text-white font-medium rounded-xl hover:opacity-90 transition-opacity">
+            {t.projects.featured?.cta || 'View Project'}
+            <Arrow class={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <SectionTitle badge={t.projects.grid?.badge || 'Portfolio'} title={t.projects.grid?.title || 'Our Projects'} subtitle={t.projects.grid?.subtitle || ''} />
+      
+      <!-- Filters -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        {categories.map((cat, index) => (
+          <button 
+            class={`px-6 py-2 rounded-full font-medium transition-colors ${index === 0 ? 'bg-primary text-white' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+            data-filter={cat.toLowerCase()}
+          >
+            {cat === 'All' ? t.projects.filters?.all || 'All' : cat}
+          </button>
+        ))}
+      </div>
+      
+      <!-- Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all" data-category={project.category.toLowerCase()}>
+            <div class="relative overflow-hidden">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <a href={urlStructure[lang].contact} class="px-6 py-3 bg-white text-primary font-medium rounded-xl flex items-center gap-2">
+                  {t.projects.view_project || 'View Project'}
+                  <ExternalLink class="w-4 h-4" />
+                </a>
+              </div>
+              <div class={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'}`}>
+                <span class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-primary">
+                  {project.category}
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
+              <p class="text-gray-600 text-sm mb-4">{project.description}</p>
+              <div class="flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span class="px-2 py-1 bg-gray-100 rounded text-xs text-gray-600">{tech}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection 
+    lang={lang}
+    title={t.projects.cta_section.title}
+    subtitle={t.projects.cta_section.subtitle}
+    ctaPrimary={t.projects.cta_section.cta_primary}
+    ctaSecondary={t.projects.cta_section.cta_secondary}
+  />
+</BaseLayout>
+
+

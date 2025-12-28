@@ -1,0 +1,39 @@
+---
+import { urlStructure, type Language } from '../../lib/i18n';
+
+interface Props {
+  lang: Language;
+  title: string;
+  subtitle: string;
+  ctaPrimary: string;
+  ctaSecondary?: string;
+  phone?: string;
+}
+
+const { lang, title, subtitle, ctaPrimary, ctaSecondary, phone = '+4792146050' } = Astro.props;
+---
+
+<section class="py-20 bg-gradient-to-r from-primary to-teal-600">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{title}</h2>
+      <p class="text-xl text-white/80 mb-8">{subtitle}</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a 
+          href={urlStructure[lang].contact} 
+          class="px-8 py-4 bg-white text-primary font-medium rounded-xl hover:bg-gray-100 transition-colors"
+        >
+          {ctaPrimary}
+        </a>
+        {ctaSecondary && (
+          <a 
+            href={`tel:${phone}`} 
+            class="px-8 py-4 bg-white/10 text-white font-medium rounded-xl hover:bg-white/20 transition-colors border border-white/20"
+          >
+            {ctaSecondary}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

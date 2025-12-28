@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import CTASection from '../../components/sections/CTASection.astro';
+import SectionTitle from '../../components/ui/SectionTitle.astro';
+import { languagesList, getTranslations, urlStructure, type Language } from '../../lib/i18n';
+import { Award, Users, Target, Heart, Linkedin, Twitter } from 'lucide-astro';
+
+export function getStaticPaths() {
+  return languagesList.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props as { lang: Language };
+const t = getTranslations(lang);
+const isRTL = lang === 'ar';
+
+const values = t.about.values.items;
+const valueIcons = [Award, Target, Heart];
+
+const team = t.about.team.members;
+const teamImages = ['/images/team-1.png', '/images/team-2.png', '/images/team-3.png', '/images/team-4.png'];
+
+const statsObj = t.about.stats || {};
+const stats = Object.values(statsObj);
+---
+
+<BaseLayout lang={lang} page="about" title={`${t.nav.about} | Nexify CRM Systems`} description={t.about.hero.subtitle}>
+  <!-- Hero -->
+  <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-teal-50/30">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class={isRTL ? 'text-right lg:order-2' : 'text-left lg:order-1'}>
+          <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">{t.about.hero.badge}</span>
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t.about.hero.title}</h1>
+          <p class="text-xl text-gray-600 mb-8">{t.about.hero.subtitle}</p>
+          
+          <!-- Stats -->
+          <div class={`grid grid-cols-3 gap-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+            {stats.map((stat) => (
+              <div>
+                <p class="text-3xl font-bold text-primary">{stat.value}</p>
+                <p class="text-gray-600 text-sm">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class={isRTL ? 'lg:order-1' : 'lg:order-2'}>
+          <img src="/images/hero-mockup-1.png" alt="About Nexify" class="w-full rounded-2xl shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <SectionTitle badge={t.about.values.badge} badgeColor="teal" title={t.about.values.title} subtitle={t.about.values.subtitle} />
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {values.map((value, index) => {
+          const Icon = valueIcons[index % valueIcons.length];
+          return (
+            <div class="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
+              <div class="w-16 h-16 bg-gradient-to-br from-primary to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Icon class="w-8 h-8 text-white" />
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+              <p class="text-gray-600">{value.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">{t.about.story.badge}</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{t.about.story.title}</h2>
+        <div class="prose prose-lg mx-auto text-gray-600">
+          <p class="mb-4">{t.about.story.paragraph1}</p>
+          <p class="mb-4">{t.about.story.paragraph2}</p>
+          <p>{t.about.story.paragraph3}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <SectionTitle badge={t.about.team.badge} badgeColor="teal" title={t.about.team.title} subtitle={t.about.team.subtitle} />
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {team.map((member, index) => (
+          <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group">
+            <div class="relative">
+              <img 
+                src={teamImages[index % teamImages.length]} 
+                alt={member.name}
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                <div class="flex gap-3">
+                  <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                    <Linkedin class="w-5 h-5" />
+                  </a>
+                  <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                    <Twitter class="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-lg font-bold text-gray-900">{member.name}</h3>
+              <p class="text-teal-600 text-sm">{member.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection 
+    lang={lang}
+    title={t.about.cta_section.title}
+    subtitle={t.about.cta_section.subtitle}
+    ctaPrimary={t.about.cta_section.cta_primary}
+    ctaSecondary={t.about.cta_section.cta_secondary}
+  />
+</BaseLayout>
