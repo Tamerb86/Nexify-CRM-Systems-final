@@ -1,0 +1,76 @@
+---
+import { ChevronRight, ChevronLeft, Home } from 'lucide-astro';
+import { type Language, urlStructure, getTranslations } from '../lib/i18n';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  lang: Language;
+  items: BreadcrumbItem[];
+}
+
+const { lang, items } = Astro.props;
+const t = getTranslations(lang);
+const isRTL = lang === 'ar';
+const Chevron = isRTL ? ChevronLeft : ChevronRight;
+
+// Add home as first item
+const breadcrumbs = [
+  { label: t.nav.home, href: urlStructure[lang].home },
+  ...items
+];
+---
+
+<nav aria-label="Breadcrumb" class="py-4">
+  <ol class={`flex items-center gap-2 text-sm ${isRTL ? 'flex-row-reverse' : ''}`}>
+    {breadcrumbs.map((item, index) => (
+      <li class={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+        {index === 0 && (
+          <Home class="w-4 h-4 text-gray-400" />
+        )}
+        {index > 0 && (
+          <Chevron class="w-4 h-4 text-gray-300" />
+        )}
+        {item.href && index < breadcrumbs.length - 1 ? (
+          <a 
+            href={item.href} 
+            class="text-gray-500 hover:text-primary transition-colors link-underline"
+          >
+            {item.label}
+          </a>
+        ) : (
+          <span class="text-gray-900 font-medium">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .link-underline {
+    position: relative;
+  }
+  
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+  
+  .link-underline:hover::after {
+    width: 100%;
+  }
+  
+  [dir="rtl"] .link-underline::after {
+    left: auto;
+    right: 0;
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+// Page Loading Progress Bar
+---
+
+<div id="page-progress" class="fixed top-0 left-0 right-0 z-[100] h-1 pointer-events-none">
+  <div id="progress-bar" class="h-full bg-gradient-to-r from-primary to-secondary w-0 transition-all duration-300"></div>
+</div>
+
+<style>
+  #page-progress {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  #page-progress.loading {
+    opacity: 1;
+  }
+  
+  #progress-bar {
+    box-shadow: 0 0 10px var(--color-secondary), 0 0 5px var(--color-secondary);
+  }
+  
+  /* RTL Support */
+  [dir="rtl"] #page-progress {
+    left: auto;
+    right: 0;
+  }
+  
+  [dir="rtl"] #progress-bar {
+    background: linear-gradient(to left, var(--color-primary), var(--color-secondary));
+  }
+</style>
+
+<script>
+  const progressContainer = document.getElementById('page-progress');
+  const progressBar = document.getElementById('progress-bar');
+  
+  // Reading progress indicator
+  const updateReadingProgress = () => {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    
+    if (progressBar) {
+      progressBar.style.width = `${Math.min(progress, 100)}%`;
+    }
+  };
+  
+  // Show progress on scroll
+  window.addEventListener('scroll', () => {
+    if (progressContainer) {
+      if (window.pageYOffset > 100) {
+        progressContainer.classList.add('loading');
+      } else {
+        progressContainer.classList.remove('loading');
+      }
+    }
+    updateReadingProgress();
+  }, { passive: true });
+  
+  // Page load progress
+  document.addEventListener('DOMContentLoaded', () => {
+    if (progressContainer && progressBar) {
+      progressContainer.classList.add('loading');
+      progressBar.style.width = '100%';
+      
+      setTimeout(() => {
+        progressContainer.classList.remove('loading');
+        progressBar.style.width = '0%';
+      }, 500);
+    }
+  });
+</script>

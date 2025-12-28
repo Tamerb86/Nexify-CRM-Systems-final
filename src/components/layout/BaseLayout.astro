@@ -2,6 +2,8 @@
 import '../../styles/global.css';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
+import BackToTop from '../BackToTop.astro';
+import PageProgress from '../PageProgress.astro';
 import { languages, languagesList, urlStructure, getTranslations, type Language } from '../../lib/i18n';
 
 interface Props {
@@ -150,6 +152,8 @@ const breadcrumbSchema = {
   </main>
   
   <Footer lang={lang} />
+  <BackToTop />
+  <PageProgress />
   
   <!-- Scroll Animations Script -->
   <script>
