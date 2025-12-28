@@ -1,0 +1,240 @@
+---
+import { type Language } from '../lib/i18n';
+
+interface Props {
+  lang: Language;
+  currentPath: string;
+  pageType?: 'home' | 'services' | 'projects' | 'pricing' | 'about' | 'contact' | 'privacy' | 'terms' | 'blog';
+}
+
+const { lang, currentPath, pageType = 'home' } = Astro.props;
+
+const baseUrl = 'https://nexifyhub.no';
+
+// Organization Schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${baseUrl}/#organization`,
+  "name": "Nexify CRM Systems AS",
+  "alternateName": "Nexify",
+  "url": baseUrl,
+  "logo": {
+    "@type": "ImageObject",
+    "url": `${baseUrl}/images/logo.png`,
+    "width": 200,
+    "height": 60
+  },
+  "image": `${baseUrl}/images/og-image.png`,
+  "description": lang === 'no' 
+    ? "Profesjonell webutvikling, nettbutikker og SaaS-løsninger i Norge" 
+    : lang === 'en'
+    ? "Professional web development, e-commerce stores and SaaS solutions in Norway"
+    : "تطوير مواقع احترافي ومتاجر إلكترونية وحلول SaaS في النرويج",
+  "foundingDate": "2024",
+  "founders": [{
+    "@type": "Person",
+    "name": "Nexify Team"
+  }],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Porsgrunn",
+    "addressCountry": "NO"
+  },
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+47-921-46-050",
+    "contactType": "customer service",
+    "email": "info@nexifyhub.no",
+    "availableLanguage": ["Norwegian", "English", "Arabic"]
+  }],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61567575882753",
+    "https://www.tiktok.com/@nexifyhub",
+    "https://www.linkedin.com/company/106097428/"
+  ],
+  "vatID": "NO936300278MVA",
+  "legalName": "Nexify CRM Systems AS",
+  "taxID": "936300278"
+};
+
+// LocalBusiness Schema
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${baseUrl}/#localbusiness`,
+  "name": "Nexify CRM Systems AS",
+  "image": `${baseUrl}/images/og-image.png`,
+  "url": baseUrl,
+  "telephone": "+47 921 46 050",
+  "email": "info@nexifyhub.no",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Porsgrunn",
+    "addressCountry": "NO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 59.1408,
+    "longitude": 9.6569
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "17:00"
+  }],
+  "areaServed": {
+    "@type": "Country",
+    "name": "Norway"
+  },
+  "serviceType": [
+    "Web Development",
+    "E-commerce Development",
+    "SaaS Development",
+    "CRM Solutions",
+    "API Integration"
+  ]
+};
+
+// Website Schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${baseUrl}/#website`,
+  "url": baseUrl,
+  "name": "Nexify CRM Systems",
+  "description": organizationSchema.description,
+  "publisher": {
+    "@id": `${baseUrl}/#organization`
+  },
+  "inLanguage": [
+    { "@type": "Language", "name": "Norwegian", "alternateName": "no" },
+    { "@type": "Language", "name": "English", "alternateName": "en" },
+    { "@type": "Language", "name": "Arabic", "alternateName": "ar" }
+  ]
+};
+
+// Breadcrumb Schema
+const breadcrumbItems = [];
+const pathParts = currentPath.split('/').filter(Boolean);
+
+let breadcrumbPath = '';
+pathParts.forEach((part, index) => {
+  breadcrumbPath += `/${part}`;
+  breadcrumbItems.push({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+    "item": `${baseUrl}${breadcrumbPath}`
+  });
+});
+
+const breadcrumbSchema = breadcrumbItems.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": baseUrl
+    },
+    ...breadcrumbItems.map((item, index) => ({
+      ...item,
+      position: index + 2
+    }))
+  ]
+} : null;
+
+// Service Schema (for services page)
+const serviceSchema = pageType === 'services' ? {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Web Development Services",
+  "provider": {
+    "@id": `${baseUrl}/#organization`
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Norway"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web Development Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Website Development",
+          "description": "Modern, responsive websites"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Shopify E-commerce",
+          "description": "Professional Shopify stores"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "SaaS / CRM Solutions",
+          "description": "Custom business platforms"
+        }
+      }
+    ]
+  }
+} : null;
+
+// FAQ Schema (for pricing page)
+const faqSchema = pageType === 'pricing' ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": lang === 'no' ? "Hva er inkludert i prisen?" : lang === 'en' ? "What's included in the price?" : "ما المتضمن في السعر؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": lang === 'no' 
+          ? "Design, utvikling, testing og lansering. Hosting og domene er separat."
+          : lang === 'en'
+          ? "Design, development, testing, and launch. Hosting and domain are separate."
+          : "التصميم والتطوير والاختبار والإطلاق. الاستضافة والدومين منفصلان."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": lang === 'no' ? "Kan jeg oppgradere senere?" : lang === 'en' ? "Can I upgrade later?" : "هل يمكنني الترقية لاحقاً؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": lang === 'no' 
+          ? "Ja! Du kan oppgradere når som helst."
+          : lang === 'en'
+          ? "Yes! You can upgrade anytime."
+          : "نعم! يمكنك الترقية في أي وقت."
+      }
+    }
+  ]
+} : null;
+
+// Combine all schemas
+const schemas = [
+  organizationSchema,
+  localBusinessSchema,
+  websiteSchema,
+  breadcrumbSchema,
+  serviceSchema,
+  faqSchema
+].filter(Boolean);
+---
+
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

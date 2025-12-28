@@ -3,23 +3,37 @@ import '../styles/global.css';
 import { type Language, getDirection, t } from '../lib/i18n';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import WhatsAppWidget from '../components/WhatsAppWidget.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 
 interface Props {
   title?: string;
   description?: string;
   lang?: Language;
   currentPath?: string;
+  pageType?: 'home' | 'services' | 'projects' | 'pricing' | 'about' | 'contact' | 'privacy' | 'terms' | 'blog';
 }
 
 const { 
   title = 'Nexify CRM Systems', 
   description = 'Profesjonell webutvikling i Norge',
   lang = 'no',
-  currentPath = '/'
+  currentPath = '/',
+  pageType = 'home'
 } = Astro.props;
 
 const dir = getDirection(lang);
 const fullTitle = `${title} | Nexify CRM Systems AS`;
+const canonicalUrl = `https://nexifyhub.no${currentPath}`;
+
+// Alternate language URLs for hreflang
+const alternateUrls = {
+  no: currentPath.replace(/^\/(en|ar)\//, '/no/').replace(/^\/no\//, '/no/') || '/no/',
+  en: currentPath.replace(/^\/(no|ar)\//, '/en/').replace(/^\/en\//, '/en/') || '/en/',
+  ar: currentPath.replace(/^\/(no|en)\//, '/ar/').replace(/^\/ar\//, '/ar/') || '/ar/'
+};
 ---
 
 <!doctype html>
@@ -28,6 +42,9 @@ const fullTitle = `${title} | Nexify CRM Systems AS`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="author" content="Nexify CRM Systems AS" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#6366f1" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -38,31 +55,60 @@ const fullTitle = `${title} | Nexify CRM Systems AS`;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://nexifyhub.no" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content="https://nexifyhub.no/images/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Nexify CRM Systems" />
+    <meta property="og:locale" content={lang === 'no' ? 'nb_NO' : lang === 'en' ? 'en_US' : 'ar_SA'} />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://nexifyhub.no/images/og-image.png" />
     
-    <!-- Canonical -->
-    <link rel="canonical" href={`https://nexifyhub.no${currentPath}`} />
+    <!-- Canonical & Alternate Languages -->
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="no" href={`https://nexifyhub.no${alternateUrls.no}`} />
+    <link rel="alternate" hreflang="en" href={`https://nexifyhub.no${alternateUrls.en}`} />
+    <link rel="alternate" hreflang="ar" href={`https://nexifyhub.no${alternateUrls.ar}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://nexifyhub.no${alternateUrls.no}`} />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     
+    <!-- Preload critical assets -->
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/worksans/v19/QGY_z_wNahGAdqQ43RhVcIgYT2Xz5u32K0nXBi8Jpg.woff2" crossorigin />
+    
     <title>{fullTitle}</title>
+    
+    <!-- Schema Markup -->
+    <SchemaMarkup lang={lang} currentPath={currentPath} pageType={pageType} />
+    
+    <!-- Google Analytics -->
+    <GoogleAnalytics />
   </head>
   <body class="min-h-screen flex flex-col bg-background text-text-primary">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white px-4 py-2 rounded-lg z-50">
+      {lang === 'no' ? 'Hopp til hovedinnhold' : lang === 'en' ? 'Skip to main content' : 'انتقل إلى المحتوى الرئيسي'}
+    </a>
+    
     <Header lang={lang} currentPath={currentPath} />
     
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     
     <Footer lang={lang} />
+    
+    <!-- WhatsApp Widget -->
+    <WhatsAppWidget lang={lang} />
+    
+    <!-- Cookie Consent Banner -->
+    <CookieConsent lang={lang} />
   </body>
 </html>
