@@ -24,8 +24,8 @@ const { badge, title, subtitle, testimonials } = Astro.props;
     <SectionTitle badge={badge} badgeColor="teal" title={title} subtitle={subtitle} />
     
     <div class="grid md:grid-cols-3 gap-8">
-      {testimonials.map((testimonial) => (
-        <div class="bg-gray-50 rounded-2xl p-8">
+      {testimonials.map((testimonial, index) => (
+        <div class="scroll-animate bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all hover:-translate-y-1" style={`transition-delay: ${index * 100}ms`}>
           <div class="flex gap-1 mb-4">
             {[...Array(testimonial.rating || 5)].map(() => (
               <Star class="w-5 h-5 text-yellow-400 fill-current" />

@@ -27,8 +27,8 @@ const { lang, badge, title, subtitle, projects, cta, showCta = true } = Astro.pr
     <SectionTitle badge={badge} badgeColor="teal" title={title} subtitle={subtitle} />
     
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map((project) => (
-        <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+      {projects.map((project, index) => (
+        <div class="scroll-animate-scale group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all" style={`transition-delay: ${index * 150}ms`}>
           <div class="relative overflow-hidden">
             <img 
               src={project.image} 

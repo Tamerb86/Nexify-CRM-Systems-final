@@ -150,5 +150,75 @@ const breadcrumbSchema = {
   </main>
   
   <Footer lang={lang} />
+  
+  <!-- Scroll Animations Script -->
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.1
+    };
+
+    const animateOnScroll = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const parent = entry.target.parentElement;
+          if (parent) {
+            const siblings = Array.from(parent.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale'));
+            const elementIndex = siblings.indexOf(entry.target);
+            const delay = elementIndex * 100;
+            setTimeout(() => entry.target.classList.add('visible'), delay);
+          } else {
+            entry.target.classList.add('visible');
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const scrollObserver = new IntersectionObserver(animateOnScroll, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
+        .forEach(el => scrollObserver.observe(el));
+    });
+
+    // Sticky header effect
+    const header = document.querySelector('.header-sticky');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }, { passive: true });
+    }
+
+    // Counter animation
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(entry.target.getAttribute('data-count') || '0');
+          let start = 0;
+          const increment = target / 50;
+          const updateCounter = () => {
+            start += increment;
+            if (start < target) {
+              entry.target.textContent = Math.floor(start).toString();
+              requestAnimationFrame(updateCounter);
+            } else {
+              entry.target.textContent = target.toString();
+            }
+          };
+          updateCounter();
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+  </script>
 </body>
 </html>

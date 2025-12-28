@@ -1,0 +1,57 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'secondary' | 'white';
+  className?: string;
+}
+
+const { size = 'md', color = 'primary', className = '' } = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-4 h-4 border-2',
+  md: 'w-8 h-8 border-3',
+  lg: 'w-12 h-12 border-4'
+};
+
+const colorClasses = {
+  primary: 'border-gray-200 border-t-primary',
+  secondary: 'border-gray-200 border-t-secondary',
+  white: 'border-white/30 border-t-white'
+};
+---
+
+<div 
+  class={`spinner ${sizeClasses[size]} ${colorClasses[color]} ${className}`}
+  role="status"
+  aria-label="Loading"
+>
+  <span class="sr-only">Loading...</span>
+</div>
+
+<style>
+  .spinner {
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

@@ -56,8 +56,8 @@ const iconMap: Record<string, any> = {
   <div class="container mx-auto px-4 py-20 relative z-10">
     <div class={`grid lg:grid-cols-2 gap-12 items-center ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
       <!-- Text Content -->
-      <div class={isRTL ? 'text-right lg:order-2' : 'text-left lg:order-1'}>
-        <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+      <div class={`animate-fade-in-up ${isRTL ? 'text-right lg:order-2' : 'text-left lg:order-1'}`}>
+        <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6 animate-pulse-glow">
           {badge}
         </span>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -98,7 +98,7 @@ const iconMap: Record<string, any> = {
       </div>
       
       <!-- Hero Image -->
-      <div class={`relative ${isRTL ? 'lg:order-1' : 'lg:order-2'}`}>
+      <div class={`relative animate-fade-in-up ${isRTL ? 'lg:order-1' : 'lg:order-2'}`} style="animation-delay: 200ms">
         <div class="relative transform hover:scale-105 transition-transform duration-500">
           <img 
             src={image} 
@@ -106,7 +106,7 @@ const iconMap: Record<string, any> = {
             class="w-full rounded-2xl shadow-2xl"
             loading="eager"
           />
-          <div class={`absolute -bottom-6 ${isRTL ? '-left-6' : '-right-6'} bg-white rounded-xl shadow-lg p-4`}>
+          <div class={`absolute -bottom-6 ${isRTL ? '-left-6' : '-right-6'} bg-white rounded-xl shadow-lg p-4 animate-float`}>
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center">
                 <CheckCircle class="w-6 h-6 text-white" />

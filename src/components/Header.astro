@@ -28,7 +28,7 @@ const getLangUrl = (targetLang: Language, path: string) => {
 };
 ---
 
-<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-border">
+<header class="header-sticky sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-border transition-all duration-300">
   <div class="container flex h-16 items-center justify-between">
     <!-- Logo -->
     <a href={getLangUrl(lang, '/')} class="flex items-center" aria-label="Nexify CRM Systems - Home">
@@ -42,17 +42,18 @@ const getLangUrl = (targetLang: Language, path: string) => {
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex items-center gap-6">
+    <nav class="hidden lg:flex items-center gap-1">
       {navLinks.map((link) => (
         <a 
           href={getLangUrl(lang, link.href)}
-          class={`text-sm font-medium transition-colors hover:text-secondary ${
+          class={`relative text-sm font-medium px-4 py-2 rounded-lg transition-all duration-200 hover:bg-gray-50 hover:text-primary group ${
             isActive(link.href)
-              ? 'text-primary font-semibold'
+              ? 'text-primary font-semibold bg-primary/5'
               : 'text-gray-600'
           }`}
         >
           {link.name}
+          <span class={`absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-1/2 ${isActive(link.href) ? 'w-1/2' : ''}`}></span>
         </a>
       ))}
     </nav>
@@ -109,7 +110,14 @@ const getLangUrl = (targetLang: Language, path: string) => {
   </div>
   
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden border-t bg-white">
+  <div id="mobile-menu" class="hidden lg:hidden border-t bg-white animate-slide-down">
+    <style>
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-slide-down { animation: slideDown 0.2s ease-out; }
+    </style>
     <div class="container py-4 flex flex-col gap-2">
       {navLinks.map((link) => (
         <a 

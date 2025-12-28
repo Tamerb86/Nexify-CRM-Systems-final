@@ -39,7 +39,7 @@ const defaultIcons = [Rocket, Shield, Clock, Users];
       {cards.map((card, index) => {
         const Icon = card.icon ? iconMap[card.icon] : defaultIcons[index % defaultIcons.length];
         return (
-          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow text-center">
+          <div class="scroll-animate bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all hover:-translate-y-1 text-center group" style={`transition-delay: ${index * 100}ms`}>
             <div class="w-16 h-16 bg-gradient-to-br from-primary to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Icon class="w-8 h-8 text-white" />
             </div>

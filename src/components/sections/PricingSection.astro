@@ -30,8 +30,8 @@ const { lang, badge, title, subtitle, plans, popularLabel = 'Most Popular' } = A
     <SectionTitle badge={badge} title={title} subtitle={subtitle} />
     
     <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      {plans.map((plan) => (
-        <div class={`relative bg-white rounded-2xl p-8 ${plan.popular ? 'ring-2 ring-teal-500 shadow-xl scale-105' : 'shadow-lg'}`}>
+      {plans.map((plan, index) => (
+        <div class={`scroll-animate relative bg-white rounded-2xl p-8 hover:-translate-y-1 transition-all ${plan.popular ? 'ring-2 ring-teal-500 shadow-xl scale-105' : 'shadow-lg hover:shadow-xl'}`} style={`transition-delay: ${index * 150}ms`}>
           {plan.popular && (
             <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <span class="px-4 py-1 bg-gradient-to-r from-primary to-teal-500 text-white text-sm font-medium rounded-full">

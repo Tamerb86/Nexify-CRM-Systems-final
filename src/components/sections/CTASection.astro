@@ -13,22 +13,29 @@ interface Props {
 const { lang, title, subtitle, ctaPrimary, ctaSecondary, phone = '+4792146050' } = Astro.props;
 ---
 
-<section class="py-20 bg-gradient-to-r from-primary to-teal-600">
-  <div class="container mx-auto px-4">
-    <div class="max-w-3xl mx-auto text-center">
+<section class="py-20 bg-gradient-to-r from-primary to-teal-600 relative overflow-hidden">
+  <!-- Animated background shapes -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-20 -left-20 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float" style="animation-delay: 1s"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-3xl mx-auto text-center scroll-animate">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{title}</h2>
       <p class="text-xl text-white/80 mb-8">{subtitle}</p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a 
           href={urlStructure[lang].contact} 
-          class="px-8 py-4 bg-white text-primary font-medium rounded-xl hover:bg-gray-100 transition-colors"
+          class="group px-8 py-4 bg-white text-primary font-medium rounded-xl hover:bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
         >
-          {ctaPrimary}
+          <span class="relative z-10">{ctaPrimary}</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </a>
         {ctaSecondary && (
           <a 
             href={`tel:${phone}`} 
-            class="px-8 py-4 bg-white/10 text-white font-medium rounded-xl hover:bg-white/20 transition-colors border border-white/20"
+            class="px-8 py-4 bg-white/10 text-white font-medium rounded-xl hover:bg-white/20 hover:-translate-y-1 transition-all duration-300 border border-white/20 hover:border-white/40 backdrop-blur-sm"
           >
             {ctaSecondary}
           </a>

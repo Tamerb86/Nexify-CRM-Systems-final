@@ -31,7 +31,7 @@ const serviceIcons = [Globe, ShoppingCart, Cpu, Zap, Headphones];
       {services.map((service, index) => {
         const Icon = serviceIcons[index % serviceIcons.length];
         return (
-          <div class="bg-white rounded-2xl p-8 hover:shadow-xl transition-all hover:-translate-y-1">
+          <div class="scroll-animate bg-white rounded-2xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 group" style={`transition-delay: ${index * 100}ms`}>
             <div class="w-14 h-14 bg-gradient-to-br from-primary to-teal-500 rounded-xl flex items-center justify-center mb-6">
               <Icon class="w-7 h-7 text-white" />
             </div>
