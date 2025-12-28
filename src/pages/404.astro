@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Home, ArrowLeft, Search, Mail } from 'lucide-astro';
+
+// Detect language from referrer or default to Norwegian
+const lang = 'no';
+
+const content = {
+  no: {
+    title: '404 - Siden ble ikke funnet',
+    heading: 'Oops! Siden finnes ikke',
+    description: 'Beklager, men siden du leter etter eksisterer ikke eller har blitt flyttet.',
+    suggestions: 'Her er noen forslag:',
+    home: 'Gå til forsiden',
+    back: 'Gå tilbake',
+    contact: 'Kontakt oss',
+    search: 'Søk på siden',
+    popular: 'Populære sider',
+    pages: [
+      { name: 'Tjenester', href: '/no/services' },
+      { name: 'Prosjekter', href: '/no/projects' },
+      { name: 'Priser', href: '/no/pricing' },
+      { name: 'Om oss', href: '/no/about' },
+      { name: 'Kontakt', href: '/no/contact' }
+    ]
+  },
+  en: {
+    title: '404 - Page Not Found',
+    heading: 'Oops! Page not found',
+    description: 'Sorry, but the page you are looking for does not exist or has been moved.',
+    suggestions: 'Here are some suggestions:',
+    home: 'Go to homepage',
+    back: 'Go back',
+    contact: 'Contact us',
+    search: 'Search the site',
+    popular: 'Popular pages',
+    pages: [
+      { name: 'Services', href: '/en/services' },
+      { name: 'Projects', href: '/en/projects' },
+      { name: 'Pricing', href: '/en/pricing' },
+      { name: 'About', href: '/en/about' },
+      { name: 'Contact', href: '/en/contact' }
+    ]
+  },
+  ar: {
+    title: '404 - الصفحة غير موجودة',
+    heading: 'عذراً! الصفحة غير موجودة',
+    description: 'نأسف، لكن الصفحة التي تبحث عنها غير موجودة أو تم نقلها.',
+    suggestions: 'إليك بعض الاقتراحات:',
+    home: 'الذهاب للرئيسية',
+    back: 'العودة',
+    contact: 'تواصل معنا',
+    search: 'البحث في الموقع',
+    popular: 'الصفحات الشائعة',
+    pages: [
+      { name: 'الخدمات', href: '/ar/services' },
+      { name: 'المشاريع', href: '/ar/projects' },
+      { name: 'الأسعار', href: '/ar/pricing' },
+      { name: 'من نحن', href: '/ar/about' },
+      { name: 'تواصل', href: '/ar/contact' }
+    ]
+  }
+};
+
+const t = content[lang];
+---
+
+<Layout title={t.title} description={t.description} lang={lang} currentPath="/404">
+  <section class="min-h-[70vh] flex items-center justify-center py-20 bg-gradient-to-br from-gray-50 via-white to-primary/5">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <!-- 404 Illustration -->
+        <div class="mb-8">
+          <div class="relative inline-block">
+            <span class="text-[150px] md:text-[200px] font-bold text-primary/10 select-none">404</span>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-primary to-teal-500 rounded-full flex items-center justify-center shadow-xl">
+                <Search class="w-12 h-12 md:w-16 md:h-16 text-white" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {t.heading}
+        </h1>
+        <p class="text-lg text-gray-600 mb-8">
+          {t.description}
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <a 
+            href={`/${lang}/`}
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-teal-500 text-white font-medium rounded-xl hover:opacity-90 transition-opacity"
+          >
+            <Home class="w-5 h-5" />
+            {t.home}
+          </a>
+          <button 
+            onclick="history.back()"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-gray-200 transition-colors"
+          >
+            <ArrowLeft class="w-5 h-5" />
+            {t.back}
+          </button>
+          <a 
+            href={`/${lang}/contact`}
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 text-gray-700 font-medium rounded-xl hover:bg-gray-50 transition-colors"
+          >
+            <Mail class="w-5 h-5" />
+            {t.contact}
+          </a>
+        </div>
+
+        <!-- Popular Pages -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">{t.popular}</h2>
+          <div class="flex flex-wrap justify-center gap-3">
+            {t.pages.map((page) => (
+              <a 
+                href={page.href}
+                class="px-4 py-2 bg-gray-50 text-gray-700 rounded-lg hover:bg-primary hover:text-white transition-colors"
+              >
+                {page.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Detect language from URL and redirect to appropriate 404
+  const path = window.location.pathname;
+  const langMatch = path.match(/^\/(no|en|ar)\//);
+  
+  if (langMatch) {
+    const detectedLang = langMatch[1];
+    // Update links based on detected language
+    document.querySelectorAll('a[href^="/no/"]').forEach(link => {
+      link.setAttribute('href', link.getAttribute('href').replace('/no/', `/${detectedLang}/`));
+    });
+  }
+</script>

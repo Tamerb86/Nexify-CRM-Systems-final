@@ -14,18 +14,18 @@ const { lang = 'no' } = Astro.props;
 const currentYear = new Date().getFullYear();
 
 const quickLinks = [
-  { name: t(lang, 'nav.home'), href: '/' },
-  { name: t(lang, 'nav.services'), href: '/services' },
-  { name: t(lang, 'nav.projects'), href: '/projects' },
-  { name: t(lang, 'nav.pricing'), href: '/pricing' },
-  { name: t(lang, 'nav.about'), href: '/about' },
+  { name: t(lang, 'nav.home'), href: `/${lang}/` },
+  { name: t(lang, 'nav.services'), href: `/${lang}/services` },
+  { name: t(lang, 'nav.projects'), href: `/${lang}/projects` },
+  { name: t(lang, 'nav.pricing'), href: `/${lang}/pricing` },
+  { name: t(lang, 'nav.about'), href: `/${lang}/about` },
 ];
 
 const serviceLinks = [
-  { name: t(lang, 'services.web.title'), href: '/services' },
-  { name: t(lang, 'services.ecommerce.title'), href: '/services' },
-  { name: t(lang, 'services.saas.title'), href: '/services' },
-  { name: t(lang, 'services.hosting.title'), href: '/services' },
+  { name: t(lang, 'services.web.title'), href: `/${lang}/services` },
+  { name: t(lang, 'services.ecommerce.title'), href: `/${lang}/services` },
+  { name: t(lang, 'services.saas.title'), href: `/${lang}/services` },
+  { name: t(lang, 'services.hosting.title'), href: `/${lang}/services` },
 ];
 ---
 
@@ -34,7 +34,7 @@ const serviceLinks = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
       <!-- Company Info -->
       <div class="lg:col-span-1">
-        <a href="/" class="inline-block mb-6">
+        <a href={`/${lang}/`} class="inline-block mb-6">
           <img 
             src="/images/nexify-logo-white.png" 
             alt="Nexify CRM Systems" 
@@ -145,10 +145,10 @@ const serviceLinks = [
         © {currentYear} Nexify CRM Systems AS. {t(lang, 'footer.rights')}
       </p>
       <div class="flex gap-6">
-        <a href="/privacy" class="text-blue-200 text-sm hover:text-white transition-colors">
+        <a href={`/${lang}/privacy`} class="text-blue-200 text-sm hover:text-white transition-colors">
           {t(lang, 'footer.privacy')}
         </a>
-        <a href="/terms" class="text-blue-200 text-sm hover:text-white transition-colors">
+        <a href={`/${lang}/terms`} class="text-blue-200 text-sm hover:text-white transition-colors">
           {t(lang, 'footer.terms')}
         </a>
       </div>
