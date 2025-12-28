@@ -4,6 +4,29 @@
 
 ---
 
+## Company Information
+
+| Field | Value |
+|-------|-------|
+| **Company Name** | Nexify CRM Systems AS |
+| **Organization Number** | 936 300 278 |
+| **Address** | Porsgrunn, Norge |
+| **Phone** | +47 921 46 050 |
+| **Email** | info@nexifyhub.no |
+| **Website** | https://nexifyhub.no |
+| **Copyright** | © 2025 Nexify CRM Systems AS |
+
+### Social Media Links
+
+| Platform | URL |
+|----------|-----|
+| Facebook | https://www.facebook.com/profile.php?id=61567575882753 |
+| TikTok | https://www.tiktok.com/@nexifyhub |
+| LinkedIn | https://www.linkedin.com/company/106097428/ |
+| WhatsApp | https://wa.me/4792146050 |
+
+---
+
 ## 1. Meta Tags (Title & Description)
 
 ### Arabic Pages (AR)
@@ -31,8 +54,8 @@
 | `/no/om-oss/` | Om Oss \| Teamet bak Nexify | Møt teamet bak Nexify - eksperter på webutvikling i Norge. Våre verdier: Kvalitet, Innovasjon, Tillit. 5+ års erfaring. |
 | `/no/kontakt/` | Kontakt Oss \| Gratis Konsultasjon - Nexify | Ta kontakt med Nexify i dag. Vi svarer innen 24 timer. Telefon: +47 921 46 050. Norsk support. |
 | `/no/blogg/` | Blogg \| Webutvikling & Digital Markedsføring - Nexify | Les våre siste artikler om webutvikling, SEO, e-handel og digital markedsføring. Tips fra Nexify-eksperter. |
-| `/no/privacy/` | Personvernerklæring \| GDPR - Nexify | Vi beskytter dine personopplysninger i henhold til GDPR. Les vår fullstendige personvernerklæring. |
-| `/no/terms/` | Vilkår og Betingelser \| Nexify | Les vilkår og betingelser for bruk av Nexify CRM Systems sine tjenester. Dine rettigheter og våre forpliktelser. |
+| `/no/personvern/` | Personvernerklæring \| GDPR - Nexify | Vi beskytter dine personopplysninger i henhold til GDPR. Les vår fullstendige personvernerklæring. |
+| `/no/vilkar/` | Vilkår og Betingelser \| Nexify | Les vilkår og betingelser for bruk av Nexify CRM Systems sine tjenester. Dine rettigheter og våre forpliktelser. |
 
 ### English Pages (EN)
 
@@ -41,7 +64,7 @@
 | `/en/` | Nexify CRM Systems \| Professional Web Development | We build modern websites, Shopify stores, and SaaS/CRM solutions. 100+ successful projects. Get a free quote today. |
 | `/en/services/` | Our Services \| Web Development, Shopify & CRM - Nexify | Complete digital development: websites, Shopify stores, SaaS/CRM systems, API integrations, and AI automation. Custom solutions. |
 | `/en/projects/` | Our Projects \| Portfolio - Nexify | View our 100+ successful projects. Websites, e-commerce stores, and CRM systems for businesses worldwide. |
-| `/en/pricing/` | Pricing \| Transparent Packages - Nexify | No hidden costs. Packages starting from $999. Choose the package that fits your business and get a custom quote. |
+| `/en/pricing/` | Pricing \| Transparent Packages - Nexify | No hidden costs. Packages starting from 9,900 NOK. Choose the package that fits your business and get a custom quote. |
 | `/en/about/` | About Us \| The Nexify Team | Meet the team behind Nexify - web development experts. Our values: Quality, Innovation, Trust. 5+ years experience. |
 | `/en/contact/` | Contact Us \| Free Consultation - Nexify | Get in touch with Nexify today. We respond within 24 hours. Phone: +47 921 46 050. Global support. |
 | `/en/blog/` | Blog \| Web Development & Digital Marketing - Nexify | Read our latest articles on web development, SEO, e-commerce, and digital marketing. Tips from Nexify experts. |
@@ -50,551 +73,9 @@
 
 ---
 
-## 2. Open Graph & Twitter Card Metadata
+## 2. JSON-LD Structured Data
 
-### Template Structure
-
-```html
-<!-- Open Graph -->
-<meta property="og:title" content="{PAGE_TITLE}">
-<meta property="og:description" content="{PAGE_DESCRIPTION}">
-<meta property="og:image" content="https://nexifyhub.no/og-{PAGE}-{LANG}.png">
-<meta property="og:url" content="https://nexifyhub.no/{LANG}/{PAGE}/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Nexify CRM Systems AS">
-<meta property="og:locale" content="{LOCALE}">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{PAGE_TITLE}">
-<meta name="twitter:description" content="{PAGE_DESCRIPTION}">
-<meta name="twitter:image" content="https://nexifyhub.no/og-{PAGE}-{LANG}.png">
-```
-
-### Locale Values
-
-| Language | og:locale |
-|----------|-----------|
-| Arabic | ar_SA |
-| Norwegian | nb_NO |
-| English | en_US |
-
-### OG Images Required
-
-| Image Name | Description |
-|------------|-------------|
-| `og-home-ar.png` | Arabic homepage social image |
-| `og-home-no.png` | Norwegian homepage social image |
-| `og-home-en.png` | English homepage social image |
-| `og-services.png` | Services page (shared) |
-| `og-projects.png` | Projects/Portfolio page (shared) |
-| `og-pricing.png` | Pricing page (shared) |
-| `og-about.png` | About page (shared) |
-| `og-contact.png` | Contact page (shared) |
-| `og-blog.png` | Blog page (shared) |
-| `og-default.png` | Default fallback image |
-
-**Recommended OG Image Size:** 1200 × 630 pixels
-
----
-
-## 3. H1/H2/H3 Heading Structure
-
-### Home Page
-
-**Arabic (`/ar/`)**
-```
-H1: نبني حلولاً رقمية تدفع النمو
-  H2: لماذا تختارنا
-    H3: تسليم سريع
-    H3: تصميم حديث
-    H3: محسّن لـ SEO
-    H3: دعم مستمر
-  H2: خدماتنا
-    H3: تطوير المواقع
-    H3: متاجر Shopify
-    H3: حلول SaaS / CRM
-    H3: التكاملات
-    H3: أتمتة الذكاء الاصطناعي
-  H2: مشاريعنا
-  H2: الأسعار
-  H2: آراء العملاء
-  H2: مستعد لنقل عملك للمستوى التالي؟
-```
-
-**Norwegian (`/no/`)**
-```
-H1: Vi bygger digitale løsninger som driver vekst
-  H2: Hvorfor Velge Oss
-    H3: Rask Levering
-    H3: Moderne Design
-    H3: SEO Optimalisert
-    H3: Kontinuerlig Support
-  H2: Våre Tjenester
-    H3: Nettside Utvikling
-    H3: Shopify Nettbutikk
-    H3: SaaS / CRM Løsninger
-    H3: Integrasjoner
-    H3: AI Automatisering
-  H2: Våre Prosjekter
-  H2: Priser
-  H2: Kundeomtaler
-  H2: Klar for å ta bedriften din til neste nivå?
-```
-
-**English (`/en/`)**
-```
-H1: We build digital solutions that drive growth
-  H2: Why Choose Us
-    H3: Fast Delivery
-    H3: Modern Design
-    H3: SEO Optimized
-    H3: Continuous Support
-  H2: Our Services
-    H3: Web Development
-    H3: Shopify Stores
-    H3: SaaS / CRM Solutions
-    H3: Integrations
-    H3: AI Automation
-  H2: Our Projects
-  H2: Pricing
-  H2: Testimonials
-  H2: Ready to take your business to the next level?
-```
-
-### Services Page
-
-**Arabic (`/ar/services/`)**
-```
-H1: خدمات Nexify الرقمية
-  H2: تطوير المواقع
-    H3: مواقع متجاوبة
-    H3: تصميم مخصص
-    H3: سرعة عالية
-  H2: متاجر Shopify
-    H3: إعداد كامل
-    H3: تخصيص القالب
-    H3: تكامل الدفع
-  H2: حلول SaaS / CRM
-    H3: أنظمة مخصصة
-    H3: إدارة العملاء
-    H3: لوحات تحكم
-  H2: التكاملات
-    H3: API
-    H3: بوابات الدفع
-    H3: أنظمة الحجز
-  H2: أتمتة الذكاء الاصطناعي
-    H3: روبوتات المحادثة
-    H3: أتمتة سير العمل
-  H2: خطوات العمل معنا
-    H3: الاستراتيجية
-    H3: التصميم
-    H3: التطوير
-    H3: الإطلاق
-    H3: الدعم
-```
-
-**Norwegian (`/no/tjenester/`)**
-```
-H1: Nexify Digitale Tjenester
-  H2: Nettside Utvikling
-    H3: Responsive nettsider
-    H3: Skreddersydd design
-    H3: Høy hastighet
-  H2: Shopify Nettbutikk
-    H3: Komplett oppsett
-    H3: Tema tilpasning
-    H3: Betalingsintegrasjon
-  H2: SaaS / CRM Løsninger
-    H3: Skreddersydde systemer
-    H3: Kundebehandling
-    H3: Dashboards
-  H2: Integrasjoner
-    H3: API
-    H3: Betalingsløsninger
-    H3: Bookingsystemer
-  H2: AI Automatisering
-    H3: Chatbots
-    H3: Arbeidsflyt automatisering
-  H2: Vår Arbeidsprosess
-    H3: Strategi
-    H3: Design
-    H3: Utvikling
-    H3: Lansering
-    H3: Support
-```
-
-**English (`/en/services/`)**
-```
-H1: Nexify Digital Services
-  H2: Web Development
-    H3: Responsive websites
-    H3: Custom design
-    H3: High performance
-  H2: Shopify Stores
-    H3: Complete setup
-    H3: Theme customization
-    H3: Payment integration
-  H2: SaaS / CRM Solutions
-    H3: Custom systems
-    H3: Customer management
-    H3: Dashboards
-  H2: Integrations
-    H3: API
-    H3: Payment gateways
-    H3: Booking systems
-  H2: AI Automation
-    H3: Chatbots
-    H3: Workflow automation
-  H2: Our Workflow
-    H3: Strategy
-    H3: Design
-    H3: Development
-    H3: Launch
-    H3: Support
-```
-
-### Projects Page
-
-**Arabic (`/ar/projects/`)**
-```
-H1: مشاريع مختارة
-  H2: مشروع مميز
-  H2: جميع المشاريع
-    H3: Aura Analytics
-    H3: Nordic Home Store
-    H3: Global Business Solutions
-    H3: HealthCare Plus
-    H3: EduTech Platform
-    H3: FinanceHub
-  H2: إحصائياتنا
-  H2: مستعد لمشروعك القادم؟
-```
-
-**Norwegian (`/no/prosjekter/`)**
-```
-H1: Utvalgte Arbeider
-  H2: Fremhevet Prosjekt
-  H2: Alle Prosjekter
-    H3: Aura Analytics
-    H3: Nordic Home Store
-    H3: Global Business Solutions
-    H3: HealthCare Plus
-    H3: EduTech Platform
-    H3: FinanceHub
-  H2: Våre Tall
-  H2: Klar for ditt neste prosjekt?
-```
-
-**English (`/en/projects/`)**
-```
-H1: Selected Works
-  H2: Featured Project
-  H2: All Projects
-    H3: Aura Analytics
-    H3: Nordic Home Store
-    H3: Global Business Solutions
-    H3: HealthCare Plus
-    H3: EduTech Platform
-    H3: FinanceHub
-  H2: Our Stats
-  H2: Ready for your next project?
-```
-
-### Pricing Page
-
-**Arabic (`/ar/pricing/`)**
-```
-H1: أسعار شفافة
-  H2: باقاتنا
-    H3: المبتدئ
-    H3: الأعمال
-    H3: المميز
-  H2: مقارنة الباقات
-  H2: الأسئلة الشائعة
-    H3: كم يستغرق بناء الموقع؟
-    H3: هل يشمل السعر الاستضافة؟
-    H3: ما هي طرق الدفع؟
-    H3: هل تقدمون دعم بعد الإطلاق؟
-    H3: هل يمكن تعديل الباقة؟
-  H2: ابدأ مشروعك اليوم
-```
-
-**Norwegian (`/no/priser/`)**
-```
-H1: Transparente Priser
-  H2: Våre Pakker
-    H3: Starter
-    H3: Business
-    H3: Premium
-  H2: Sammenlign Pakker
-  H2: Ofte Stilte Spørsmål
-    H3: Hvor lang tid tar det å bygge en nettside?
-    H3: Er hosting inkludert?
-    H3: Hvilke betalingsmetoder aksepterer dere?
-    H3: Tilbyr dere support etter lansering?
-    H3: Kan pakken tilpasses?
-  H2: Start prosjektet ditt i dag
-```
-
-**English (`/en/pricing/`)**
-```
-H1: Transparent Pricing
-  H2: Our Packages
-    H3: Starter
-    H3: Business
-    H3: Premium
-  H2: Compare Packages
-  H2: Frequently Asked Questions
-    H3: How long does it take to build a website?
-    H3: Is hosting included?
-    H3: What payment methods do you accept?
-    H3: Do you offer support after launch?
-    H3: Can the package be customized?
-  H2: Start your project today
-```
-
-### About Page
-
-**Arabic (`/ar/about/`)**
-```
-H1: من نحن
-  H2: قصتنا
-  H2: قيمنا
-    H3: الجودة
-    H3: الابتكار
-    H3: الثقة
-  H2: فريقنا
-  H2: إحصائياتنا
-  H2: لنعمل معاً
-```
-
-**Norwegian (`/no/om-oss/`)**
-```
-H1: Om Oss
-  H2: Vår Historie
-  H2: Våre Verdier
-    H3: Kvalitet
-    H3: Innovasjon
-    H3: Tillit
-  H2: Vårt Team
-  H2: Våre Tall
-  H2: La oss jobbe sammen
-```
-
-**English (`/en/about/`)**
-```
-H1: About Us
-  H2: Our Story
-  H2: Our Values
-    H3: Quality
-    H3: Innovation
-    H3: Trust
-  H2: Our Team
-  H2: Our Stats
-  H2: Let's work together
-```
-
-### Contact Page
-
-**Arabic (`/ar/contact/`)**
-```
-H1: تواصل معنا
-  H2: أرسل رسالة
-  H2: معلومات الاتصال
-    H3: البريد الإلكتروني
-    H3: الهاتف
-    H3: العنوان
-  H2: الأسئلة الشائعة
-  H2: نحن هنا لمساعدتك
-```
-
-**Norwegian (`/no/kontakt/`)**
-```
-H1: Kontakt Oss
-  H2: Send en melding
-  H2: Kontaktinformasjon
-    H3: E-post
-    H3: Telefon
-    H3: Adresse
-  H2: Ofte Stilte Spørsmål
-  H2: Vi er her for å hjelpe
-```
-
-**English (`/en/contact/`)**
-```
-H1: Contact Us
-  H2: Send a message
-  H2: Contact Information
-    H3: Email
-    H3: Phone
-    H3: Address
-  H2: FAQ
-  H2: We're here to help
-```
-
-### Blog Page
-
-**Arabic (`/ar/blog/`)**
-```
-H1: المدونة
-  H2: أحدث المقالات
-  H2: التصنيفات
-    H3: تطوير الويب
-    H3: SEO
-    H3: التجارة الإلكترونية
-    H3: التسويق الرقمي
-```
-
-**Norwegian (`/no/blogg/`)**
-```
-H1: Blogg
-  H2: Siste Artikler
-  H2: Kategorier
-    H3: Webutvikling
-    H3: SEO
-    H3: E-handel
-    H3: Digital Markedsføring
-```
-
-**English (`/en/blog/`)**
-```
-H1: Blog
-  H2: Latest Articles
-  H2: Categories
-    H3: Web Development
-    H3: SEO
-    H3: E-commerce
-    H3: Digital Marketing
-```
-
-### Privacy Page
-
-**Arabic (`/ar/privacy/`)**
-```
-H1: سياسة الخصوصية
-  H2: جمع البيانات
-  H2: استخدام البيانات
-  H2: حماية البيانات
-  H2: حقوقك
-  H2: ملفات تعريف الارتباط
-  H2: التواصل معنا
-```
-
-**Norwegian (`/no/privacy/`)**
-```
-H1: Personvernerklæring
-  H2: Datainnsamling
-  H2: Bruk av data
-  H2: Databeskyttelse
-  H2: Dine rettigheter
-  H2: Informasjonskapsler
-  H2: Kontakt oss
-```
-
-**English (`/en/privacy/`)**
-```
-H1: Privacy Policy
-  H2: Data Collection
-  H2: Data Usage
-  H2: Data Protection
-  H2: Your Rights
-  H2: Cookies
-  H2: Contact Us
-```
-
-### Terms Page
-
-**Arabic (`/ar/terms/`)**
-```
-H1: الشروط والأحكام
-  H2: قبول الشروط
-  H2: الخدمات
-  H2: الدفع
-  H2: حقوق الملكية الفكرية
-  H2: المسؤولية
-  H2: إنهاء الخدمة
-  H2: التواصل
-```
-
-**Norwegian (`/no/terms/`)**
-```
-H1: Vilkår og Betingelser
-  H2: Aksept av vilkår
-  H2: Tjenester
-  H2: Betaling
-  H2: Immaterielle rettigheter
-  H2: Ansvar
-  H2: Oppsigelse
-  H2: Kontakt
-```
-
-**English (`/en/terms/`)**
-```
-H1: Terms & Conditions
-  H2: Acceptance of Terms
-  H2: Services
-  H2: Payment
-  H2: Intellectual Property
-  H2: Liability
-  H2: Termination
-  H2: Contact
-```
-
----
-
-## 4. Alt Text for Images (3 Languages)
-
-### Hero Images
-
-| Image | Arabic | Norwegian | English |
-|-------|--------|-----------|---------|
-| `hero-mockup-1.png` | واجهة منشئ المواقع الاحترافية من Nexify | Profesjonell nettside-bygger grensesnitt fra Nexify | Professional website builder interface by Nexify |
-| `hero-mockup-2.png` | لوحة تحكم تطوير المواقع مع أدوات التصميم | Nettsideutviklings-dashboard med designverktøy | Website development dashboard with design tools |
-| `hero-mockup-3.png` | معاينة موقع ويب احترافي على شاشة حاسوب | Forhåndsvisning av profesjonell nettside på dataskjerm | Professional website preview on computer screen |
-
-### Service Images
-
-| Image | Arabic | Norwegian | English |
-|-------|--------|-----------|---------|
-| `service-web-dev.png` | خدمة تطوير المواقع الاحترافية | Profesjonell nettsideutviklingstjeneste | Professional web development service |
-| `service-shopify.png` | تطوير متاجر Shopify الإلكترونية | Shopify nettbutikkutvikling | Shopify e-commerce store development |
-| `service-saas.png` | حلول أنظمة SaaS و CRM المخصصة | Skreddersydde SaaS og CRM-løsninger | Custom SaaS and CRM solutions |
-| `service-api.png` | خدمات تكامل API والأنظمة | API og systemintegrasjonstjenester | API and system integration services |
-| `services-hero.png` | فريق تطوير الويب يعمل على مشروع | Webutviklingsteam som jobber med prosjekt | Web development team working on project |
-
-### Project Images
-
-| Image | Arabic | Norwegian | English |
-|-------|--------|-----------|---------|
-| `project-1.png` | مشروع Aura Analytics - لوحة تحليلات SaaS | Aura Analytics prosjekt - SaaS analysedashboard | Aura Analytics project - SaaS analytics dashboard |
-| `project-2.png` | مشروع Nordic Home Store - متجر Shopify | Nordic Home Store prosjekt - Shopify butikk | Nordic Home Store project - Shopify store |
-| `project-3.png` | مشروع Global Business Solutions - موقع شركة | Global Business Solutions prosjekt - Bedriftsnettside | Global Business Solutions project - Corporate website |
-| `project-4.png` | مشروع عيادة صحية - موقع طبي احترافي | Helseklinikk prosjekt - Profesjonell medisinsk nettside | Healthcare clinic project - Professional medical website |
-| `project-5.png` | منصة تعليمية - نظام إدارة التعلم | Utdanningsplattform - Læringsstyringssystem | Education platform - Learning management system |
-| `project-6.png` | منصة مالية - لوحة تحكم FinTech | Finansplattform - FinTech dashboard | Finance platform - FinTech dashboard |
-
-### Team Images
-
-| Image | Arabic | Norwegian | English |
-|-------|--------|-----------|---------|
-| `team-1.png` | صورة عضو فريق Nexify - المدير التنفيذي | Nexify teammedlem bilde - Daglig leder | Nexify team member photo - CEO |
-| `team-2.png` | صورة عضو فريق Nexify - مدير التقنية | Nexify teammedlem bilde - Teknisk leder | Nexify team member photo - CTO |
-| `team-3.png` | صورة عضو فريق Nexify - مصمم UX | Nexify teammedlem bilde - UX Designer | Nexify team member photo - UX Designer |
-| `team-4.png` | صورة عضو فريق Nexify - مطور رئيسي | Nexify teammedlem bilde - Lead utvikler | Nexify team member photo - Lead Developer |
-
-### General Images
-
-| Image | Arabic | Norwegian | English |
-|-------|--------|-----------|---------|
-| `nexify-logo.png` | شعار Nexify CRM Systems | Nexify CRM Systems logo | Nexify CRM Systems logo |
-| `favicon.ico` | أيقونة موقع Nexify | Nexify nettstedikon | Nexify website favicon |
-
----
-
-## 5. JSON-LD Structured Data
-
-### Organization Schema
+### Organization Schema (Updated)
 
 ```json
 {
@@ -606,119 +87,634 @@ H1: Terms & Conditions
   "logo": "https://nexifyhub.no/images/nexify-logo.png",
   "description": "Professional web development company specializing in websites, Shopify stores, and SaaS/CRM solutions.",
   "foundingDate": "2020",
+  "taxID": "936300278",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Storgata 1",
-    "addressLocality": "Oslo",
-    "postalCode": "0155",
+    "addressLocality": "Porsgrunn",
     "addressCountry": "NO"
   },
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+47-921-46-050",
     "contactType": "customer service",
-    "email": "kontakt@nexifyhub.no",
+    "email": "info@nexifyhub.no",
     "availableLanguage": ["Norwegian", "English", "Arabic"]
   },
-  "sameAs": []
-}
-```
-
-### Website Schema
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Nexify CRM Systems",
-  "url": "https://nexifyhub.no",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://nexifyhub.no/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-```
-
-### BreadcrumbList Schema Template
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "{HOME_NAME}",
-      "item": "https://nexifyhub.no/{LANG}/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "{PAGE_NAME}",
-      "item": "https://nexifyhub.no/{LANG}/{PAGE}/"
-    }
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61567575882753",
+    "https://www.tiktok.com/@nexifyhub",
+    "https://www.linkedin.com/company/106097428/"
   ]
 }
-```
-
-### Breadcrumb Names by Language
-
-| Page | Arabic | Norwegian | English |
-|------|--------|-----------|---------|
-| Home | الرئيسية | Hjem | Home |
-| Services | خدمات | Tjenester | Services |
-| Projects | الاعمال | Prosjekter | Projects |
-| Pricing | الاسعار | Priser | Pricing |
-| About | من نحن | Om oss | About |
-| Contact | تواصل | Kontakt | Contact |
-| Blog | مدونة | Blogg | Blog |
-| Privacy | الخصوصية | Personvern | Privacy |
-| Terms | الشروط | Vilkår | Terms |
-
-### Complete JSON-LD for Home Page (Example)
-
-```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "name": "Nexify CRM Systems AS",
-      "url": "https://nexifyhub.no",
-      "logo": "https://nexifyhub.no/images/nexify-logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+47-921-46-050",
-        "contactType": "customer service"
-      }
-    },
-    {
-      "@type": "WebSite",
-      "name": "Nexify CRM Systems",
-      "url": "https://nexifyhub.no"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Hjem",
-          "item": "https://nexifyhub.no/no/"
-        }
-      ]
-    }
-  ]
-}
-</script>
 ```
 
 ---
 
-## 6. Sitemap.xml
+## 3. Privacy Policy (GDPR) - 3 Languages
+
+### Norwegian (Personvernerklæring)
+
+**Sist oppdatert: Januar 2025**
+
+Nexify CRM Systems AS (org.nr. 936 300 278) tar personvern på alvor. Denne personvernerklæringen forklarer hvordan vi samler inn, bruker og beskytter dine personopplysninger i samsvar med GDPR og norsk personvernlovgivning.
+
+#### 1. Behandlingsansvarlig
+
+Nexify CRM Systems AS er behandlingsansvarlig for personopplysningene vi samler inn.
+
+**Kontaktinformasjon:**
+- E-post: info@nexifyhub.no
+- Telefon: +47 921 46 050
+- Adresse: Porsgrunn, Norge
+- Org.nr: 936 300 278
+
+#### 2. Hvilke opplysninger vi samler inn
+
+Vi samler inn følgende personopplysninger:
+
+- **Kontaktinformasjon:** Navn, e-postadresse, telefonnummer, bedriftsnavn
+- **Teknisk informasjon:** IP-adresse, nettlesertype, operativsystem
+- **Bruksdata:** Sidevisninger, klikk, tid på siden
+- **Kommunikasjon:** Meldinger sendt via kontaktskjema eller e-post
+
+#### 3. Formål med behandlingen
+
+Vi behandler personopplysninger for følgende formål:
+
+- Levere våre tjenester og produkter
+- Svare på henvendelser og gi kundesupport
+- Forbedre nettsiden og brukeropplevelsen
+- Sende relevant informasjon om våre tjenester (kun med samtykke)
+- Oppfylle juridiske forpliktelser
+
+#### 4. Rettslig grunnlag
+
+Vi behandler personopplysninger basert på:
+
+- **Samtykke:** For markedsføring og nyhetsbrev
+- **Avtale:** For å levere bestilte tjenester
+- **Berettiget interesse:** For å forbedre våre tjenester
+- **Juridisk forpliktelse:** For regnskap og skatteformål
+
+#### 5. Deling av opplysninger
+
+Vi deler ikke personopplysninger med tredjeparter, unntatt:
+
+- Tjenesteleverandører som hjelper oss med drift (hosting, e-post)
+- Når det er påkrevd ved lov
+- Med ditt uttrykkelige samtykke
+
+Alle våre leverandører er underlagt databehandleravtaler.
+
+#### 6. Dine rettigheter
+
+Du har følgende rettigheter:
+
+- **Innsyn:** Be om kopi av dine personopplysninger
+- **Retting:** Korrigere uriktige opplysninger
+- **Sletting:** Be om sletting av dine opplysninger
+- **Begrensning:** Begrense behandlingen av dine opplysninger
+- **Dataportabilitet:** Motta dine data i et strukturert format
+- **Innsigelse:** Protestere mot behandling basert på berettiget interesse
+
+Kontakt oss på info@nexifyhub.no for å utøve dine rettigheter.
+
+#### 7. Informasjonskapsler (Cookies)
+
+Vi bruker informasjonskapsler for å:
+
+- Huske dine preferanser
+- Analysere trafikk på nettsiden
+- Forbedre brukeropplevelsen
+
+Du kan administrere cookies i nettleserinnstillingene dine.
+
+#### 8. Oppbevaring av data
+
+Vi oppbevarer personopplysninger så lenge det er nødvendig for formålet de ble samlet inn for, eller så lenge loven krever det. Kontaktinformasjon fra kunder oppbevares i 5 år etter avsluttet kundeforhold.
+
+#### 9. Sikkerhet
+
+Vi bruker tekniske og organisatoriske tiltak for å beskytte dine personopplysninger, inkludert:
+
+- SSL-kryptering
+- Sikker lagring
+- Begrenset tilgang
+- Regelmessige sikkerhetsgjennomganger
+
+#### 10. Klage
+
+Hvis du mener vi behandler personopplysninger i strid med regelverket, kan du klage til Datatilsynet:
+
+Datatilsynet
+Postboks 458 Sentrum
+0105 Oslo
+www.datatilsynet.no
+
+#### 11. Endringer
+
+Vi kan oppdatere denne personvernerklæringen. Vesentlige endringer vil bli kommunisert på nettsiden vår.
+
+---
+
+### English (Privacy Policy)
+
+**Last updated: January 2025**
+
+Nexify CRM Systems AS (Org. No. 936 300 278) takes privacy seriously. This privacy policy explains how we collect, use, and protect your personal data in accordance with GDPR and Norwegian privacy legislation.
+
+#### 1. Data Controller
+
+Nexify CRM Systems AS is the data controller for the personal data we collect.
+
+**Contact information:**
+- Email: info@nexifyhub.no
+- Phone: +47 921 46 050
+- Address: Porsgrunn, Norway
+- Org. No: 936 300 278
+
+#### 2. Data We Collect
+
+We collect the following personal data:
+
+- **Contact information:** Name, email address, phone number, company name
+- **Technical information:** IP address, browser type, operating system
+- **Usage data:** Page views, clicks, time on page
+- **Communications:** Messages sent via contact form or email
+
+#### 3. Purpose of Processing
+
+We process personal data for the following purposes:
+
+- Deliver our services and products
+- Respond to inquiries and provide customer support
+- Improve our website and user experience
+- Send relevant information about our services (only with consent)
+- Fulfill legal obligations
+
+#### 4. Legal Basis
+
+We process personal data based on:
+
+- **Consent:** For marketing and newsletters
+- **Contract:** To deliver ordered services
+- **Legitimate interest:** To improve our services
+- **Legal obligation:** For accounting and tax purposes
+
+#### 5. Data Sharing
+
+We do not share personal data with third parties, except:
+
+- Service providers who help us with operations (hosting, email)
+- When required by law
+- With your explicit consent
+
+All our suppliers are subject to data processing agreements.
+
+#### 6. Your Rights
+
+You have the following rights:
+
+- **Access:** Request a copy of your personal data
+- **Rectification:** Correct inaccurate information
+- **Erasure:** Request deletion of your data
+- **Restriction:** Limit the processing of your data
+- **Data portability:** Receive your data in a structured format
+- **Objection:** Object to processing based on legitimate interest
+
+Contact us at info@nexifyhub.no to exercise your rights.
+
+#### 7. Cookies
+
+We use cookies to:
+
+- Remember your preferences
+- Analyze website traffic
+- Improve user experience
+
+You can manage cookies in your browser settings.
+
+#### 8. Data Retention
+
+We retain personal data as long as necessary for the purpose for which it was collected, or as required by law. Customer contact information is retained for 5 years after the end of the customer relationship.
+
+#### 9. Security
+
+We use technical and organizational measures to protect your personal data, including:
+
+- SSL encryption
+- Secure storage
+- Limited access
+- Regular security reviews
+
+#### 10. Complaints
+
+If you believe we are processing personal data in violation of regulations, you can file a complaint with the Norwegian Data Protection Authority:
+
+Datatilsynet
+Postboks 458 Sentrum
+0105 Oslo
+www.datatilsynet.no
+
+#### 11. Changes
+
+We may update this privacy policy. Significant changes will be communicated on our website.
+
+---
+
+### Arabic (سياسة الخصوصية)
+
+**آخر تحديث: يناير 2025**
+
+تأخذ شركة Nexify CRM Systems AS (رقم التسجيل: 936 300 278) خصوصيتك على محمل الجد. توضح سياسة الخصوصية هذه كيفية جمع واستخدام وحماية بياناتك الشخصية وفقاً لقانون GDPR الأوروبي وقوانين الخصوصية النرويجية.
+
+#### 1. المسؤول عن البيانات
+
+شركة Nexify CRM Systems AS هي المسؤولة عن البيانات الشخصية التي نجمعها.
+
+**معلومات الاتصال:**
+- البريد الإلكتروني: info@nexifyhub.no
+- الهاتف: +47 921 46 050
+- العنوان: بورسغرون، النرويج
+- رقم التسجيل: 936 300 278
+
+#### 2. البيانات التي نجمعها
+
+نجمع البيانات الشخصية التالية:
+
+- **معلومات الاتصال:** الاسم، البريد الإلكتروني، رقم الهاتف، اسم الشركة
+- **المعلومات التقنية:** عنوان IP، نوع المتصفح، نظام التشغيل
+- **بيانات الاستخدام:** مشاهدات الصفحات، النقرات، الوقت على الصفحة
+- **المراسلات:** الرسائل المرسلة عبر نموذج الاتصال أو البريد الإلكتروني
+
+#### 3. أغراض المعالجة
+
+نعالج البيانات الشخصية للأغراض التالية:
+
+- تقديم خدماتنا ومنتجاتنا
+- الرد على الاستفسارات وتقديم دعم العملاء
+- تحسين موقعنا وتجربة المستخدم
+- إرسال معلومات ذات صلة بخدماتنا (بموافقتك فقط)
+- الوفاء بالالتزامات القانونية
+
+#### 4. الأساس القانوني
+
+نعالج البيانات الشخصية بناءً على:
+
+- **الموافقة:** للتسويق والنشرات الإخبارية
+- **العقد:** لتقديم الخدمات المطلوبة
+- **المصلحة المشروعة:** لتحسين خدماتنا
+- **الالتزام القانوني:** للمحاسبة والضرائب
+
+#### 5. مشاركة البيانات
+
+لا نشارك البيانات الشخصية مع أطراف ثالثة، باستثناء:
+
+- مزودي الخدمات الذين يساعدوننا في العمليات (الاستضافة، البريد الإلكتروني)
+- عندما يتطلب القانون ذلك
+- بموافقتك الصريحة
+
+جميع موردينا ملزمون باتفاقيات معالجة البيانات.
+
+#### 6. حقوقك
+
+لديك الحقوق التالية:
+
+- **الوصول:** طلب نسخة من بياناتك الشخصية
+- **التصحيح:** تصحيح المعلومات غير الدقيقة
+- **الحذف:** طلب حذف بياناتك
+- **التقييد:** تقييد معالجة بياناتك
+- **نقل البيانات:** استلام بياناتك بتنسيق منظم
+- **الاعتراض:** الاعتراض على المعالجة القائمة على المصلحة المشروعة
+
+تواصل معنا على info@nexifyhub.no لممارسة حقوقك.
+
+#### 7. ملفات تعريف الارتباط (Cookies)
+
+نستخدم ملفات تعريف الارتباط من أجل:
+
+- تذكر تفضيلاتك
+- تحليل حركة المرور على الموقع
+- تحسين تجربة المستخدم
+
+يمكنك إدارة ملفات تعريف الارتباط في إعدادات متصفحك.
+
+#### 8. الاحتفاظ بالبيانات
+
+نحتفظ بالبيانات الشخصية طالما كان ذلك ضرورياً للغرض الذي جُمعت من أجله، أو كما يتطلب القانون. يتم الاحتفاظ بمعلومات الاتصال بالعملاء لمدة 5 سنوات بعد انتهاء علاقة العمل.
+
+#### 9. الأمان
+
+نستخدم تدابير تقنية وتنظيمية لحماية بياناتك الشخصية، بما في ذلك:
+
+- تشفير SSL
+- التخزين الآمن
+- الوصول المحدود
+- مراجعات أمنية منتظمة
+
+#### 10. الشكاوى
+
+إذا كنت تعتقد أننا نعالج البيانات الشخصية بشكل مخالف للوائح، يمكنك تقديم شكوى إلى هيئة حماية البيانات النرويجية:
+
+Datatilsynet
+Postboks 458 Sentrum
+0105 Oslo
+www.datatilsynet.no
+
+#### 11. التغييرات
+
+قد نقوم بتحديث سياسة الخصوصية هذه. سيتم الإعلان عن التغييرات الجوهرية على موقعنا.
+
+---
+
+## 4. Terms & Conditions - 3 Languages
+
+### Norwegian (Vilkår og Betingelser)
+
+**Sist oppdatert: Januar 2025**
+
+Disse vilkårene regulerer bruk av tjenester levert av Nexify CRM Systems AS (org.nr. 936 300 278). Ved å bruke våre tjenester aksepterer du disse vilkårene.
+
+#### 1. Aksept av vilkår
+
+Ved å bestille tjenester fra Nexify CRM Systems AS aksepterer du disse vilkårene. Vilkårene gjelder for alle tjenester vi tilbyr, inkludert webutvikling, nettbutikker, SaaS-løsninger og vedlikeholdstjenester.
+
+#### 2. Tjenestebeskrivelse
+
+Vi tilbyr følgende tjenester:
+
+- Nettside utvikling og design
+- Shopify nettbutikk utvikling
+- SaaS og CRM-løsninger
+- API-integrasjoner
+- Vedlikehold og support
+
+Detaljert omfang avtales skriftlig for hvert prosjekt.
+
+#### 3. Priser og betaling
+
+- Alle priser er oppgitt eks. mva.
+- Betaling skjer etter avtalt betalingsplan
+- Standard betalingsbetingelser: 50% ved oppstart, 50% ved levering
+- Ved forsinket betaling påløper forsinkelsesrente iht. forsinkelsesrenteloven
+- Vi forbeholder oss retten til å holde tilbake leveranser ved manglende betaling
+
+#### 4. Leveranse og tidsfrister
+
+- Leveringstid avtales for hvert prosjekt
+- Forsinkelser grunnet manglende tilbakemelding fra kunden påvirker ikke vår leveringsplikt
+- Vi informerer om eventuelle forsinkelser så snart som mulig
+- Force majeure-hendelser fritar oss fra leveringsforpliktelser
+
+#### 5. Kundens forpliktelser
+
+Kunden forplikter seg til å:
+
+- Levere nødvendig materiale og informasjon i tide
+- Gi tilbakemelding innen avtalte frister
+- Sikre at levert innhold ikke krenker tredjeparters rettigheter
+- Betale i henhold til avtalt betalingsplan
+
+#### 6. Immaterielle rettigheter
+
+- Kunden får full eiendomsrett til ferdig levert arbeid etter fullstendig betaling
+- Nexify beholder rett til å bruke prosjektet i portefølje og markedsføring
+- Tredjepartskomponenter og lisenser følger sine respektive vilkår
+- Kildekode leveres etter avtale
+
+#### 7. Garanti og support
+
+- Vi gir 30 dagers garanti på feil i levert arbeid
+- Support-perioden avtales for hvert prosjekt
+- Garantien dekker ikke feil forårsaket av kunden eller tredjeparter
+- Endringer utover opprinnelig avtale faktureres separat
+
+#### 8. Ansvarsbegrensning
+
+- Vårt ansvar er begrenset til verdien av det aktuelle prosjektet
+- Vi er ikke ansvarlige for indirekte tap, tapt fortjeneste eller følgeskader
+- Vi er ikke ansvarlige for tap grunnet force majeure
+- Kunden er ansvarlig for backup av eget innhold
+
+#### 9. Konfidensialitet
+
+Begge parter forplikter seg til å behandle konfidensiell informasjon fortrolig. Dette inkluderer forretningshemmeligheter, tekniske løsninger og kundedata.
+
+#### 10. Oppsigelse
+
+- Løpende avtaler kan sies opp med 30 dagers varsel
+- Ved vesentlig mislighold kan avtalen heves med umiddelbar virkning
+- Allerede utført arbeid faktureres ved oppsigelse
+- Kunden beholder rettigheter til ferdig levert arbeid
+
+#### 11. Tvister
+
+- Disse vilkårene er underlagt norsk lov
+- Tvister søkes løst gjennom forhandlinger
+- Verneting er Porsgrunn tingrett
+
+#### 12. Kontakt
+
+For spørsmål om disse vilkårene, kontakt oss:
+
+Nexify CRM Systems AS
+E-post: info@nexifyhub.no
+Telefon: +47 921 46 050
+Org.nr: 936 300 278
+
+---
+
+### English (Terms & Conditions)
+
+**Last updated: January 2025**
+
+These terms govern the use of services provided by Nexify CRM Systems AS (Org. No. 936 300 278). By using our services, you accept these terms.
+
+#### 1. Acceptance of Terms
+
+By ordering services from Nexify CRM Systems AS, you accept these terms. The terms apply to all services we offer, including web development, e-commerce stores, SaaS solutions, and maintenance services.
+
+#### 2. Service Description
+
+We offer the following services:
+
+- Website development and design
+- Shopify e-commerce development
+- SaaS and CRM solutions
+- API integrations
+- Maintenance and support
+
+Detailed scope is agreed in writing for each project.
+
+#### 3. Prices and Payment
+
+- All prices are quoted excluding VAT
+- Payment is made according to the agreed payment plan
+- Standard payment terms: 50% at start, 50% upon delivery
+- Late payment incurs interest according to applicable law
+- We reserve the right to withhold deliveries in case of non-payment
+
+#### 4. Delivery and Deadlines
+
+- Delivery time is agreed for each project
+- Delays due to lack of feedback from the customer do not affect our delivery obligation
+- We inform about any delays as soon as possible
+- Force majeure events exempt us from delivery obligations
+
+#### 5. Customer Obligations
+
+The customer commits to:
+
+- Provide necessary materials and information on time
+- Give feedback within agreed deadlines
+- Ensure that delivered content does not infringe third-party rights
+- Pay according to the agreed payment plan
+
+#### 6. Intellectual Property Rights
+
+- The customer receives full ownership of completed work after full payment
+- Nexify retains the right to use the project in portfolio and marketing
+- Third-party components and licenses follow their respective terms
+- Source code is delivered upon agreement
+
+#### 7. Warranty and Support
+
+- We provide a 30-day warranty on errors in delivered work
+- Support period is agreed for each project
+- The warranty does not cover errors caused by the customer or third parties
+- Changes beyond the original agreement are invoiced separately
+
+#### 8. Limitation of Liability
+
+- Our liability is limited to the value of the specific project
+- We are not liable for indirect losses, lost profits, or consequential damages
+- We are not liable for losses due to force majeure
+- The customer is responsible for backup of their own content
+
+#### 9. Confidentiality
+
+Both parties commit to treating confidential information as confidential. This includes trade secrets, technical solutions, and customer data.
+
+#### 10. Termination
+
+- Ongoing agreements can be terminated with 30 days notice
+- In case of material breach, the agreement can be terminated with immediate effect
+- Work already performed is invoiced upon termination
+- The customer retains rights to completed delivered work
+
+#### 11. Disputes
+
+- These terms are governed by Norwegian law
+- Disputes are sought resolved through negotiations
+- Legal venue is Porsgrunn District Court
+
+#### 12. Contact
+
+For questions about these terms, contact us:
+
+Nexify CRM Systems AS
+Email: info@nexifyhub.no
+Phone: +47 921 46 050
+Org. No: 936 300 278
+
+---
+
+### Arabic (الشروط والأحكام)
+
+**آخر تحديث: يناير 2025**
+
+تحكم هذه الشروط استخدام الخدمات المقدمة من شركة Nexify CRM Systems AS (رقم التسجيل: 936 300 278). باستخدام خدماتنا، فإنك توافق على هذه الشروط.
+
+#### 1. قبول الشروط
+
+بطلب خدمات من Nexify CRM Systems AS، فإنك توافق على هذه الشروط. تنطبق الشروط على جميع الخدمات التي نقدمها، بما في ذلك تطوير المواقع والمتاجر الإلكترونية وحلول SaaS وخدمات الصيانة.
+
+#### 2. وصف الخدمات
+
+نقدم الخدمات التالية:
+
+- تطوير وتصميم المواقع
+- تطوير متاجر Shopify
+- حلول SaaS و CRM
+- تكاملات API
+- الصيانة والدعم
+
+يتم الاتفاق على النطاق التفصيلي كتابياً لكل مشروع.
+
+#### 3. الأسعار والدفع
+
+- جميع الأسعار مذكورة بدون ضريبة القيمة المضافة
+- يتم الدفع وفقاً لخطة الدفع المتفق عليها
+- شروط الدفع القياسية: 50% عند البدء، 50% عند التسليم
+- يترتب على التأخر في الدفع فوائد وفقاً للقانون المعمول به
+- نحتفظ بالحق في حجب التسليمات في حالة عدم الدفع
+
+#### 4. التسليم والمواعيد النهائية
+
+- يتم الاتفاق على وقت التسليم لكل مشروع
+- التأخيرات بسبب عدم تقديم العميل للملاحظات لا تؤثر على التزامنا بالتسليم
+- نبلغ عن أي تأخيرات في أقرب وقت ممكن
+- أحداث القوة القاهرة تعفينا من التزامات التسليم
+
+#### 5. التزامات العميل
+
+يلتزم العميل بـ:
+
+- تقديم المواد والمعلومات اللازمة في الوقت المحدد
+- تقديم الملاحظات ضمن المواعيد المتفق عليها
+- التأكد من أن المحتوى المقدم لا ينتهك حقوق الأطراف الثالثة
+- الدفع وفقاً لخطة الدفع المتفق عليها
+
+#### 6. حقوق الملكية الفكرية
+
+- يحصل العميل على ملكية كاملة للعمل المكتمل بعد الدفع الكامل
+- تحتفظ Nexify بحق استخدام المشروع في المحفظة والتسويق
+- مكونات وتراخيص الطرف الثالث تتبع شروطها الخاصة
+- يتم تسليم الكود المصدري بناءً على الاتفاق
+
+#### 7. الضمان والدعم
+
+- نقدم ضمان 30 يوماً على الأخطاء في العمل المسلم
+- يتم الاتفاق على فترة الدعم لكل مشروع
+- لا يغطي الضمان الأخطاء التي يسببها العميل أو أطراف ثالثة
+- التغييرات خارج نطاق الاتفاق الأصلي تُفوتر بشكل منفصل
+
+#### 8. حدود المسؤولية
+
+- مسؤوليتنا محدودة بقيمة المشروع المحدد
+- لسنا مسؤولين عن الخسائر غير المباشرة أو الأرباح الفائتة أو الأضرار التبعية
+- لسنا مسؤولين عن الخسائر بسبب القوة القاهرة
+- العميل مسؤول عن النسخ الاحتياطي لمحتواه الخاص
+
+#### 9. السرية
+
+يلتزم الطرفان بمعاملة المعلومات السرية بسرية. يشمل ذلك الأسرار التجارية والحلول التقنية وبيانات العملاء.
+
+#### 10. الإنهاء
+
+- يمكن إنهاء الاتفاقيات الجارية بإشعار مدته 30 يوماً
+- في حالة الإخلال الجوهري، يمكن إنهاء الاتفاقية بأثر فوري
+- يتم فوترة العمل المنجز بالفعل عند الإنهاء
+- يحتفظ العميل بحقوق العمل المكتمل والمسلم
+
+#### 11. النزاعات
+
+- تخضع هذه الشروط للقانون النرويجي
+- يُسعى لحل النزاعات من خلال المفاوضات
+- المكان القانوني هو محكمة بورسغرون المحلية
+
+#### 12. الاتصال
+
+للاستفسارات حول هذه الشروط، تواصل معنا:
+
+Nexify CRM Systems AS
+البريد الإلكتروني: info@nexifyhub.no
+الهاتف: +47 921 46 050
+رقم التسجيل: 936 300 278
+
+---
+
+## 5. Sitemap.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -731,76 +727,18 @@ H1: Terms & Conditions
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/"/>
     <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/"/>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://nexifyhub.no/ar/services/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/services/"/>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/tjenester/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/services/"/>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/ar/projects/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/projects/"/>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/prosjekter/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/projects/"/>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/ar/pricing/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/pricing/"/>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/priser/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/pricing/"/>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/ar/about/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/about/"/>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/om-oss/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/about/"/>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/ar/contact/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/contact/"/>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/kontakt/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/contact/"/>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/ar/blog/</loc>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/blog/"/>
-    <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/blogg/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/blog/"/>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/ar/privacy/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/ar/terms/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+  <url><loc>https://nexifyhub.no/ar/services/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nexifyhub.no/ar/projects/</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nexifyhub.no/ar/pricing/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nexifyhub.no/ar/about/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nexifyhub.no/ar/contact/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nexifyhub.no/ar/blog/</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nexifyhub.no/ar/privacy/</loc><lastmod>2025-01-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://nexifyhub.no/ar/terms/</loc><lastmod>2025-01-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
   <!-- Norwegian Pages -->
   <url>
@@ -808,58 +746,18 @@ H1: Terms & Conditions
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/"/>
     <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/"/>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://nexifyhub.no/no/tjenester/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/no/prosjekter/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/no/priser/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/no/om-oss/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/no/kontakt/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/no/blogg/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/no/privacy/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/no/terms/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+  <url><loc>https://nexifyhub.no/no/tjenester/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nexifyhub.no/no/prosjekter/</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nexifyhub.no/no/priser/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nexifyhub.no/no/om-oss/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nexifyhub.no/no/kontakt/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nexifyhub.no/no/blogg/</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nexifyhub.no/no/personvern/</loc><lastmod>2025-01-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://nexifyhub.no/no/vilkar/</loc><lastmod>2025-01-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
   <!-- English Pages -->
   <url>
@@ -867,65 +765,25 @@ H1: Terms & Conditions
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexifyhub.no/ar/"/>
     <xhtml:link rel="alternate" hreflang="no" href="https://nexifyhub.no/no/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexifyhub.no/en/"/>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://nexifyhub.no/en/services/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/en/projects/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/en/pricing/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/en/about/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/en/contact/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/en/blog/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/en/privacy/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://nexifyhub.no/en/terms/</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+  <url><loc>https://nexifyhub.no/en/services/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nexifyhub.no/en/projects/</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nexifyhub.no/en/pricing/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nexifyhub.no/en/about/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nexifyhub.no/en/contact/</loc><lastmod>2025-01-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nexifyhub.no/en/blog/</loc><lastmod>2025-01-01</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nexifyhub.no/en/privacy/</loc><lastmod>2025-01-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://nexifyhub.no/en/terms/</loc><lastmod>2025-01-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
 </urlset>
 ```
 
 ---
 
-## 7. Robots.txt
+## 6. Robots.txt
 
 ```txt
 # Nexify CRM Systems AS
@@ -937,7 +795,7 @@ Allow: /
 # Sitemap
 Sitemap: https://nexifyhub.no/sitemap.xml
 
-# Disallow admin/private areas (if any)
+# Disallow admin/private areas
 Disallow: /admin/
 Disallow: /api/
 Disallow: /_astro/
@@ -945,81 +803,28 @@ Disallow: /_astro/
 
 ---
 
-## 8. Performance-Aware SEO Recommendations
+## 7. Footer Information (Updated)
 
-### Image Optimization
+### Norwegian
+```
+© 2025 Nexify CRM Systems AS. Alle rettigheter reservert.
+Org.nr: 936 300 278 | Porsgrunn, Norge
+```
 
-| Recommendation | Implementation |
-|----------------|----------------|
-| **WebP/AVIF Format** | Convert all PNG/JPG images to WebP. Use AVIF as progressive enhancement. |
-| **Lazy Loading** | Add `loading="lazy"` to all images below the fold. |
-| **Responsive Images** | Use `srcset` for different screen sizes. |
-| **Image Compression** | Compress images to <100KB for hero, <50KB for thumbnails. |
-| **Alt Text** | Include descriptive alt text in the user's language. |
+### English
+```
+© 2025 Nexify CRM Systems AS. All rights reserved.
+Org. No: 936 300 278 | Porsgrunn, Norway
+```
 
-### CSS/JS Optimization
-
-| Recommendation | Implementation |
-|----------------|----------------|
-| **Critical CSS** | Inline critical CSS in `<head>` for above-the-fold content. |
-| **Async/Defer JS** | Use `defer` for non-critical JavaScript. |
-| **Tree Shaking** | Remove unused CSS/JS with build tools. |
-| **Minification** | Minify all CSS/JS files in production. |
-| **No Heavy Libraries** | Avoid jQuery, Bootstrap JS. Use vanilla JS or lightweight alternatives. |
-
-### HTML Semantic Structure
-
-| Element | Usage |
-|---------|-------|
-| `<header>` | Site header with navigation |
-| `<nav>` | Main navigation menu |
-| `<main>` | Primary page content |
-| `<article>` | Blog posts, project cards |
-| `<section>` | Page sections (Hero, Services, etc.) |
-| `<aside>` | Sidebar content, related links |
-| `<footer>` | Site footer |
-
-### Core Web Vitals Targets
-
-| Metric | Target | How to Achieve |
-|--------|--------|----------------|
-| **LCP** (Largest Contentful Paint) | < 2.5s | Optimize hero image, use CDN |
-| **FID** (First Input Delay) | < 100ms | Minimize JS, defer non-critical |
-| **CLS** (Cumulative Layout Shift) | < 0.1 | Set image dimensions, avoid dynamic content |
-
-### Additional SEO Best Practices
-
-1. **Canonical URLs** - Add `<link rel="canonical">` to every page
-2. **Hreflang Tags** - Implement for all language versions
-3. **Mobile-First** - Design for mobile, enhance for desktop
-4. **HTTPS** - Ensure SSL certificate is active
-5. **Page Speed** - Target < 3s load time on 3G
-6. **Internal Linking** - Link between related pages
-7. **External Links** - Use `rel="noopener"` for external links
-8. **Schema Markup** - Implement JSON-LD for rich snippets
+### Arabic
+```
+© 2025 Nexify CRM Systems AS. جميع الحقوق محفوظة.
+رقم التسجيل: 936 300 278 | بورسغرون، النرويج
+```
 
 ---
 
-## 9. Implementation Checklist
-
-- [ ] Add meta title/description to all 28 pages
-- [ ] Add OG/Twitter meta tags to all pages
-- [ ] Verify H1-H3 structure on all pages
-- [ ] Add alt text to all images
-- [ ] Implement JSON-LD Organization schema
-- [ ] Implement JSON-LD Website schema
-- [ ] Implement JSON-LD Breadcrumbs on all pages
-- [ ] Create and upload sitemap.xml
-- [ ] Create and upload robots.txt
-- [ ] Optimize all images (WebP, compression)
-- [ ] Add lazy loading to below-fold images
-- [ ] Minify CSS/JS
-- [ ] Test with Google PageSpeed Insights
-- [ ] Test with Google Search Console
-- [ ] Submit sitemap to Google Search Console
-
----
-
-**Document Version:** 1.0  
-**Last Updated:** December 28, 2024  
+**Document Version:** 2.0  
+**Last Updated:** January 2025  
 **Author:** Nexify Development Team

@@ -158,7 +158,7 @@
   "contact": {
     "hero": { "badge": "Kontakt", "title": "La oss snakke sammen", "subtitle": "Har du et prosjekt i tankene?" },
     "form": { "title": "Send oss en melding", "name": { "label": "Navn", "placeholder": "Ditt navn" }, "email": { "label": "E-post", "placeholder": "din@epost.no" }, "phone": { "label": "Telefon", "placeholder": "+47 XXX XX XXX" }, "company": { "label": "Bedrift", "placeholder": "Din bedrift" }, "service": { "label": "Hva trenger du hjelp med?", "options": ["Velg en tjeneste", "Nettside", "Shopify nettbutikk", "SaaS / CRM løsning", "Integrasjoner", "Annet"] }, "budget": { "label": "Budsjett", "options": ["Velg budsjettramme", "Under 10 000 NOK", "10 000 - 25 000 NOK", "25 000 - 50 000 NOK", "50 000 - 100 000 NOK", "Over 100 000 NOK"] }, "message": { "label": "Melding", "placeholder": "Fortell oss om prosjektet ditt..." }, "submit": "Send melding", "success": "Takk for henvendelsen! Vi svarer innen 24 timer." },
-    "info": { "title": "Kontaktinformasjon", "email": { "label": "E-post", "value": "kontakt@nexify.no" }, "phone": { "label": "Telefon", "value": "+47 921 46 050" }, "address": { "label": "Adresse", "value": "Oslo, Norge" }, "hours": { "label": "Åpningstider", "value": "Man-Fre: 09:00-17:00" }, "whatsapp": { "title": "Chat på WhatsApp", "subtitle": "Rask respons" }, "response": { "title": "Rask respons garantert", "content": "Vi svarer innen 24 timer." } },
+    "info": { "title": "Kontaktinformasjon", "email": { "label": "E-post", "value": "info@nexifyhub.no" }, "phone": { "label": "Telefon", "value": "+47 921 46 050" }, "address": { "label": "Adresse", "value": "Porsgrunn, Norge" }, "hours": { "label": "Åpningstider", "value": "Man-Fre: 09:00-17:00" }, "whatsapp": { "title": "Chat på WhatsApp", "subtitle": "Rask respons" }, "response": { "title": "Rask respons garantert", "content": "Vi svarer innen 24 timer." } },
     "faq": { "badge": "FAQ", "title": "Vanlige spørsmål", "items": [{ "question": "Hvor lang tid tar det?", "answer": "1-2 uker for enkel side, 4-8 uker for større prosjekter." }, { "question": "Tilbyr dere vedlikehold?", "answer": "Ja, fra 990 NOK/mnd." }, { "question": "Kan jeg oppdatere innholdet selv?", "answer": "Absolutt! Vi bruker brukervennlige CMS-løsninger." }] },
     "cta_section": { "title": "Klar for å starte?", "subtitle": "Book et gratis møte.", "cta_primary": "Ring: +47 921 46 050", "cta_secondary": "Send e-post" }
   },
@@ -175,8 +175,47 @@
     "services_links": { "title": "Tjenester", "web_development": "Nettside Utvikling", "ecommerce": "Nettbutikk", "saas": "SaaS / CRM", "hosting": "Hosting & Support" },
     "contact": { "title": "Kontakt Oss", "phone": "+47 921 46 050", "email": "info@nexifyhub.no" },
     "legal": { "privacy": "Personvern", "terms": "Vilkår" },
-    "copyright": "© 2024 Nexify CRM Systems AS. Alle rettigheter reservert."
+    "copyright": "© 2025 Nexify CRM Systems AS. Alle rettigheter reservert.",
+    "org_nr": "Org.nr: 936 300 278",
+    "social": { "facebook": "https://www.facebook.com/profile.php?id=61567575882753", "tiktok": "https://www.tiktok.com/@nexifyhub", "linkedin": "https://www.linkedin.com/company/106097428/", "whatsapp": "https://wa.me/4792146050" }
   },
   "common": { "loading": "Laster...", "error": "En feil oppstod", "success": "Suksess", "back": "Tilbake", "next": "Neste", "close": "Lukk", "see_more": "Se mer", "view_details": "Se detaljer", "get_started": "Kom i gang", "learn_more": "Lær mer", "contact_us": "Kontakt oss", "book_meeting": "Book et møte", "get_quote": "Få tilbud" },
-  "urls": { "home": "/no/", "services": "/no/tjenester", "projects": "/no/prosjekter", "pricing": "/no/priser", "about": "/no/om-oss", "contact": "/no/kontakt", "blog": "/no/blogg", "privacy": "/no/personvern", "terms": "/no/vilkar" }
+  "urls": { "home": "/no/", "services": "/no/tjenester", "projects": "/no/prosjekter", "pricing": "/no/priser", "about": "/no/om-oss", "contact": "/no/kontakt", "blog": "/no/blogg", "privacy": "/no/personvern", "terms": "/no/vilkar" },
+  "privacy": {
+    "title": "Personvernerklæring",
+    "last_updated": "Sist oppdatert: Januar 2025",
+    "intro": "Nexify CRM Systems AS (org.nr. 936 300 278) tar personvern på alvor. Denne personvernerklæringen forklarer hvordan vi samler inn, bruker og beskytter dine personopplysninger i samsvar med GDPR og norsk personvernlovgivning.",
+    "sections": [
+      { "title": "1. Behandlingsansvarlig", "content": "Nexify CRM Systems AS er behandlingsansvarlig for personopplysningene vi samler inn.\n\nKontaktinformasjon:\nE-post: info@nexifyhub.no\nTelefon: +47 921 46 050\nAdresse: Porsgrunn, Norge\nOrg.nr: 936 300 278" },
+      { "title": "2. Hvilke opplysninger vi samler inn", "content": "Vi samler inn følgende personopplysninger:\n\n• Kontaktinformasjon: Navn, e-postadresse, telefonnummer, bedriftsnavn\n• Teknisk informasjon: IP-adresse, nettlesertype, operativsystem\n• Bruksdata: Sidevisninger, klikk, tid på siden\n• Kommunikasjon: Meldinger sendt via kontaktskjema eller e-post" },
+      { "title": "3. Formål med behandlingen", "content": "Vi behandler personopplysninger for følgende formål:\n\n• Levere våre tjenester og produkter\n• Svare på henvendelser og gi kundesupport\n• Forbedre nettsiden og brukeropplevelsen\n• Sende relevant informasjon om våre tjenester (kun med samtykke)\n• Oppfylle juridiske forpliktelser" },
+      { "title": "4. Rettslig grunnlag", "content": "Vi behandler personopplysninger basert på:\n\n• Samtykke: For markedsføring og nyhetsbrev\n• Avtale: For å levere bestilte tjenester\n• Berettiget interesse: For å forbedre våre tjenester\n• Juridisk forpliktelse: For regnskap og skatteformål" },
+      { "title": "5. Deling av opplysninger", "content": "Vi deler ikke personopplysninger med tredjeparter, unntatt:\n\n• Tjenesteleverandører som hjelper oss med drift (hosting, e-post)\n• Når det er påkrevd ved lov\n• Med ditt uttrykkelige samtykke\n\nAlle våre leverandører er underlagt databehandleravtaler." },
+      { "title": "6. Dine rettigheter", "content": "Du har følgende rettigheter:\n\n• Innsyn: Be om kopi av dine personopplysninger\n• Retting: Korrigere uriktige opplysninger\n• Sletting: Be om sletting av dine opplysninger\n• Begrensning: Begrense behandlingen av dine opplysninger\n• Dataportabilitet: Motta dine data i et strukturert format\n• Innsigelse: Protestere mot behandling basert på berettiget interesse\n\nKontakt oss på info@nexifyhub.no for å utøve dine rettigheter." },
+      { "title": "7. Informasjonskapsler (Cookies)", "content": "Vi bruker informasjonskapsler for å:\n\n• Huske dine preferanser\n• Analysere trafikk på nettsiden\n• Forbedre brukeropplevelsen\n\nDu kan administrere cookies i nettleserinnstillingene dine." },
+      { "title": "8. Oppbevaring av data", "content": "Vi oppbevarer personopplysninger så lenge det er nødvendig for formålet de ble samlet inn for, eller så lenge loven krever det. Kontaktinformasjon fra kunder oppbevares i 5 år etter avsluttet kundeforhold." },
+      { "title": "9. Sikkerhet", "content": "Vi bruker tekniske og organisatoriske tiltak for å beskytte dine personopplysninger, inkludert:\n\n• SSL-kryptering\n• Sikker lagring\n• Begrenset tilgang\n• Regelmessige sikkerhetsgjennomganger" },
+      { "title": "10. Klage", "content": "Hvis du mener vi behandler personopplysninger i strid med regelverket, kan du klage til Datatilsynet:\n\nDatatilsynet\nPostboks 458 Sentrum\n0105 Oslo\nwww.datatilsynet.no" },
+      { "title": "11. Endringer", "content": "Vi kan oppdatere denne personvernerklæringen. Vesentlige endringer vil bli kommunisert på nettsiden vår." }
+    ]
+  },
+  "terms": {
+    "title": "Vilkår og Betingelser",
+    "last_updated": "Sist oppdatert: Januar 2025",
+    "intro": "Disse vilkårene regulerer bruk av tjenester levert av Nexify CRM Systems AS (org.nr. 936 300 278). Ved å bruke våre tjenester aksepterer du disse vilkårene.",
+    "sections": [
+      { "title": "1. Aksept av vilkår", "content": "Ved å bestille tjenester fra Nexify CRM Systems AS aksepterer du disse vilkårene. Vilkårene gjelder for alle tjenester vi tilbyr, inkludert webutvikling, nettbutikker, SaaS-løsninger og vedlikeholdstjenester." },
+      { "title": "2. Tjenestebeskrivelse", "content": "Vi tilbyr følgende tjenester:\n\n• Nettside utvikling og design\n• Shopify nettbutikk utvikling\n• SaaS og CRM-løsninger\n• API-integrasjoner\n• Vedlikehold og support\n\nDetaljert omfang avtales skriftlig for hvert prosjekt." },
+      { "title": "3. Priser og betaling", "content": "• Alle priser er oppgitt eks. mva.\n• Betaling skjer etter avtalt betalingsplan\n• Standard betalingsbetingelser: 50% ved oppstart, 50% ved levering\n• Ved forsinket betaling påløper forsinkelsesrente iht. forsinkelsesrenteloven\n• Vi forbeholder oss retten til å holde tilbake leveranser ved manglende betaling" },
+      { "title": "4. Leveranse og tidsfrister", "content": "• Leveringstid avtales for hvert prosjekt\n• Forsinkelser grunnet manglende tilbakemelding fra kunden påvirker ikke vår leveringsplikt\n• Vi informerer om eventuelle forsinkelser så snart som mulig\n• Force majeure-hendelser fritar oss fra leveringsforpliktelser" },
+      { "title": "5. Kundens forpliktelser", "content": "Kunden forplikter seg til å:\n\n• Levere nødvendig materiale og informasjon i tide\n• Gi tilbakemelding innen avtalte frister\n• Sikre at levert innhold ikke krenker tredjeparters rettigheter\n• Betale i henhold til avtalt betalingsplan" },
+      { "title": "6. Immaterielle rettigheter", "content": "• Kunden får full eiendomsrett til ferdig levert arbeid etter fullstendig betaling\n• Nexify beholder rett til å bruke prosjektet i portefølje og markedsføring\n• Tredjepartskomponenter og lisenser følger sine respektive vilkår\n• Kildekode leveres etter avtale" },
+      { "title": "7. Garanti og support", "content": "• Vi gir 30 dagers garanti på feil i levert arbeid\n• Support-perioden avtales for hvert prosjekt\n• Garantien dekker ikke feil forårsaket av kunden eller tredjeparter\n• Endringer utover opprinnelig avtale faktureres separat" },
+      { "title": "8. Ansvarsbegrensning", "content": "• Vårt ansvar er begrenset til verdien av det aktuelle prosjektet\n• Vi er ikke ansvarlige for indirekte tap, tapt fortjeneste eller følgeskader\n• Vi er ikke ansvarlige for tap grunnet force majeure\n• Kunden er ansvarlig for backup av eget innhold" },
+      { "title": "9. Konfidensialitet", "content": "Begge parter forplikter seg til å behandle konfidensiell informasjon fortrolig. Dette inkluderer forretningshemmeligheter, tekniske løsninger og kundedata." },
+      { "title": "10. Oppsigelse", "content": "• Løpende avtaler kan sies opp med 30 dagers varsel\n• Ved vesentlig mislighold kan avtalen heves med umiddelbar virkning\n• Allerede utført arbeid faktureres ved oppsigelse\n• Kunden beholder rettigheter til ferdig levert arbeid" },
+      { "title": "11. Tvister", "content": "• Disse vilkårene er underlagt norsk lov\n• Tvister søkes løst gjennom forhandlinger\n• Verneting er Porsgrunn tingrett" },
+      { "title": "12. Kontakt", "content": "For spørsmål om disse vilkårene, kontakt oss:\n\nNexify CRM Systems AS\nE-post: info@nexifyhub.no\nTelefon: +47 921 46 050\nOrg.nr: 936 300 278" }
+    ]
+  }
 }
