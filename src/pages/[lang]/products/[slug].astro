@@ -1,0 +1,600 @@
+---
+import BaseLayout from '../../../components/layout/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { type Language, languagesList, getTranslations } from '../../../lib/i18n';
+import { ShoppingCart, Code, Rocket, CheckCircle, ArrowRight, Monitor, Smartphone, Globe, Zap, Shield, Clock, Users, Star, MessageCircle } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const products = [
+    {
+      slug: 'flavor-kitchen',
+      category: 'landing',
+      image: '/images/products/flavor-restaurant.png',
+      tech: ['Astro', 'Tailwind CSS', 'TypeScript'],
+      price: '15 000',
+      status: 'ready',
+      no: {
+        name: 'Flavor Kitchen',
+        type: 'Restaurant Landingsside',
+        shortDesc: 'Elegant landingsside for restauranter med reservasjonssystem',
+        description: 'En komplett og moderne landingsside designet spesielt for restauranter og kafeer. Inkluderer elegant design med matfotografi, reservasjonsskjema, meny-visning, og kontaktinformasjon. Perfekt for å tiltrekke nye kunder og øke bordreservasjoner.',
+        features: [
+          'Responsivt design for alle enheter',
+          'Integrert reservasjonsskjema',
+          'Meny-seksjon med kategorier',
+          'Bildegalleri med lightbox',
+          'Google Maps integrasjon',
+          'SEO-optimalisert',
+          'Kontaktskjema med validering',
+          'Sosiale medier-lenker'
+        ],
+        includes: [
+          'Komplett kildekode',
+          'Dokumentasjon',
+          '5 sider (Hjem, Meny, Om oss, Galleri, Kontakt)',
+          'Gratis oppsett-veiledning',
+          '30 dagers e-post support'
+        ],
+        idealFor: 'Restauranter, kafeer, barer, cateringselskaper'
+      },
+      en: {
+        name: 'Flavor Kitchen',
+        type: 'Restaurant Landing Page',
+        shortDesc: 'Elegant landing page for restaurants with reservation system',
+        description: 'A complete and modern landing page designed specifically for restaurants and cafes. Includes elegant design with food photography, reservation form, menu display, and contact information. Perfect for attracting new customers and increasing table reservations.',
+        features: [
+          'Responsive design for all devices',
+          'Integrated reservation form',
+          'Menu section with categories',
+          'Image gallery with lightbox',
+          'Google Maps integration',
+          'SEO optimized',
+          'Contact form with validation',
+          'Social media links'
+        ],
+        includes: [
+          'Complete source code',
+          'Documentation',
+          '5 pages (Home, Menu, About, Gallery, Contact)',
+          'Free setup guide',
+          '30 days email support'
+        ],
+        idealFor: 'Restaurants, cafes, bars, catering companies'
+      },
+      ar: {
+        name: 'فليفور كيتشن',
+        type: 'صفحة هبوط للمطاعم',
+        shortDesc: 'صفحة هبوط أنيقة للمطاعم مع نظام حجز',
+        description: 'صفحة هبوط كاملة وحديثة مصممة خصيصاً للمطاعم والمقاهي. تتضمن تصميم أنيق مع صور الطعام، نموذج حجز، عرض القائمة، ومعلومات الاتصال. مثالية لجذب عملاء جدد وزيادة حجوزات الطاولات.',
+        features: [
+          'تصميم متجاوب لجميع الأجهزة',
+          'نموذج حجز متكامل',
+          'قسم القائمة مع التصنيفات',
+          'معرض صور مع عرض مكبر',
+          'تكامل خرائط جوجل',
+          'محسّن لمحركات البحث',
+          'نموذج اتصال مع التحقق',
+          'روابط وسائل التواصل الاجتماعي'
+        ],
+        includes: [
+          'الكود المصدري الكامل',
+          'التوثيق',
+          '5 صفحات (الرئيسية، القائمة، من نحن، المعرض، اتصل بنا)',
+          'دليل إعداد مجاني',
+          '30 يوم دعم بالبريد الإلكتروني'
+        ],
+        idealFor: 'المطاعم، المقاهي، البارات، شركات التموين'
+      }
+    },
+    {
+      slug: 'nordic-fashion',
+      category: 'ecommerce',
+      image: '/images/products/nordic-fashion-shop.png',
+      tech: ['Shopify', 'Liquid', 'JavaScript', 'SCSS'],
+      price: '35 000',
+      status: 'ready',
+      no: {
+        name: 'Nordic Fashion',
+        type: 'Shopify Nettbutikk',
+        shortDesc: 'Komplett Shopify-butikk for skandinavisk mote',
+        description: 'En premium Shopify-butikk med minimalistisk skandinavisk design. Inkluderer tilpasset tema, produktfiltrering, handlekurv med upselling, og integrert betalingsløsning. Perfekt for motemerker som ønsker en profesjonell nettbutikk.',
+        features: [
+          'Tilpasset Shopify-tema',
+          'Produktfiltrering og søk',
+          'Handlekurv med upselling',
+          'Flere betalingsløsninger',
+          'Lagerstyring',
+          'Fraktkalkulator',
+          'Nyhetsbrev-integrasjon',
+          'Instagram-feed'
+        ],
+        includes: [
+          'Komplett Shopify-tema',
+          'Oppsett av 50 produkter',
+          'Betalingsintegrasjon (Klarna, Vipps)',
+          'Frakt-oppsett for Norge',
+          '60 dagers support'
+        ],
+        idealFor: 'Klesbutikker, motemerker, tilbehørsbutikker'
+      },
+      en: {
+        name: 'Nordic Fashion',
+        type: 'Shopify E-commerce Store',
+        shortDesc: 'Complete Shopify store for Scandinavian fashion',
+        description: 'A premium Shopify store with minimalist Scandinavian design. Includes custom theme, product filtering, cart with upselling, and integrated payment solution. Perfect for fashion brands wanting a professional online store.',
+        features: [
+          'Custom Shopify theme',
+          'Product filtering and search',
+          'Cart with upselling',
+          'Multiple payment solutions',
+          'Inventory management',
+          'Shipping calculator',
+          'Newsletter integration',
+          'Instagram feed'
+        ],
+        includes: [
+          'Complete Shopify theme',
+          'Setup of 50 products',
+          'Payment integration (Stripe, PayPal)',
+          'Shipping setup',
+          '60 days support'
+        ],
+        idealFor: 'Clothing stores, fashion brands, accessory shops'
+      },
+      ar: {
+        name: 'نورديك فاشن',
+        type: 'متجر شوبيفاي إلكتروني',
+        shortDesc: 'متجر شوبيفاي كامل للأزياء الاسكندنافية',
+        description: 'متجر شوبيفاي فاخر بتصميم اسكندنافي بسيط. يتضمن قالب مخصص، تصفية المنتجات، سلة تسوق مع البيع الإضافي، وحل دفع متكامل. مثالي لعلامات الأزياء التي تريد متجراً إلكترونياً احترافياً.',
+        features: [
+          'قالب شوبيفاي مخصص',
+          'تصفية وبحث المنتجات',
+          'سلة تسوق مع البيع الإضافي',
+          'حلول دفع متعددة',
+          'إدارة المخزون',
+          'حاسبة الشحن',
+          'تكامل النشرة الإخبارية',
+          'موجز إنستغرام'
+        ],
+        includes: [
+          'قالب شوبيفاي الكامل',
+          'إعداد 50 منتج',
+          'تكامل الدفع (Stripe, PayPal)',
+          'إعداد الشحن',
+          '60 يوم دعم'
+        ],
+        idealFor: 'متاجر الملابس، علامات الأزياء، متاجر الإكسسوارات'
+      }
+    },
+    {
+      slug: 'taskflow-pro',
+      category: 'saas',
+      image: '/images/products/taskflow-saas.png',
+      tech: ['Next.js', 'React', 'PostgreSQL', 'Prisma', 'Tailwind'],
+      price: '75 000',
+      status: 'development',
+      no: {
+        name: 'TaskFlow Pro',
+        type: 'SaaS Prosjektstyring',
+        shortDesc: 'Komplett prosjektstyrings- og CRM-plattform',
+        description: 'En fullverdig SaaS-løsning for prosjektstyring og kundeoppfølging. Inkluderer dashboard med analytics, oppgavehåndtering, teamsamarbeid, og CRM-funksjoner. Bygget med moderne teknologi og skalerbar arkitektur.',
+        features: [
+          'Interaktivt dashboard',
+          'Oppgave- og prosjektstyring',
+          'Team-samarbeid i sanntid',
+          'CRM med kundeoversikt',
+          'Rapporter og analytics',
+          'Kalender-integrasjon',
+          'Fillagring og deling',
+          'API for integrasjoner'
+        ],
+        includes: [
+          'Komplett kildekode',
+          'Database-oppsett',
+          'Autentisering (OAuth)',
+          'Admin-panel',
+          'API-dokumentasjon',
+          '90 dagers support'
+        ],
+        idealFor: 'Byråer, konsulentselskaper, prosjektledere'
+      },
+      en: {
+        name: 'TaskFlow Pro',
+        type: 'SaaS Project Management',
+        shortDesc: 'Complete project management and CRM platform',
+        description: 'A full-featured SaaS solution for project management and customer follow-up. Includes dashboard with analytics, task management, team collaboration, and CRM features. Built with modern technology and scalable architecture.',
+        features: [
+          'Interactive dashboard',
+          'Task and project management',
+          'Real-time team collaboration',
+          'CRM with customer overview',
+          'Reports and analytics',
+          'Calendar integration',
+          'File storage and sharing',
+          'API for integrations'
+        ],
+        includes: [
+          'Complete source code',
+          'Database setup',
+          'Authentication (OAuth)',
+          'Admin panel',
+          'API documentation',
+          '90 days support'
+        ],
+        idealFor: 'Agencies, consulting firms, project managers'
+      },
+      ar: {
+        name: 'تاسك فلو برو',
+        type: 'منصة SaaS لإدارة المشاريع',
+        shortDesc: 'منصة كاملة لإدارة المشاريع وعلاقات العملاء',
+        description: 'حل SaaS متكامل لإدارة المشاريع ومتابعة العملاء. يتضمن لوحة تحكم مع التحليلات، إدارة المهام، تعاون الفريق، وميزات CRM. مبني بتقنية حديثة وبنية قابلة للتوسع.',
+        features: [
+          'لوحة تحكم تفاعلية',
+          'إدارة المهام والمشاريع',
+          'تعاون الفريق في الوقت الفعلي',
+          'CRM مع نظرة عامة على العملاء',
+          'التقارير والتحليلات',
+          'تكامل التقويم',
+          'تخزين ومشاركة الملفات',
+          'API للتكاملات'
+        ],
+        includes: [
+          'الكود المصدري الكامل',
+          'إعداد قاعدة البيانات',
+          'المصادقة (OAuth)',
+          'لوحة الإدارة',
+          'توثيق API',
+          '90 يوم دعم'
+        ],
+        idealFor: 'الوكالات، شركات الاستشارات، مديري المشاريع'
+      }
+    },
+    {
+      slug: 'hr-connect',
+      category: 'internal',
+      image: '/images/products/hr-portal.png',
+      tech: ['React', 'Node.js', 'MongoDB', 'Express'],
+      price: '55 000',
+      status: 'ready',
+      no: {
+        name: 'HR Connect',
+        type: 'Internt HR-system',
+        shortDesc: 'Komplett HR-portal for ansatthåndtering',
+        description: 'Et internt HR-system for små og mellomstore bedrifter. Inkluderer ansattoversikt, fraværshåndtering, lønnsrapporter, og prestasjonsvurderinger. Enkel å tilpasse og integrere med eksisterende systemer.',
+        features: [
+          'Ansattdatabase',
+          'Fraværs- og feriesøknader',
+          'Lønnsrapporter',
+          'Prestasjonsvurderinger',
+          'Oppmøteregistrering',
+          'Dokumenthåndtering',
+          'Varsler og påminnelser',
+          'Rollebasert tilgang'
+        ],
+        includes: [
+          'Komplett kildekode',
+          'Database-oppsett',
+          'Brukeradministrasjon',
+          'Rapportgenerator',
+          'Installasjonsveiledning',
+          '60 dagers support'
+        ],
+        idealFor: 'SMB-bedrifter, HR-avdelinger, startups'
+      },
+      en: {
+        name: 'HR Connect',
+        type: 'Internal HR System',
+        shortDesc: 'Complete HR portal for employee management',
+        description: 'An internal HR system for small and medium businesses. Includes employee overview, absence management, payroll reports, and performance reviews. Easy to customize and integrate with existing systems.',
+        features: [
+          'Employee database',
+          'Leave and vacation requests',
+          'Payroll reports',
+          'Performance reviews',
+          'Attendance tracking',
+          'Document management',
+          'Notifications and reminders',
+          'Role-based access'
+        ],
+        includes: [
+          'Complete source code',
+          'Database setup',
+          'User administration',
+          'Report generator',
+          'Installation guide',
+          '60 days support'
+        ],
+        idealFor: 'SMB companies, HR departments, startups'
+      },
+      ar: {
+        name: 'إتش آر كونكت',
+        type: 'نظام موارد بشرية داخلي',
+        shortDesc: 'بوابة موارد بشرية كاملة لإدارة الموظفين',
+        description: 'نظام موارد بشرية داخلي للشركات الصغيرة والمتوسطة. يتضمن نظرة عامة على الموظفين، إدارة الغياب، تقارير الرواتب، ومراجعات الأداء. سهل التخصيص والتكامل مع الأنظمة الحالية.',
+        features: [
+          'قاعدة بيانات الموظفين',
+          'طلبات الإجازات والعطلات',
+          'تقارير الرواتب',
+          'مراجعات الأداء',
+          'تتبع الحضور',
+          'إدارة المستندات',
+          'الإشعارات والتذكيرات',
+          'وصول قائم على الأدوار'
+        ],
+        includes: [
+          'الكود المصدري الكامل',
+          'إعداد قاعدة البيانات',
+          'إدارة المستخدمين',
+          'مولد التقارير',
+          'دليل التثبيت',
+          '60 يوم دعم'
+        ],
+        idealFor: 'الشركات الصغيرة والمتوسطة، أقسام الموارد البشرية، الشركات الناشئة'
+      }
+    }
+  ];
+
+  const paths: { params: { lang: string; slug: string }; props: { product: typeof products[0]; lang: Language } }[] = [];
+  
+  for (const lang of languagesList) {
+    for (const product of products) {
+      paths.push({
+        params: { lang, slug: product.slug },
+        props: { product, lang }
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { product, lang } = Astro.props;
+const content = product[lang as keyof typeof product] as typeof product.no;
+
+const statusLabels = {
+  ready: { no: 'Klar til bruk', en: 'Ready to use', ar: 'جاهز للاستخدام' },
+  development: { no: 'Anbefalt videreutvikling', en: 'Recommended development', ar: 'يُنصح بالتطوير' }
+};
+
+const labels = {
+  no: {
+    backToProducts: 'Tilbake til prosjekter',
+    features: 'Funksjoner',
+    includes: 'Dette er inkludert',
+    idealFor: 'Ideelt for',
+    technology: 'Teknologi',
+    price: 'Pris',
+    from: 'Fra',
+    currency: 'kr',
+    buyNow: 'Kjøp nå',
+    requestCustomization: 'Be om tilpasning',
+    contactUs: 'Kontakt oss',
+    relatedProducts: 'Relaterte prosjekter',
+    viewDemo: 'Se demo',
+    downloadBrochure: 'Last ned brosjyre'
+  },
+  en: {
+    backToProducts: 'Back to projects',
+    features: 'Features',
+    includes: 'What\'s included',
+    idealFor: 'Ideal for',
+    technology: 'Technology',
+    price: 'Price',
+    from: 'From',
+    currency: 'USD',
+    buyNow: 'Buy now',
+    requestCustomization: 'Request customization',
+    contactUs: 'Contact us',
+    relatedProducts: 'Related projects',
+    viewDemo: 'View demo',
+    downloadBrochure: 'Download brochure'
+  },
+  ar: {
+    backToProducts: 'العودة للمشاريع',
+    features: 'المميزات',
+    includes: 'ما يتضمنه',
+    idealFor: 'مثالي لـ',
+    technology: 'التقنية',
+    price: 'السعر',
+    from: 'من',
+    currency: 'ر.س',
+    buyNow: 'اشترِ الآن',
+    requestCustomization: 'طلب تخصيص',
+    contactUs: 'اتصل بنا',
+    relatedProducts: 'مشاريع ذات صلة',
+    viewDemo: 'عرض تجريبي',
+    downloadBrochure: 'تحميل الكتيب'
+  }
+};
+
+const l = labels[lang as keyof typeof labels];
+const statusLabel = statusLabels[product.status as keyof typeof statusLabels][lang as keyof typeof statusLabels.ready];
+---
+
+<BaseLayout 
+  title={`${content.name} | Nexify CRM Systems`}
+  description={content.shortDesc}
+  lang={lang}
+>
+  <main class="pt-20">
+    <!-- Breadcrumbs -->
+    <div class="bg-gray-50 border-b">
+      <div class="container py-4">
+        <Breadcrumbs 
+          items={[
+            { label: lang === 'no' ? 'Hjem' : lang === 'en' ? 'Home' : 'الرئيسية', href: `/${lang}` },
+            { label: lang === 'no' ? 'Prosjekter til salgs' : lang === 'en' ? 'Projects for Sale' : 'مشاريع للبيع', href: `/${lang}/products` },
+            { label: content.name }
+          ]} 
+          lang={lang}
+        />
+      </div>
+    </div>
+
+    <!-- Product Hero -->
+    <section class="py-12 bg-gradient-to-b from-gray-50 to-white">
+      <div class="container">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <!-- Product Image -->
+          <div class="relative group">
+            <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+              <img 
+                src={product.image} 
+                alt={content.name}
+                class="w-full h-auto"
+                loading="eager"
+              />
+              <!-- Status Badge -->
+              <div class={`absolute top-4 ${lang === 'ar' ? 'left-4' : 'right-4'}`}>
+                <span class={`px-4 py-2 rounded-full text-sm font-medium ${
+                  product.status === 'ready' 
+                    ? 'bg-green-100 text-green-700' 
+                    : 'bg-yellow-100 text-yellow-700'
+                }`}>
+                  {statusLabel}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="space-y-6">
+            <div>
+              <span class="text-primary font-medium">{content.type}</span>
+              <h1 class="text-4xl font-bold text-gray-900 mt-2">{content.name}</h1>
+            </div>
+
+            <p class="text-lg text-gray-600 leading-relaxed">
+              {content.description}
+            </p>
+
+            <!-- Technology Tags -->
+            <div>
+              <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">{l.technology}</h3>
+              <div class="flex flex-wrap gap-2">
+                {product.tech.map((tech: string) => (
+                  <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl p-6 border border-primary/10">
+              <div class="flex items-baseline gap-2">
+                <span class="text-sm text-gray-500">{l.from}</span>
+                <span class="text-4xl font-bold text-gray-900">{product.price}</span>
+                <span class="text-xl text-gray-500">{l.currency}</span>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a 
+                href={`/${lang}/contact`}
+                class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25"
+              >
+                <ShoppingCart class="w-5 h-5" />
+                {l.buyNow}
+              </a>
+              <a 
+                href={`/${lang}/contact`}
+                class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 border-2 border-primary text-primary rounded-xl font-semibold hover:bg-primary/5 transition-all"
+              >
+                <Code class="w-5 h-5" />
+                {l.requestCustomization}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+      <div class="container">
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Features -->
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Zap class="w-5 h-5 text-primary" />
+              </div>
+              {l.features}
+            </h2>
+            <ul class="space-y-4">
+              {content.features.map((feature: string) => (
+                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                  <CheckCircle class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span class="text-gray-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- What's Included -->
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <div class="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
+                <Shield class="w-5 h-5 text-secondary" />
+              </div>
+              {l.includes}
+            </h2>
+            <ul class="space-y-4">
+              {content.includes.map((item: string) => (
+                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                  <CheckCircle class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span class="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- Ideal For -->
+            <div class="mt-8 p-6 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl border border-primary/10">
+              <h3 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                <Users class="w-5 h-5 text-primary" />
+                {l.idealFor}
+              </h3>
+              <p class="text-gray-600">{content.idealFor}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+      <div class="container text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          {lang === 'no' ? 'Interessert i dette prosjektet?' : lang === 'en' ? 'Interested in this project?' : 'مهتم بهذا المشروع؟'}
+        </h2>
+        <p class="text-white/80 mb-8 max-w-2xl mx-auto">
+          {lang === 'no' 
+            ? 'Ta kontakt med oss for en uforpliktende prat om hvordan dette prosjektet kan tilpasses dine behov.'
+            : lang === 'en'
+            ? 'Contact us for a no-obligation chat about how this project can be customized to your needs.'
+            : 'تواصل معنا لمحادثة غير ملزمة حول كيفية تخصيص هذا المشروع لاحتياجاتك.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href={`/${lang}/contact`}
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary rounded-xl font-semibold hover:bg-gray-100 transition-all hover:shadow-lg"
+          >
+            <MessageCircle class="w-5 h-5" />
+            {l.contactUs}
+          </a>
+          <a 
+            href={`/${lang}/products`}
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white/10 transition-all"
+          >
+            <ArrowRight class="w-5 h-5" />
+            {l.backToProducts}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
