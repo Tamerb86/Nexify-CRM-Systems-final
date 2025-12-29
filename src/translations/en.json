@@ -11,7 +11,7 @@
     "cta": "Get Started",
     "language_switcher": { "label": "Language", "ar": "Arabic", "no": "Norwegian", "en": "English" }
   },
-  "nav": { "home": "Home", "services": "Services", "projects": "Projects", "pricing": "Pricing", "about": "About", "contact": "Contact", "blog": "Blog", "team": "Team" },
+  "nav": { "home": "Home", "services": "Services", "projects": "Projects", "pricing": "Pricing", "about": "About", "contact": "Contact", "blog": "Blog", "team": "Team", "products": "Projects for Sale" },
   "home": {
     "hero": { "badge": "Professional Web Development", "title": "We build digital solutions", "titleHighlight": "that drive growth", "subtitle": "From modern websites to complete SaaS platforms. We help businesses succeed digitally.", "cta_primary": "Start your project", "cta_secondary": "View our work", "trust_badges": { "projects": "100+ Projects", "support": "24/7 Support", "delivery": "Fast Delivery" } },
     "why_us": { "badge": "Why Choose Us", "title": "Benefits of working with Nexify", "subtitle": "We combine technical expertise with business understanding.", "cards": [{ "title": "Fast Delivery", "description": "We deliver projects on time, every time." }, { "title": "Modern Design", "description": "Clean and professional design." }, { "title": "SEO Optimized", "description": "All websites built with SEO focus." }, { "title": "Continuous Support", "description": "We're here to help after launch." }] },

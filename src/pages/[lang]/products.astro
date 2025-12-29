@@ -1,0 +1,1024 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import { languagesList, type Language, urlStructure } from '../../lib/i18n';
+import { ArrowRight, ArrowLeft, ShoppingCart, Code, Rocket, CheckCircle, Package, Wrench, Zap, Store, LayoutDashboard, Bot, Globe, ChevronDown } from 'lucide-astro';
+
+export function getStaticPaths() {
+  return languagesList.map(lang => ({
+    params: { lang },
+    props: { lang }
+  }));
+}
+
+const { lang } = Astro.props as { lang: Language };
+const isRTL = lang === 'ar';
+const Arrow = isRTL ? ArrowLeft : ArrowRight;
+
+// Page content in all languages
+const content = {
+  no: {
+    meta: {
+      title: "Prosjekter til salgs | Ferdige IT-løsninger | Nexify CRM Systems",
+      description: "Kjøp ferdige nettsider, Shopify-butikker, SaaS-løsninger og interne verktøy. Klar til bruk eller med videreutvikling fra Nexify."
+    },
+    hero: {
+      badge: "Ferdige løsninger",
+      title: "Prosjekter til salgs",
+      subtitle: "Ferdige prosjekter klare til bruk – med eller uten videreutvikling",
+      description: "Spar tid og penger med våre ferdig utviklede løsninger. Kjøp et prosjekt slik det er, eller la oss skreddersy det til dine behov.",
+      cta_primary: "Se alle prosjekter",
+      cta_secondary: "Book en prat om prosjekt"
+    },
+    filters: {
+      all: "Alle",
+      landing: "Landingsside",
+      ecommerce: "Nettbutikk / Shopify",
+      saas: "SaaS / CRM",
+      internal: "Interne verktøy",
+      ai: "AI / Automasjon"
+    },
+    projects: [
+      {
+        name: "StartupLaunch",
+        description: "Moderne landingsside for oppstartsbedrifter med lead-capture, animasjoner og responsivt design.",
+        type: "Landingsside",
+        category: "landing",
+        tech: ["React", "Tailwind CSS", "Framer Motion"],
+        status: "Klar til bruk",
+        statusType: "ready",
+        price: "Fra 15 000 kr"
+      },
+      {
+        name: "NordicShop Pro",
+        description: "Komplett Shopify-butikk med norsk betalingsløsning, fraktkalkulator og produktfiltrering.",
+        type: "Nettbutikk / Shopify",
+        category: "ecommerce",
+        tech: ["Shopify", "Liquid", "JavaScript"],
+        status: "Klar til bruk",
+        statusType: "ready",
+        price: "Fra 35 000 kr"
+      },
+      {
+        name: "ClientHub CRM",
+        description: "Kundeoppfølgingssystem med dashboard, kontakthåndtering, oppgaver og rapportering.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["Next.js", "PostgreSQL", "Prisma"],
+        status: "Anbefalt videreutvikling",
+        statusType: "recommended",
+        price: "Fra 75 000 kr"
+      },
+      {
+        name: "BookingFlow",
+        description: "Timebestillingssystem med kalenderintegrasjon, SMS-varsler og betalingsløsning.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["React", "Node.js", "Stripe"],
+        status: "Klar til bruk",
+        statusType: "ready",
+        price: "Fra 45 000 kr"
+      },
+      {
+        name: "TeamTracker",
+        description: "Internt verktøy for timeregistrering, prosjektstyring og ressursplanlegging.",
+        type: "Interne verktøy",
+        category: "internal",
+        tech: ["Vue.js", "Supabase", "Tailwind"],
+        status: "Anbefalt videreutvikling",
+        statusType: "recommended",
+        price: "Fra 55 000 kr"
+      },
+      {
+        name: "AI ContentBot",
+        description: "AI-drevet innholdsgenerator med GPT-integrasjon for blogginnlegg og markedsføringstekster.",
+        type: "AI / Automasjon",
+        category: "ai",
+        tech: ["Python", "OpenAI API", "FastAPI"],
+        status: "Klar til bruk",
+        statusType: "ready",
+        price: "Fra 40 000 kr"
+      },
+      {
+        name: "PropertyView",
+        description: "Eiendomsvisningsplattform med bildegalleri, kart og kontaktskjema for meglere.",
+        type: "Landingsside",
+        category: "landing",
+        tech: ["Astro", "React", "Google Maps"],
+        status: "Klar til bruk",
+        statusType: "ready",
+        price: "Fra 25 000 kr"
+      },
+      {
+        name: "FashionStore",
+        description: "Motebutikk med avansert produktfiltrering, størrelsesguide og ønskeliste.",
+        type: "Nettbutikk / Shopify",
+        category: "ecommerce",
+        tech: ["Shopify", "React", "Tailwind"],
+        status: "Anbefalt videreutvikling",
+        statusType: "recommended",
+        price: "Fra 50 000 kr"
+      },
+      {
+        name: "InvoiceFlow",
+        description: "Faktureringssystem med automatisk nummerering, PDF-generering og betalingssporing.",
+        type: "Interne verktøy",
+        category: "internal",
+        tech: ["Next.js", "PostgreSQL", "Resend"],
+        status: "Klar til bruk",
+        statusType: "ready",
+        price: "Fra 35 000 kr"
+      },
+      {
+        name: "ChatAssist AI",
+        description: "Kundeservice-chatbot med AI-svar, eskalering til menneske og analysedashboard.",
+        type: "AI / Automasjon",
+        category: "ai",
+        tech: ["Node.js", "OpenAI", "Socket.io"],
+        status: "Anbefalt videreutvikling",
+        statusType: "recommended",
+        price: "Fra 60 000 kr"
+      },
+      {
+        name: "EventPro",
+        description: "Arrangementsplattform med billettsalg, deltakerliste og QR-kode innsjekking.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["React", "Stripe", "QR Code"],
+        status: "Klar til bruk",
+        statusType: "ready",
+        price: "Fra 45 000 kr"
+      },
+      {
+        name: "PortfolioX",
+        description: "Kreativ porteføljeside for designere og utviklere med prosjektgalleri og kontaktskjema.",
+        type: "Landingsside",
+        category: "landing",
+        tech: ["Astro", "GSAP", "Tailwind"],
+        status: "Klar til bruk",
+        statusType: "ready",
+        price: "Fra 18 000 kr"
+      }
+    ],
+    card: {
+      tech: "Teknologi",
+      buy_self: "Kjøp og utvikle videre selv",
+      buy_nexify: "Be om videreutvikling med Nexify"
+    },
+    how_it_works: {
+      badge: "Slik fungerer det",
+      title: "Tre enkle steg til din løsning",
+      subtitle: "Fra valg til lansering på rekordtid",
+      steps: [
+        {
+          number: "01",
+          title: "Velg et prosjekt",
+          description: "Bla gjennom våre ferdige løsninger og finn den som passer dine behov. Alle prosjekter er testet og dokumentert."
+        },
+        {
+          number: "02",
+          title: "Velg leveringsmodell",
+          description: "Kjøp koden og utvikle videre selv, eller la Nexify tilpasse og videreutvikle løsningen for deg."
+        },
+        {
+          number: "03",
+          title: "Lanser raskere",
+          description: "Med en ferdig base sparer du måneder med utvikling. Fokuser på det som gjør din bedrift unik."
+        }
+      ]
+    },
+    faq: {
+      badge: "Ofte stilte spørsmål",
+      title: "Spørsmål om prosjektkjøp",
+      subtitle: "Alt du trenger å vite før du kjøper",
+      items: [
+        {
+          question: "Hva inkluderer kjøp av et prosjekt?",
+          answer: "Du får full tilgang til kildekoden, dokumentasjon, og en gjennomgang av løsningen. Ved behov kan vi også tilby opplæring og onboarding."
+        },
+        {
+          question: "Eier jeg koden etter kjøp?",
+          answer: "Ja, du får full eierskap til koden og kan bruke, modifisere og distribuere den fritt. Det er ingen løpende lisenskostnader."
+        },
+        {
+          question: "Kan Nexify drifte og vedlikeholde løsningen?",
+          answer: "Absolutt! Vi tilbyr vedlikeholdsavtaler som inkluderer hosting, sikkerhetsoppdateringer, backup og teknisk support."
+        },
+        {
+          question: "Kan løsningen bygges videre til noe større?",
+          answer: "Ja, alle våre prosjekter er bygget med skalerbarhet i tankene. Vi kan hjelpe deg med å utvide funksjonalitet etter behov."
+        },
+        {
+          question: "Hva med support etter kjøp?",
+          answer: "Alle kjøp inkluderer 30 dagers gratis support. Deretter kan du velge en av våre supportpakker eller kontakte oss ved behov."
+        },
+        {
+          question: "Kan jeg se en demo før jeg kjøper?",
+          answer: "Ja, vi tilbyr live-demoer av alle prosjekter. Book et møte så viser vi deg løsningen i detalj."
+        }
+      ]
+    },
+    cta: {
+      title: "Klar til å kjøpe et ferdig prosjekt?",
+      subtitle: "Eller vil du bygge videre med vår hjelp?",
+      description: "Ta kontakt for en uforpliktende prat om dine behov. Vi hjelper deg å finne den beste løsningen.",
+      cta_primary: "Send forespørsel",
+      cta_secondary: "Book et møte"
+    }
+  },
+  en: {
+    meta: {
+      title: "Projects for Sale | Ready-made IT Solutions | Nexify CRM Systems",
+      description: "Buy ready-made websites, Shopify stores, SaaS solutions, and internal tools. Ready to use or with further development from Nexify."
+    },
+    hero: {
+      badge: "Ready-made Solutions",
+      title: "Projects for Sale",
+      subtitle: "Ready-made projects ready to use – with or without further development",
+      description: "Save time and money with our pre-built solutions. Buy a project as-is, or let us customize it to your needs.",
+      cta_primary: "View all projects",
+      cta_secondary: "Book a chat about a project"
+    },
+    filters: {
+      all: "All",
+      landing: "Landing Page",
+      ecommerce: "E-commerce / Shopify",
+      saas: "SaaS / CRM",
+      internal: "Internal Tools",
+      ai: "AI / Automation"
+    },
+    projects: [
+      {
+        name: "StartupLaunch",
+        description: "Modern landing page for startups with lead capture, animations, and responsive design.",
+        type: "Landing Page",
+        category: "landing",
+        tech: ["React", "Tailwind CSS", "Framer Motion"],
+        status: "Ready to use",
+        statusType: "ready",
+        price: "From $1,500"
+      },
+      {
+        name: "NordicShop Pro",
+        description: "Complete Shopify store with Norwegian payment solution, shipping calculator, and product filtering.",
+        type: "E-commerce / Shopify",
+        category: "ecommerce",
+        tech: ["Shopify", "Liquid", "JavaScript"],
+        status: "Ready to use",
+        statusType: "ready",
+        price: "From $3,500"
+      },
+      {
+        name: "ClientHub CRM",
+        description: "Customer management system with dashboard, contact handling, tasks, and reporting.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["Next.js", "PostgreSQL", "Prisma"],
+        status: "Recommended development",
+        statusType: "recommended",
+        price: "From $7,500"
+      },
+      {
+        name: "BookingFlow",
+        description: "Appointment booking system with calendar integration, SMS notifications, and payment solution.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["React", "Node.js", "Stripe"],
+        status: "Ready to use",
+        statusType: "ready",
+        price: "From $4,500"
+      },
+      {
+        name: "TeamTracker",
+        description: "Internal tool for time tracking, project management, and resource planning.",
+        type: "Internal Tools",
+        category: "internal",
+        tech: ["Vue.js", "Supabase", "Tailwind"],
+        status: "Recommended development",
+        statusType: "recommended",
+        price: "From $5,500"
+      },
+      {
+        name: "AI ContentBot",
+        description: "AI-powered content generator with GPT integration for blog posts and marketing copy.",
+        type: "AI / Automation",
+        category: "ai",
+        tech: ["Python", "OpenAI API", "FastAPI"],
+        status: "Ready to use",
+        statusType: "ready",
+        price: "From $4,000"
+      },
+      {
+        name: "PropertyView",
+        description: "Real estate viewing platform with image gallery, maps, and contact form for agents.",
+        type: "Landing Page",
+        category: "landing",
+        tech: ["Astro", "React", "Google Maps"],
+        status: "Ready to use",
+        statusType: "ready",
+        price: "From $2,500"
+      },
+      {
+        name: "FashionStore",
+        description: "Fashion store with advanced product filtering, size guide, and wishlist.",
+        type: "E-commerce / Shopify",
+        category: "ecommerce",
+        tech: ["Shopify", "React", "Tailwind"],
+        status: "Recommended development",
+        statusType: "recommended",
+        price: "From $5,000"
+      },
+      {
+        name: "InvoiceFlow",
+        description: "Invoicing system with automatic numbering, PDF generation, and payment tracking.",
+        type: "Internal Tools",
+        category: "internal",
+        tech: ["Next.js", "PostgreSQL", "Resend"],
+        status: "Ready to use",
+        statusType: "ready",
+        price: "From $3,500"
+      },
+      {
+        name: "ChatAssist AI",
+        description: "Customer service chatbot with AI responses, human escalation, and analytics dashboard.",
+        type: "AI / Automation",
+        category: "ai",
+        tech: ["Node.js", "OpenAI", "Socket.io"],
+        status: "Recommended development",
+        statusType: "recommended",
+        price: "From $6,000"
+      },
+      {
+        name: "EventPro",
+        description: "Event platform with ticket sales, attendee list, and QR code check-in.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["React", "Stripe", "QR Code"],
+        status: "Ready to use",
+        statusType: "ready",
+        price: "From $4,500"
+      },
+      {
+        name: "PortfolioX",
+        description: "Creative portfolio site for designers and developers with project gallery and contact form.",
+        type: "Landing Page",
+        category: "landing",
+        tech: ["Astro", "GSAP", "Tailwind"],
+        status: "Ready to use",
+        statusType: "ready",
+        price: "From $1,800"
+      }
+    ],
+    card: {
+      tech: "Technology",
+      buy_self: "Buy and develop yourself",
+      buy_nexify: "Request development with Nexify"
+    },
+    how_it_works: {
+      badge: "How it works",
+      title: "Three simple steps to your solution",
+      subtitle: "From selection to launch in record time",
+      steps: [
+        {
+          number: "01",
+          title: "Choose a project",
+          description: "Browse our ready-made solutions and find the one that fits your needs. All projects are tested and documented."
+        },
+        {
+          number: "02",
+          title: "Choose delivery model",
+          description: "Buy the code and develop further yourself, or let Nexify customize and further develop the solution for you."
+        },
+        {
+          number: "03",
+          title: "Launch faster",
+          description: "With a ready base, you save months of development. Focus on what makes your business unique."
+        }
+      ]
+    },
+    faq: {
+      badge: "Frequently Asked Questions",
+      title: "Questions about project purchase",
+      subtitle: "Everything you need to know before buying",
+      items: [
+        {
+          question: "What does purchasing a project include?",
+          answer: "You get full access to the source code, documentation, and a walkthrough of the solution. If needed, we can also offer training and onboarding."
+        },
+        {
+          question: "Do I own the code after purchase?",
+          answer: "Yes, you get full ownership of the code and can use, modify, and distribute it freely. There are no ongoing license costs."
+        },
+        {
+          question: "Can Nexify host and maintain the solution?",
+          answer: "Absolutely! We offer maintenance agreements that include hosting, security updates, backup, and technical support."
+        },
+        {
+          question: "Can the solution be expanded into something bigger?",
+          answer: "Yes, all our projects are built with scalability in mind. We can help you expand functionality as needed."
+        },
+        {
+          question: "What about support after purchase?",
+          answer: "All purchases include 30 days of free support. After that, you can choose one of our support packages or contact us as needed."
+        },
+        {
+          question: "Can I see a demo before buying?",
+          answer: "Yes, we offer live demos of all projects. Book a meeting and we'll show you the solution in detail."
+        }
+      ]
+    },
+    cta: {
+      title: "Ready to buy a finished project?",
+      subtitle: "Or do you want to build further with our help?",
+      description: "Get in touch for a no-obligation chat about your needs. We'll help you find the best solution.",
+      cta_primary: "Send inquiry",
+      cta_secondary: "Book a meeting"
+    }
+  },
+  ar: {
+    meta: {
+      title: "مشاريع للبيع | حلول تقنية جاهزة | Nexify CRM Systems",
+      description: "اشترِ مواقع ويب جاهزة، متاجر Shopify، حلول SaaS، وأدوات داخلية. جاهزة للاستخدام أو مع تطوير إضافي من Nexify."
+    },
+    hero: {
+      badge: "حلول جاهزة",
+      title: "مشاريع للبيع",
+      subtitle: "مشاريع جاهزة للاستخدام – مع أو بدون تطوير إضافي",
+      description: "وفّر الوقت والمال مع حلولنا المُطورة مسبقاً. اشترِ مشروعاً كما هو، أو دعنا نخصصه لاحتياجاتك.",
+      cta_primary: "عرض جميع المشاريع",
+      cta_secondary: "احجز محادثة حول مشروع"
+    },
+    filters: {
+      all: "الكل",
+      landing: "صفحة هبوط",
+      ecommerce: "متجر إلكتروني / Shopify",
+      saas: "SaaS / CRM",
+      internal: "أدوات داخلية",
+      ai: "ذكاء اصطناعي / أتمتة"
+    },
+    projects: [
+      {
+        name: "StartupLaunch",
+        description: "صفحة هبوط حديثة للشركات الناشئة مع التقاط العملاء المحتملين والرسوم المتحركة والتصميم المتجاوب.",
+        type: "صفحة هبوط",
+        category: "landing",
+        tech: ["React", "Tailwind CSS", "Framer Motion"],
+        status: "جاهز للاستخدام",
+        statusType: "ready",
+        price: "من 15,000 كرونة"
+      },
+      {
+        name: "NordicShop Pro",
+        description: "متجر Shopify كامل مع حل الدفع النرويجي وحاسبة الشحن وتصفية المنتجات.",
+        type: "متجر إلكتروني / Shopify",
+        category: "ecommerce",
+        tech: ["Shopify", "Liquid", "JavaScript"],
+        status: "جاهز للاستخدام",
+        statusType: "ready",
+        price: "من 35,000 كرونة"
+      },
+      {
+        name: "ClientHub CRM",
+        description: "نظام إدارة العملاء مع لوحة تحكم وإدارة جهات الاتصال والمهام والتقارير.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["Next.js", "PostgreSQL", "Prisma"],
+        status: "يُنصح بالتطوير",
+        statusType: "recommended",
+        price: "من 75,000 كرونة"
+      },
+      {
+        name: "BookingFlow",
+        description: "نظام حجز المواعيد مع تكامل التقويم وإشعارات SMS وحل الدفع.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["React", "Node.js", "Stripe"],
+        status: "جاهز للاستخدام",
+        statusType: "ready",
+        price: "من 45,000 كرونة"
+      },
+      {
+        name: "TeamTracker",
+        description: "أداة داخلية لتتبع الوقت وإدارة المشاريع وتخطيط الموارد.",
+        type: "أدوات داخلية",
+        category: "internal",
+        tech: ["Vue.js", "Supabase", "Tailwind"],
+        status: "يُنصح بالتطوير",
+        statusType: "recommended",
+        price: "من 55,000 كرونة"
+      },
+      {
+        name: "AI ContentBot",
+        description: "مولد محتوى مدعوم بالذكاء الاصطناعي مع تكامل GPT لمقالات المدونة ونصوص التسويق.",
+        type: "ذكاء اصطناعي / أتمتة",
+        category: "ai",
+        tech: ["Python", "OpenAI API", "FastAPI"],
+        status: "جاهز للاستخدام",
+        statusType: "ready",
+        price: "من 40,000 كرونة"
+      },
+      {
+        name: "PropertyView",
+        description: "منصة عرض العقارات مع معرض صور وخرائط ونموذج اتصال للوكلاء.",
+        type: "صفحة هبوط",
+        category: "landing",
+        tech: ["Astro", "React", "Google Maps"],
+        status: "جاهز للاستخدام",
+        statusType: "ready",
+        price: "من 25,000 كرونة"
+      },
+      {
+        name: "FashionStore",
+        description: "متجر أزياء مع تصفية منتجات متقدمة ودليل المقاسات وقائمة الرغبات.",
+        type: "متجر إلكتروني / Shopify",
+        category: "ecommerce",
+        tech: ["Shopify", "React", "Tailwind"],
+        status: "يُنصح بالتطوير",
+        statusType: "recommended",
+        price: "من 50,000 كرونة"
+      },
+      {
+        name: "InvoiceFlow",
+        description: "نظام فوترة مع ترقيم تلقائي وإنشاء PDF وتتبع المدفوعات.",
+        type: "أدوات داخلية",
+        category: "internal",
+        tech: ["Next.js", "PostgreSQL", "Resend"],
+        status: "جاهز للاستخدام",
+        statusType: "ready",
+        price: "من 35,000 كرونة"
+      },
+      {
+        name: "ChatAssist AI",
+        description: "روبوت دردشة خدمة العملاء مع ردود AI والتصعيد البشري ولوحة تحليلات.",
+        type: "ذكاء اصطناعي / أتمتة",
+        category: "ai",
+        tech: ["Node.js", "OpenAI", "Socket.io"],
+        status: "يُنصح بالتطوير",
+        statusType: "recommended",
+        price: "من 60,000 كرونة"
+      },
+      {
+        name: "EventPro",
+        description: "منصة فعاليات مع بيع التذاكر وقائمة الحضور وتسجيل الدخول برمز QR.",
+        type: "SaaS / CRM",
+        category: "saas",
+        tech: ["React", "Stripe", "QR Code"],
+        status: "جاهز للاستخدام",
+        statusType: "ready",
+        price: "من 45,000 كرونة"
+      },
+      {
+        name: "PortfolioX",
+        description: "موقع محفظة إبداعي للمصممين والمطورين مع معرض مشاريع ونموذج اتصال.",
+        type: "صفحة هبوط",
+        category: "landing",
+        tech: ["Astro", "GSAP", "Tailwind"],
+        status: "جاهز للاستخدام",
+        statusType: "ready",
+        price: "من 18,000 كرونة"
+      }
+    ],
+    card: {
+      tech: "التقنية",
+      buy_self: "اشترِ وطوّر بنفسك",
+      buy_nexify: "اطلب التطوير مع Nexify"
+    },
+    how_it_works: {
+      badge: "كيف يعمل",
+      title: "ثلاث خطوات بسيطة لحلك",
+      subtitle: "من الاختيار إلى الإطلاق في وقت قياسي",
+      steps: [
+        {
+          number: "01",
+          title: "اختر مشروعاً",
+          description: "تصفح حلولنا الجاهزة واعثر على ما يناسب احتياجاتك. جميع المشاريع مختبرة وموثقة."
+        },
+        {
+          number: "02",
+          title: "اختر نموذج التسليم",
+          description: "اشترِ الكود وطوّر بنفسك، أو دع Nexify تخصص وتطور الحل لك."
+        },
+        {
+          number: "03",
+          title: "أطلق بشكل أسرع",
+          description: "مع قاعدة جاهزة، توفر أشهراً من التطوير. ركز على ما يجعل عملك فريداً."
+        }
+      ]
+    },
+    faq: {
+      badge: "الأسئلة الشائعة",
+      title: "أسئلة حول شراء المشاريع",
+      subtitle: "كل ما تحتاج معرفته قبل الشراء",
+      items: [
+        {
+          question: "ماذا يشمل شراء المشروع؟",
+          answer: "تحصل على وصول كامل للكود المصدري والتوثيق وشرح للحل. عند الحاجة، يمكننا أيضاً تقديم التدريب والإعداد."
+        },
+        {
+          question: "هل أملك الكود بعد الشراء؟",
+          answer: "نعم، تحصل على ملكية كاملة للكود ويمكنك استخدامه وتعديله وتوزيعه بحرية. لا توجد تكاليف ترخيص مستمرة."
+        },
+        {
+          question: "هل يمكن لـ Nexify استضافة وصيانة الحل؟",
+          answer: "بالتأكيد! نقدم اتفاقيات صيانة تشمل الاستضافة وتحديثات الأمان والنسخ الاحتياطي والدعم الفني."
+        },
+        {
+          question: "هل يمكن توسيع الحل إلى شيء أكبر؟",
+          answer: "نعم، جميع مشاريعنا مبنية مع مراعاة قابلية التوسع. يمكننا مساعدتك في توسيع الوظائف حسب الحاجة."
+        },
+        {
+          question: "ماذا عن الدعم بعد الشراء؟",
+          answer: "جميع المشتريات تشمل 30 يوماً من الدعم المجاني. بعد ذلك، يمكنك اختيار إحدى باقات الدعم لدينا أو الاتصال بنا عند الحاجة."
+        },
+        {
+          question: "هل يمكنني رؤية عرض توضيحي قبل الشراء؟",
+          answer: "نعم، نقدم عروضاً توضيحية حية لجميع المشاريع. احجز اجتماعاً وسنعرض لك الحل بالتفصيل."
+        }
+      ]
+    },
+    cta: {
+      title: "مستعد لشراء مشروع جاهز؟",
+      subtitle: "أم تريد البناء أكثر بمساعدتنا؟",
+      description: "تواصل معنا لمحادثة غير ملزمة حول احتياجاتك. سنساعدك في إيجاد أفضل حل.",
+      cta_primary: "أرسل استفساراً",
+      cta_secondary: "احجز اجتماعاً"
+    }
+  }
+};
+
+const t = content[lang as keyof typeof content] || content.no;
+
+const categoryIcons: Record<string, any> = {
+  landing: Globe,
+  ecommerce: Store,
+  saas: LayoutDashboard,
+  internal: Wrench,
+  ai: Bot
+};
+---
+
+<BaseLayout 
+  lang={lang} 
+  page="products" 
+  title={t.meta.title} 
+  description={t.meta.description}
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 lg:py-28 bg-gradient-to-br from-gray-50 via-white to-primary-50/30 overflow-hidden">
+    <!-- Background Decorations -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute top-20 right-20 w-72 h-72 bg-primary-200 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 left-20 w-96 h-96 bg-secondary-200 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Badge -->
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6">
+          <Package class="w-4 h-4" />
+          {t.hero.badge}
+        </span>
+        
+        <!-- Title -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          {t.hero.title}
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="text-xl md:text-2xl text-primary-600 font-medium mb-4">
+          {t.hero.subtitle}
+        </p>
+        
+        <!-- Description -->
+        <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+          {t.hero.description}
+        </p>
+        
+        <!-- CTAs -->
+        <div class={`flex flex-wrap gap-4 justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <a 
+            href="#projects" 
+            class="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-all duration-300 hover:shadow-lg hover:shadow-primary-600/30"
+          >
+            {t.hero.cta_primary}
+            <ChevronDown class="w-5 h-5" />
+          </a>
+          <a 
+            href={`/${lang}/contact`}
+            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl border-2 border-primary-200 hover:border-primary-400 hover:bg-primary-50 transition-all duration-300"
+          >
+            {t.hero.cta_secondary}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section id="projects" class="py-12 bg-white border-b border-gray-100">
+    <div class="container mx-auto px-4">
+      <div class={`flex flex-wrap gap-3 justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+        <button 
+          data-filter="all" 
+          class="filter-btn active px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-primary-600 text-white"
+        >
+          {t.filters.all}
+        </button>
+        <button 
+          data-filter="landing" 
+          class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200"
+        >
+          <Globe class="w-4 h-4 inline-block mr-1" />
+          {t.filters.landing}
+        </button>
+        <button 
+          data-filter="ecommerce" 
+          class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200"
+        >
+          <Store class="w-4 h-4 inline-block mr-1" />
+          {t.filters.ecommerce}
+        </button>
+        <button 
+          data-filter="saas" 
+          class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200"
+        >
+          <LayoutDashboard class="w-4 h-4 inline-block mr-1" />
+          {t.filters.saas}
+        </button>
+        <button 
+          data-filter="internal" 
+          class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200"
+        >
+          <Wrench class="w-4 h-4 inline-block mr-1" />
+          {t.filters.internal}
+        </button>
+        <button 
+          data-filter="ai" 
+          class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200"
+        >
+          <Bot class="w-4 h-4 inline-block mr-1" />
+          {t.filters.ai}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        {t.projects.map((project, index) => {
+          const CategoryIcon = categoryIcons[project.category] || Package;
+          return (
+            <div 
+              class="project-card bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group"
+              data-category={project.category}
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <!-- Card Header -->
+              <div class="p-6 border-b border-gray-100">
+                <div class={`flex items-start justify-between mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <div class={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center group-hover:bg-primary-600 transition-colors">
+                      <CategoryIcon class="w-6 h-6 text-primary-600 group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-bold text-gray-900">{project.name}</h3>
+                      <span class="text-sm text-gray-500">{project.type}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                  {project.description}
+                </p>
+                
+                <!-- Tech Stack -->
+                <div class="mb-4">
+                  <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">{t.card.tech}</span>
+                  <div class={`flex flex-wrap gap-2 mt-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    {project.tech.map((tech) => (
+                      <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <!-- Status & Price -->
+                <div class={`flex items-center justify-between ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${
+                    project.statusType === 'ready' 
+                      ? 'bg-green-100 text-green-700' 
+                      : 'bg-amber-100 text-amber-700'
+                  }`}>
+                    {project.statusType === 'ready' ? (
+                      <CheckCircle class="w-3.5 h-3.5" />
+                    ) : (
+                      <Wrench class="w-3.5 h-3.5" />
+                    )}
+                    {project.status}
+                  </span>
+                  <span class="text-lg font-bold text-primary-600">{project.price}</span>
+                </div>
+              </div>
+              
+              <!-- Card Actions -->
+              <div class="p-4 bg-gray-50">
+                <div class={`flex flex-col gap-2 ${isRTL ? 'items-end' : 'items-start'}`}>
+                  <a 
+                    href={`/${lang}/contact?project=${project.name}&type=self`}
+                    class={`w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-primary-600 font-medium rounded-lg border border-primary-200 hover:bg-primary-50 hover:border-primary-400 transition-all text-sm ${isRTL ? 'flex-row-reverse' : ''}`}
+                  >
+                    <Code class="w-4 h-4" />
+                    {t.card.buy_self}
+                  </a>
+                  <a 
+                    href={`/${lang}/contact?project=${project.name}&type=nexify`}
+                    class={`w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-all text-sm ${isRTL ? 'flex-row-reverse' : ''}`}
+                  >
+                    <Rocket class="w-4 h-4" />
+                    {t.card.buy_nexify}
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-2 bg-secondary-100 text-secondary-700 rounded-full text-sm font-medium mb-4">
+          {t.how_it_works.badge}
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {t.how_it_works.title}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          {t.how_it_works.subtitle}
+        </p>
+      </div>
+      
+      <!-- Steps -->
+      <div class={`grid md:grid-cols-3 gap-8 max-w-5xl mx-auto ${isRTL ? 'direction-rtl' : ''}`}>
+        {t.how_it_works.steps.map((step, index) => (
+          <div class="relative text-center group">
+            <!-- Connector Line -->
+            {index < 2 && (
+              <div class={`hidden md:block absolute top-12 ${isRTL ? 'right-full mr-4' : 'left-full ml-4'} w-full h-0.5 bg-gradient-to-r from-primary-300 to-secondary-300`}></div>
+            )}
+            
+            <!-- Step Number -->
+            <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl font-bold text-white">{step.number}</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-4">
+          {t.faq.badge}
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {t.faq.title}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          {t.faq.subtitle}
+        </p>
+      </div>
+      
+      <!-- FAQ Items -->
+      <div class="max-w-3xl mx-auto space-y-4">
+        {t.faq.items.map((item, index) => (
+          <details class="group bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <summary class={`flex items-center justify-between p-6 cursor-pointer list-none ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <h3 class={`text-lg font-semibold text-gray-900 ${isRTL ? 'text-right pr-4' : 'pr-8'}`}>
+                {item.question}
+              </h3>
+              <span class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform duration-300">
+                <ChevronDown class="w-5 h-5 text-primary-600" />
+              </span>
+            </summary>
+            <div class={`px-6 pb-6 ${isRTL ? 'text-right' : ''}`}>
+              <p class="text-gray-600 leading-relaxed">
+                {item.answer}
+              </p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 relative overflow-hidden">
+    <!-- Background Decorations -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          {t.cta.title}
+        </h2>
+        <p class="text-xl text-white/90 mb-2">
+          {t.cta.subtitle}
+        </p>
+        <p class="text-white/70 mb-10 max-w-xl mx-auto">
+          {t.cta.description}
+        </p>
+        
+        <div class={`flex flex-wrap gap-4 justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <a 
+            href={`/${lang}/contact`}
+            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 hover:shadow-lg"
+          >
+            {t.cta.cta_primary}
+            <Arrow class="w-5 h-5" />
+          </a>
+          <a 
+            href={`/${lang}/contact`}
+            class="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+          >
+            {t.cta.cta_secondary}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Filter functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        
+        // Update active button
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-primary-600', 'text-white');
+          b.classList.add('bg-gray-100', 'text-gray-600');
+        });
+        btn.classList.add('active', 'bg-primary-600', 'text-white');
+        btn.classList.remove('bg-gray-100', 'text-gray-600');
+        
+        // Filter cards
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 0.3s ease forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .project-card {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  details[open] summary {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+</style>
