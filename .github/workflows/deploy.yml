@@ -1,4 +1,4 @@
-name: Deploy Astro site to Hostinger
+name: Deploy Astro site to Hostinger via FTP
 
 on:
   push:
@@ -24,24 +24,14 @@ jobs:
       - name: Build Astro Project
         run: npm run build
 
-      - name: Clean nexifyhub.no folder on Hostinger
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Deploy dist via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.HOSTINGER_HOST }}
-          port: ${{ secrets.HOSTINGER_PORT }}
-          username: ${{ secrets.HOSTINGER_USER }}
-          password: ${{ secrets.HOSTINGER_PASSWORD }}
-          script: |
-            rm -rf /home/u576771478/domains/nexifyhub.no/*
-            mkdir -p /home/u576771478/domains/nexifyhub.no
-
-      - name: Upload dist folder to Hostinger
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.HOSTINGER_HOST }}
-          port: ${{ secrets.HOSTINGER_PORT }}
-          username: ${{ secrets.HOSTINGER_USER }}
-          password: ${{ secrets.HOSTINGER_PASSWORD }}
-          source: "dist/*"
-          target: "/home/u576771478/domains/nexifyhub.no"
-          overwrite: true
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: dist
+          server-dir: /domains/nexifyhub.no/
+          dangerous-clean-slate: true
