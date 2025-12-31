@@ -24,13 +24,13 @@ jobs:
       - name: Build Astro Project
         run: npm run build
 
-      - name: Clean nexifyhub.no folder on Hostinger
+     - name: Clean nexifyhub.no folder on Hostinger
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOSTINGER_HOST }}
           port: ${{ secrets.HOSTINGER_PORT }}
           username: ${{ secrets.HOSTINGER_USER }}
-          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
           script: |
             rm -rf /home/u576771478/domains/nexifyhub.no/*
             mkdir -p /home/u576771478/domains/nexifyhub.no
@@ -41,7 +41,7 @@ jobs:
           host: ${{ secrets.HOSTINGER_HOST }}
           port: ${{ secrets.HOSTINGER_PORT }}
           username: ${{ secrets.HOSTINGER_USER }}
-          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
           source: "dist/*"
           target: "/home/u576771478/domains/nexifyhub.no"
           overwrite: true
