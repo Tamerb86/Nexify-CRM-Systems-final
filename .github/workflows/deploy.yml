@@ -24,7 +24,7 @@ jobs:
       - name: Build Astro Project
         run: npm run build
 
-      - name: Clean site folder on Hostinger
+      - name: Clean nexifyhub.no folder on Hostinger
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOSTINGER_HOST }}
