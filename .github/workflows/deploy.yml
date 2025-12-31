@@ -24,7 +24,7 @@ jobs:
       - name: Build Astro Project
         run: npm run build
 
-      - name: Clean public_html on Hostinger
+      - name: Clean site folder on Hostinger
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOSTINGER_HOST }}
@@ -32,8 +32,8 @@ jobs:
           username: ${{ secrets.HOSTINGER_USER }}
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
           script: |
-            rm -rf /home/u576771478/public_html/*
-            mkdir -p /home/u576771478/public_html
+            rm -rf /home/u576771478/domains/nexifyhub.no/*
+            mkdir -p /home/u576771478/domains/nexifyhub.no
 
       - name: Upload dist folder to Hostinger
         uses: appleboy/scp-action@v0.1.7
@@ -43,5 +43,5 @@ jobs:
           username: ${{ secrets.HOSTINGER_USER }}
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
           source: "dist/*"
-          target: "/home/u576771478/public_html"
+          target: "/home/u576771478/domains/nexifyhub.no"
           overwrite: true
