@@ -1,12 +1,14 @@
 ---
-import { languages, type Language } from '../lib/i18n';
+import { languages, languagesList, type Language } from '../lib/i18n';
 import '../styles/global.css';
 
-const languageOptions: { code: Language; name: string; nativeName: string; flag: string }[] = [
-  { code: 'no', name: 'Norwegian', nativeName: 'Norsk', flag: '🇳🇴' },
-  { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸' },
-  { code: 'ar', name: 'Arabic', nativeName: 'العربية', flag: '🇸🇦' }
-];
+// Map language configuration from i18n.ts to component format
+const languageOptions = languagesList.map(code => ({
+  code,
+  name: languages[code].name,
+  nativeName: languages[code].nativeName,
+  flag: languages[code].flag
+}));
 ---
 
 <!DOCTYPE html>
@@ -110,18 +112,20 @@ const languageOptions: { code: Language; name: string; nativeName: string; flag:
   </style>
 
   <script>
+    // Import language list from configuration
+    import { languagesList } from '../lib/i18n';
+    
     // Auto-detect browser language and redirect if not already set
     const hasVisited = localStorage.getItem('nexify-language-selected');
     
     if (!hasVisited) {
       const browserLang = navigator.language.toLowerCase().split('-')[0];
-      const supportedLangs = ['no', 'en', 'ar'];
       
       // Handle Norwegian variants
       let detectedLang = 'no'; // default
       if (browserLang === 'nb' || browserLang === 'nn' || browserLang === 'no') {
         detectedLang = 'no';
-      } else if (supportedLangs.includes(browserLang)) {
+      } else if (languagesList.includes(browserLang as any)) {
         detectedLang = browserLang;
       } else if (browserLang.startsWith('en')) {
         detectedLang = 'en';
