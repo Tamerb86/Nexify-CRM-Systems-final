@@ -23,7 +23,7 @@ const isActive = (path: string) => currentPath === path;
 
 // Get language prefix for URLs
 const getLangUrl = (targetLang: Language, path: string) => {
-  if (targetLang === 'no') return path;
+  // Always include language prefix for consistency
   return `/${targetLang}${path}`;
 };
 ---
